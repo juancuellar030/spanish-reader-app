@@ -111,7 +111,10 @@ export const StoryCard = ({ story, progressData, onClick }: StoryCardProps) => {
                         <div className="w-full mt-3 flex items-center gap-2 px-1">
                             <span className="text-[10px] text-ocean-blue font-bold whitespace-nowrap">{progress}%</span>
                             <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden shadow-inner">
-                                <div className="h-full bg-gradient-to-r from-ocean-blue to-deep-purple rounded-full" style={{ width: `${progress}%` }} />
+                                <div
+                                    className="h-full bg-gradient-to-r from-ocean-blue to-deep-purple rounded-full"
+                                    style={{ width: `${progress}%` } as React.CSSProperties}
+                                />
                             </div>
                         </div>
                     )}

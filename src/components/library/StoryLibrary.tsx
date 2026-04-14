@@ -75,7 +75,7 @@ export const StoryLibrary = ({ assignedStories, studentProgress, onStorySelect }
                 initial="hidden"
                 animate="show"
             >
-                {stories.map((story) => {
+                {(stories as Story[]).map((story: Story) => {
                     const pData = studentProgress.find(p => p.storyId === story.id);
                     return (
                         <motion.div key={story.id} variants={cardVariants}>
