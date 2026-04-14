@@ -1,0 +1,83 @@
+/*
+ * Simple CSS 3D Book Flip Animation
+ */
+
+.book-container {
+    perspective: 2000px;
+    position: relative;
+    /* Use exact dimensions managed by React */
+}
+
+/* 
+ * A page wrapper holds both front and back faces.
+ * It rotates along the Y axis (the book spine).
+ */
+.flip-page-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+}
+
+/* Z-index management based on page index */
+/* (This generic class is overridden by inline styles for dynamic page counts) */
+
+.flip-page-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+    /* Isolate each face into its own compositing layer to prevent
+       child content from bleeding through during 3D rotations */
+    isolation: isolate;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.flip-page-front {
+    /* Front face is normally visible before flip */
+    transform: rotateY(0deg);
+}
+
+.flip-page-back {
+    /* Back face is visible AFTER flip (so it needs to be rotated initially) */
+    transform: rotateY(180deg);
+}
+
+/* Soft spine shadow */
+.book-spine-shadow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+    transform: translateX(-50%);
+}
+
+/* Center positioning based on book state */
+.book-position-wrapper {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.book-position-wrapper.is-cover {
+    transform: translateX(-25%);
+}
+
+.book-position-wrapper.is-back {
+    transform: translateX(25%);
+}
+
+.book-position-wrapper.is-spread {
+    transform: translateX(0%);
+}

@@ -1,0 +1,16 @@
+- generic [ref=e132]:
+  - generic [ref=e134]:
+    - generic:
+      - generic:
+        - generic:
+          - img "Princess and Dragon"
+  - button "Temas" [ref=e139] [cursor=pointer]:
+    - img [ref=e140]
+    - generic [ref=e146]: Temas
+    - img [ref=e147]
+  - generic [ref=e149]:
+    - heading "¿Quién está leyendo?" [level=1] [ref=e150]
+    - generic [ref=e151]:
+      - img [ref=e153]
+      - textbox "Busca tu nombre..." [active] [ref=e156]
+  - button "Acceso Maestros" [ref=e157] [cursor=pointer]

@@ -1,0 +1,206 @@
+function setLogTarget(target) {
+  if (window.location.href.match('file:')) return;
+
+  var pathName;
+  var startIndex = 1;
+  var divideIndex1;
+  var divideIndex2;
+  var host = window.location.host;
+  var pathName = window.location.pathname;
+
+  targetObj = {}
+  targetObj.item_type = "Book";
+
+ if (host == 'online.fliphtml5.com' || host == 't.flipbuilder.com') {
+
+      divideIndex1 = pathName.indexOf('/', 1);
+      divideIndex2 = pathName.indexOf('/', divideIndex1 + 1);
+      targetObj.user_id = pathName.substring(startIndex, divideIndex1);
+      targetObj.item_id = pathName.substring(divideIndex1 + 1, divideIndex2);
+
+      var _url = '//' + host + "/" + targetObj.user_id + "/" + targetObj.item_id
+      setTarget(target, targetObj, _url)
+      limitedAccess(_url)
+
+  } else  if (host.match('fliphtml5.com') || host.match('test.fliphtml5.com')) {
+
+      if (host.match('fliphtml5.com/view')) return;
+      startIndex = pathName.indexOf('/', 1) + 1;
+      divideIndex1 = pathName.indexOf('/', startIndex);
+      divideIndex2 = pathName.indexOf('/', divideIndex1 + 1);
+      targetObj.user_id = pathName.substring(startIndex, divideIndex1);
+      targetObj.item_id = pathName.substring(divideIndex1 + 1, divideIndex2);
+
+      var _url = '//' + host + "/" + targetObj.user_id + "/" + targetObj.item_id
+      setTarget(target, targetObj, _url)
+      limitedAccess(_url)
+
+  } else {
+      // https://book.yunzhan365.com/npep/hxla/bookinfo.js?_=1604646163852
+      // https://bwf24.sharedbook.cn/books/hxla/bookinfo.js?_=1604646124547
+      $.ajax({
+        url: "//" + host + "/books/getui.json",
+        type: "get",
+        crossDomain: true,
+        dataType: "text",
+        success: function (b) {
+          var c = base64.decode(b.replace(/(=)*$/, "")),
+            f = JSON.parse(c)
+          try {
+            if (f){
+              targetObj.user_id = f.d
+              targetObj.device_type = String(f.c)
+            }
+            divideIndex1 = pathName.indexOf("/", 1)
+            divideIndex2 = pathName.indexOf("/", divideIndex1 + 1)
+            targetObj.item_id = pathName.substring(
+              divideIndex1 + 1,
+              divideIndex2
+            )
+            
+            var _url = "//" + host + "/books/" + targetObj.item_id
+            setTarget(target, targetObj, _url)
+            limitedAccess(_url)
+          } catch (h) {
+            console.log("================1")
+          }
+        },
+        error: function (error) {
+          console.log(error, "catch_log_error")
+        },
+      })
+  }
+}
+
+function setTarget(target, targetObj, _url) {
+  if(targetObj.device_type == undefined){
+    //fill device type -> then setTarget
+    fill_device_type(target, targetObj, _url)
+    return
+  }
+
+  target.item_type = targetObj.item_type;
+  target.user_id = targetObj.user_id;
+  target.item_id = targetObj.item_id;
+  target.device_type = targetObj.device_type;
+
+}
+
+function fill_device_type(target, targetObj, _url) {
+  const regex = /\/([^\/]+)\/([^\/]+)$/;
+  getui_url = _url.replace(regex, '/$1/getui.json');
+  $.ajax({
+    url: getui_url,
+    type: "get",
+    crossDomain: true,
+    dataType: "text",
+    success: function (b) {
+      var c = base64.decode(b.replace(/(=)*$/, "")),
+        f = JSON.parse(c)
+      try {
+        if (f) 
+          targetObj.device_type = String(f.c)
+        else
+          targetObj.device_type = '0'
+      } catch (h) {
+        console.log("================1")
+        targetObj.device_type = '0'
+      } finally {
+        setTarget(target, targetObj, _url)
+      }
+    },
+    error: function (error) {
+      console.log(error, "catch_log_error")
+      targetObj.device_type = '0'
+      setTarget(target, targetObj, _url)
+    },
+  })
+}
+
+function limitedAccess(url) {
+  // setTimeout(function () {
+  //   $.getScript(url + "/bookinfo.js", function (response, status) {
+  //     if (status == 'success') {
+  //       slsLogger.limitedAccess()
+  //     }
+  //   })
+  // }, 1000)
+}
+
+
+
+
+
+function setVisitParams(action) {
+  action.screen_height = window.screen.height;
+  action.screen_width = window.screen.width;
+
+}
+
+function onBookFlipPage(trigger_name, current_page, dest_page, stay_time) {
+  if (current_page == dest_page) return;
+  if (stay_time < 1000) return;
+
+  stay_time = stay_time / 1000;
+  if (stay_time > 3600) return;
+
+  slsLogger.flipPage(trigger_name, current_page, dest_page, stay_time);
+}
+
+function onBookJumpLink(trigger_name, current_page, dest_url) {
+  slsLogger.jumpLink(trigger_name, current_page, dest_url);
+}
+
+function onBookClickButton(current_page, button_name, button_caption) {
+  slsLogger.clickButton(current_page, button_name, button_caption);
+}
+
+
+function onBookSearch(current_page, search_key, trigger_name) {
+  if (search_key.trim() == '') return;
+  slsLogger.search(current_page, search_key, trigger_name);
+}
+
+function onBookShare(current_page, dest_platform, shared_page) {
+  slsLogger.share(current_page, dest_platform, shared_page);
+}
+
+function onBookPrint(current_page, printed_page, print_type) {
+  slsLogger.print(current_page, printed_page, print_type);
+}
+
+function onBookPlayMedia(trigger_name, current_page, media_url, media_type, play_time) {
+  play_time = play_time / 1000;
+
+  if (isNaN(play_time)) return;
+  if (play_time < 0) return;
+
+  slsLogger.playMedia(trigger_name, current_page, media_url, media_type, play_time);
+}
+
+function onBookClickPageItem(current_page, item_name, left, top, width, height) {
+  slsLogger.clickPageItem(item_name, current_page, left, top, width, height);
+}
+
+function onBookError(data) {
+  var logger = new Logger();
+  logger.action.action_name = 'Error';
+  logger.action.trigger_name = data;
+  logger.send();
+}
+
+$(document).ready(function () {
+  if (location.href.indexOf('file:') >= 0) return;
+
+  BookEvent.bindEvent("flipPage", onBookFlipPage);
+  BookEvent.bindEvent("jumpLink", onBookJumpLink);
+  BookEvent.bindEvent("clickButton", onBookClickButton);
+  BookEvent.bindEvent("search", onBookSearch);
+  BookEvent.bindEvent("share", onBookShare);
+  BookEvent.bindEvent("print", onBookPrint);
+  BookEvent.bindEvent("playMedia", onBookPlayMedia);
+  BookEvent.bindEvent("clickPageItem", onBookClickPageItem);
+  BookEvent.bindEvent("errorLog", onBookError);
+});
+
+

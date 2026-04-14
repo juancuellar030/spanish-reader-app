@@ -1,0 +1,376 @@
+{
+    "grade-1-story-3-flipbook": [
+        {
+            "id": "q1",
+            "type": "multiple-choice",
+            "question": "¿En qué lugar vive Tico, el oso de anteojos?",
+            "options": [
+                "En una selva muy calurosa llena de palmeras.",
+                "En lo más alto de las montañas, donde hay neblina y frailejones.",
+                "En un zoológico en el centro de la ciudad."
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q2",
+            "type": "multiple-choice",
+            "question": "¿A qué animal le preguntó Tico si había visto las gafas de su abuelo?",
+            "options": [
+                "A un zorro.",
+                "A un conejo.",
+                "A un colibrí."
+            ],
+            "correctAnswer": 2,
+            "points": 1
+        },
+        {
+            "id": "q3",
+            "type": "multiple-choice",
+            "question": "La mamá llevó a Tico a una laguna para que viera su propio 'reflejo'. ¿Qué significa ver tu reflejo en el agua?",
+            "options": [
+                "Ver tu propia imagen como si el agua fuera un espejo.",
+                "Ver a los peces nadando en el fondo.",
+                "Ver cómo el agua se mueve con el viento."
+            ],
+            "correctAnswer": 0,
+            "points": 1
+        },
+        {
+            "id": "q4",
+            "type": "multiple-choice",
+            "question": "¿Por qué el abuelo NO necesitaba buscar sus gafas en realidad?",
+            "options": [
+                "Porque ya tenía puestas unas gafas de vidrio para leer.",
+                "Porque las gafas estaban escondidas debajo de una piedra.",
+                "Porque las 'gafas' son solo manchas blancas de pelo alrededor de sus ojos."
+            ],
+            "correctAnswer": 2,
+            "points": 1
+        }
+    ],
+    "grade-1-story-2-flipbook": [
+        {
+            "id": "q1",
+            "type": "multiple-choice",
+            "question": "¿Para qué construyó Mateo a Robo-Tito al principio de la historia?",
+            "options": [
+                "Para que hiciera la tarea de matemáticas.",
+                "Para que tendiera su cama todas las mañanas.",
+                "Para que jugara fútbol con él en el parque."
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q2",
+            "type": "multiple-choice",
+            "question": "¿Qué pasaba cada vez que Robo-Tito tocaba la almohada de plumas?",
+            "options": [
+                "Se apagaba y sus luces dejaban de brillar.",
+                "Se enojaba y tiraba la almohada por la ventana.",
+                "Le daban cosquillas, soltaba la almohada y se reía."
+            ],
+            "correctAnswer": 2,
+            "points": 1
+        },
+        {
+            "id": "q3",
+            "type": "multiple-choice",
+            "question": "La historia dice que Robo-Tito hacía sonidos que parecían \"carcajadas\". ¿Qué es una carcajada?",
+            "options": [
+                "Una risa muy fuerte y ruidosa.",
+                "Un llanto muy triste.",
+                "Un sonido de un motor dañado."
+            ],
+            "correctAnswer": 0,
+            "points": 1
+        },
+        {
+            "id": "q4",
+            "type": "multiple-choice",
+            "question": "Al final, ¿cómo se sintió Mateo al ver que el robot no sabía tender la cama?",
+            "options": [
+                "Muy triste y enojado, porque su invento no sirvió para nada.",
+                "Feliz, porque descubrió que tener un robot que se ríe es muy divertido.",
+                "Asustado, porque el robot hacía ruidos muy raros."
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        }
+    ],
+    "grade-4-story-1-flipbook": [
+        {
+            "id": "q1",
+            "type": "multiple-choice",
+            "question": "Al principio de la historia, ¿qué contraste (diferencia) se describe entre la calle de la ciudad y el interior de la tienda del tío Elías?",
+            "options": [
+                "La calle estaba soleada y tranquila, pero la tienda era oscura y aterradora.",
+                "La calle era acelerada, lluviosa y ruidosa, mientras que la tienda era un refugio tranquilo que olía a café y madera.",
+                "En la calle todos caminaban lento, pero dentro de la tienda los relojes hacían un ruido insoportable."
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q2",
+            "type": "multiple-choice",
+            "question": "El tío Elías dice: \"La ciudad va a un ritmo tan vertiginoso que la gente ha desgastado el Engranaje del Presente\". ¿Qué significa la palabra vertiginoso en esta oración?",
+            "options": [
+                "Extremadamente rápido, acelerado y que causa mareo o confusión.",
+                "Lento, aburrido y sin ninguna emoción.",
+                "Peligroso, lleno de delincuentes y trampas escondidas."
+            ],
+            "correctAnswer": 0,
+            "points": 1
+        },
+        {
+            "id": "q3",
+            "type": "multiple-choice",
+            "question": "Según el Ladrón de Segundos, ¿cuál fue la verdadera razón por la que decidió robarse el tiempo de las personas?",
+            "options": [
+                "Porque quería que la ciudad se quedara en silencio para poder dormir en el tejado.",
+                "Porque necesitaba vender esos minutos mágicos en la tienda de antigüedades.",
+                "Porque las personas estaban desperdiciando sus momentos por estar siempre apurados, enojados o mirando el celular."
+            ],
+            "correctAnswer": 2,
+            "points": 1
+        },
+        {
+            "id": "q4",
+            "type": "multiple-choice",
+            "question": "¿Cómo logra Leo derrotar al Ladrón de Segundos y devolver el tiempo a la normalidad?",
+            "options": [
+                "Demostrando que podía vivir un minuto en completa paz, concentrado solo en existir en el momento presente.",
+                "Engañando a la criatura para robarle el maletín de cuero mientras estaba distraída.",
+                "Usando un reloj mágico de bolsillo que le había entregado el tío Elías en secreto."
+            ],
+            "correctAnswer": 0,
+            "points": 1
+        },
+        {
+            "id": "q5",
+            "type": "multiple-choice",
+            "question": "Al final, cuando todo vuelve a la normalidad, el tío Elías le dice a Leo: \"Siempre supe que eras un buen relojero, muchacho\". ¿Qué nos dice esta frase sobre el tío Elías?",
+            "options": [
+                "Que por fin reconoció que Leo sabe usar herramientas mecánicas como los destornilladores.",
+                "Que el tío Elías, de alguna manera mágica, sabía lo que estaba pasando y lo que Leo hizo para salvar el tiempo.",
+                "Que el tío Elías estaba muy confundido y creía que Leo había limpiado el café del suelo."
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q6",
+            "type": "open-ended",
+            "question": "El Ladrón de Segundos dijo que la gente pierde sus momentos por estar apurada o viendo una pantalla. Piensa en tu propia vida: ¿Alguna vez has sentido que el \"Ladrón de Segundos\" te ha robado un momento especial? Escribe un ejemplo de cómo podrías aplicar el truco de Leo para recuperar tu tiempo la próxima vez.",
+            "options": [],
+            "correctAnswer": -1,
+            "points": 0
+        }
+    ],
+    "grade-3-story-1-flipbook": [
+        {
+            "id": "q1",
+            "type": "multiple-choice",
+            "question": "¿Dónde encontraron Lucas y Mariana el mapa antiguo al inicio de la historia?",
+            "options": [
+                "Escondido dentro de un libro de química en la biblioteca.",
+                "Oculto en el marco de un retrato antiguo en el archivo histórico.",
+                "Enterrado bajo la tierra, cerca del laboratorio de ciencias."
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q2",
+            "type": "multiple-choice",
+            "question": "¿Cómo lograron los niños abrir la puerta secreta que estaba detrás de la estantería?",
+            "options": [
+                "Empujaron la estantería de madera con todas sus fuerzas.",
+                "Usaron una llave de oro que encontraron junto al mapa.",
+                "Movieron tres frascos de ciencias siguiendo el orden de los números romanos del mapa."
+            ],
+            "correctAnswer": 2,
+            "points": 1
+        },
+        {
+            "id": "q3",
+            "type": "multiple-choice",
+            "question": "La historia dice que los niños tenían en sus manos el \"legado\" de su colegio. Según lo que leíste, ¿qué significa la palabra legado?",
+            "options": [
+                "Un tesoro de monedas y joyas escondidas bajo tierra.",
+                "Una herencia de historia, conocimientos y valores para el futuro.",
+                "Las reglas estrictas que dejó el primer rector."
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q4",
+            "type": "multiple-choice",
+            "question": "Según la carta escrita en 1925, ¿por qué los fundadores NO dejaron oro en la caja de metal?",
+            "options": [
+                "Porque el dinero se gasta, pero el conocimiento adquirido es el verdadero tesoro.",
+                "Porque unos ladrones entraron al colegio y se robaron todo el dinero hace años.",
+                "Porque querían que los estudiantes aprendieran a vender objetos antiguos."
+            ],
+            "correctAnswer": 0,
+            "points": 1
+        },
+        {
+            "id": "q5",
+            "type": "multiple-choice",
+            "question": "Al final de la historia, ¿por qué Mariana y Lucas deciden guardar el secreto y NO contarle a nadie sobre la caja?",
+            "options": [
+                "Porque tenían miedo de que el conserje, Don Ricardo, los castigara por entrar allí.",
+                "Porque les dio vergüenza no haber encontrado un tesoro de verdad.",
+                "Para permitir que otros estudiantes del futuro puedan vivir la emoción de descubrirlo."
+            ],
+            "correctAnswer": 2,
+            "points": 1
+        },
+        {
+            "id": "q6",
+            "type": "open-ended",
+            "question": "🌟 Pregunta especial: Imagina que tú y tus mejores amigos van a dejar una \"cápsula del tiempo\" escondida en tu colegio para que los niños del futuro la abran en el año 2100. ¿Qué tres objetos guardarías dentro de la caja para que sepan cómo era ser niño hoy, y por qué los elegirías?",
+            "options": [],
+            "correctAnswer": -1,
+            "points": 0
+        }
+    ],
+    "grade-2-story-1-flipbook": [
+        {
+            "id": "q1",
+            "type": "multiple-choice",
+            "question": "¿En qué lugar comienza la historia y dónde vive Valeria?",
+            "options": [
+                "En una playa de arena blanca junto al mar",
+                "En una ciudad grande llena de edificios y luces",
+                "En lo alto de las montañas, donde el clima es frío",
+                "En un bosque lluvioso cerca del río"
+            ],
+            "correctAnswer": 2,
+            "points": 1
+        },
+        {
+            "id": "q2",
+            "type": "multiple-choice",
+            "question": "¿Cuál fue el camino que recorrió la botella para llegar hasta Lucas?",
+            "options": [
+                "Bajó por el río Magdalena hasta llegar al mar Caribe",
+                "Viajó por el mar Pacífico hasta llegar a un lago",
+                "Rodó por una carretera hasta llegar a otro pueblo",
+                "Voló con el viento hasta la costa"
+            ],
+            "correctAnswer": 0,
+            "points": 1
+        },
+        {
+            "id": "q3",
+            "type": "multiple-choice",
+            "question": "En la historia se dice que la botella 'esquivó barcos de carga'. ¿Qué significa la palabra esquivó?",
+            "options": [
+                "Que la botella chocó contra los barcos",
+                "Que la botella se movió para evitar que los barcos la golpearan",
+                "Que la botella se subió a los barcos para viajar más rápido",
+                "Que la botella hundió a los barcos"
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q4",
+            "type": "multiple-choice",
+            "question": "¿Por qué el agua cambió de color café a azul profundo al final del viaje?",
+            "options": [
+                "Porque se hizo de noche y no había luz",
+                "Porque la botella salió del río y entró al mar salado",
+                "Porque la botella estaba sucia y manchó el agua",
+                "Porque el río se secó"
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q5",
+            "type": "multiple-choice",
+            "question": "Al final de la historia, ¿qué pensó Lucas cuando leyó el mensaje de Valeria?",
+            "options": [
+                "Que el agua conecta lugares diferentes, aunque estén lejos",
+                "Que la botella era basura y debía tirarla",
+                "Que Valeria estaba perdida y necesitaba ayuda",
+                "Que quería viajar a las montañas"
+            ],
+            "correctAnswer": 0,
+            "points": 1
+        }
+    ],
+    "grade-1-story-1-flipbook": [
+        {
+            "id": "q1",
+            "type": "multiple-choice",
+            "question": "¿Cómo se llamaba el gato?",
+            "options": [
+                "Bigotes",
+                "Simón",
+                "Capitán",
+                "Félix"
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q2",
+            "type": "multiple-choice",
+            "question": "¿En quién se convertía Simón cuando salía al jardín?",
+            "options": [
+                "El Gato con Botas",
+                "El Capitán Bigotes",
+                "El Rey de la Selva",
+                "El Explorador Felino"
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q3",
+            "type": "multiple-choice",
+            "question": "¿Qué descubrió el Capitán Bigotes en el jardín?",
+            "options": [
+                "Un ratón",
+                "Una serpiente verde",
+                "Un pájaro",
+                "Una pelota"
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q4",
+            "type": "multiple-choice",
+            "question": "¿Qué era realmente la 'Gran Serpiente de Goma'?",
+            "options": [
+                "Una serpiente de verdad",
+                "Un juguete",
+                "La manguera del jardín",
+                "Una cuerda"
+            ],
+            "correctAnswer": 2,
+            "points": 1
+        },
+        {
+            "id": "q5",
+            "type": "multiple-choice",
+            "question": "¿Qué hizo el Capitán Bigotes al final de la historia?",
+            "options": [
+                "Siguió buscando enemigos",
+                "Volvió a la casa",
+                "Tomó una siesta bajo el sol",
+                "Jugó con la manguera"
+            ],
+            "correctAnswer": 2,
+            "points": 1
+        }
+    ]
+}

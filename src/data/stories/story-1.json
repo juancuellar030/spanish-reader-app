@@ -1,0 +1,51 @@
+{
+    "id": "grade-1-story-1-flipbook",
+    "title": "La misión secreta del Capitán Bigotes",
+    "grade": 1,
+    "type": "flipbook",
+    "coverImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/story-cover-1.png",
+    "titleImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/title-1.png",
+    "endImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/page-end.png",
+    "audioFile": "/spanish-reader-app/assets/audio/grade-1/story-1-flipbook.mp3",
+    "vttFile": "/spanish-reader-app/assets/audio/grade-1/story-1-flipbook.vtt",
+    "pages": [
+        {
+            "pageNumber": 1,
+            "text": "Simón no era un simple gato doméstico. Cuando salía al jardín, se convertía en el intrépido Capitán Bigotes, el explorador más valiente de la selva.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/page-1.png",
+            "wordStart": 0,
+            "wordEnd": 28
+        },
+        {
+            "pageNumber": 2,
+            "text": "Una tarde soleada, mientras patrullaba su territorio cerca de los rosales, descubrió algo terrible. Entre la hierba alta se escondía un enemigo largo, verde y brillante. ¡Es la Gran Serpiente de Goma! pensó el Capitán con horror.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/page-2.png",
+            "wordStart": 29,
+            "wordEnd": 67
+        },
+        {
+            "pageNumber": 3,
+            "text": "La serpiente estaba muy quieta, esperando el momento justo para atacar a su familia humana. El Capitán Bigotes sabía que debía actuar rápido. Se agachó y avanzó de forma sigilosa, sin hacer ni un solo ruido con sus patas de terciopelo.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/page-3.png",
+            "wordStart": 68,
+            "wordEnd": 108
+        },
+        {
+            "pageNumber": 4,
+            "text": "Sus ojos amarillos se fijaron en el objetivo. Movió la cola de un lado a otro, contó hasta tres y... ¡Zas! El gato se abalanzó sobre el enemigo y le dio un mordisco feroz. Pero la serpiente no gritó. Sabía a plástico viejo y estaba llena de agua. ¡Era solo la manguera del jardín!",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/page-4.png",
+            "wordStart": 109,
+            "wordEnd": 164
+        },
+        {
+            "pageNumber": 5,
+            "text": "El Capitán Bigotes escupió con disgusto, pero levantó la cabeza con orgullo. La manguera no se había movido, así que él había ganado. Satisfecho con su victoria, el héroe se acostó bajo el sol para tomar una merecida siesta.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/page-5.png",
+            "wordStart": 165,
+            "wordEnd": 203
+        }
+    ],
+    "totalPages": 5,
+    "wordCount": 204,
+    "themeColor": "#1b4332"
+}

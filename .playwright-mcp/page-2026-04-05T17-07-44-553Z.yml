@@ -1,0 +1,18 @@
+- generic [ref=e3]:
+  - generic [ref=e5]:
+    - generic:
+      - generic:
+        - img "Clouds"
+    - generic:
+      - generic:
+        - img "Children reading on pedestal"
+  - button "Temas" [ref=e15] [cursor=pointer]:
+    - img [ref=e16]
+    - generic [ref=e22]: Temas
+    - img [ref=e23]
+  - generic [ref=e25]:
+    - heading "¿Quién está leyendo?" [level=1] [ref=e26]
+    - generic [ref=e27]:
+      - img [ref=e29]
+      - textbox "Busca tu nombre..." [active] [ref=e32]
+  - button "Acceso Maestros" [ref=e33] [cursor=pointer]

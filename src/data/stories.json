@@ -1,0 +1,184 @@
+[
+    {
+        "id": "grade-4-story-1-flipbook",
+        "title": "El relojero de la Candelaria y el minuto perdido",
+        "grade": 4,
+        "type": "flipbook",
+        "coverImage": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/story-cover.jpg",
+        "previewImage3D": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/story-book-3d.png",
+        "endImage": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/last-page.jpeg",
+        "audioFile": "/spanish-reader-app/assets/audio/grade-4/story-1-flipbook.mp3",
+        "timestampFile": "/spanish-reader-app/assets/audio/grade-4/story-1-flipbook.vtt",
+        "themeColor": "#78350f",
+        "wordCount": 512,
+        "pages": [
+            {
+                "pageNumber": 1,
+                "text": "Capítulo 1: El tic-tac ensordecedor\n\nA Leo le encantaba visitar la tienda de antigüedades de su tío Elías, escondida en una callejuela empedrada del barrio La Candelaria, en el centro de Bogotá. Mientras afuera la gente corría de un lado a otro esquivando la lluvia y los carros tocaban las bocinas con desesperación, la tienda del tío Elías era un refugio. Olía a cera para madera, a libros viejos y a café recién colado.\n\nSin embargo, esa tarde de viernes, el ambiente era diferente. El tío Elías, un hombre de cabello blanco y gafas de marco grueso, estaba arrodillado frente a un enorme reloj de péndulo del siglo XIX. Parecía abstraído, buscando algo con desesperación.\n\n—¿Perdiste algo, tío? —preguntó Leo, dejando su pesada mochila escolar en el suelo.",
+                "image": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/chapter-1-first-half.jpeg",
+                "wordStart": 0,
+                "wordEnd": 109
+            },
+            {
+                "pageNumber": 2,
+                "text": "—He perdido el minuto más importante de todos, muchacho —murmuró el anciano, ajustando una pequeña tuerca con un destornillador minúsculo—. La ciudad va a un ritmo tan vertiginoso que la gente ha desgastado el \"Engranaje del Presente\". Si no lo reparo antes de las cinco de la tarde, el tiempo se va a atascar.\n\nLeo soltó una carcajada. Pensó que su tío estaba bromeando, como siempre. Sacó su teléfono celular para mirar la hora. Eran las 4:59 p.m.\n\n—Tío, el tiempo no se atasca como una cremallera rota. Es algo invisible —dijo Leo con tono escéptico.\n\nPero justo cuando el reloj del celular cambió a las 5:00 p.m., el enorme reloj de péndulo emitió un sonido que no fue un campanazo, sino un gemido metálico profundo. Y entonces, ocurrió lo imposible.",
+                "image": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/chapter-1-second-half.jpeg",
+                "wordStart": 110,
+                "wordEnd": 253
+            },
+            {
+                "pageNumber": 3,
+                "text": "Capítulo 2: Un mundo de cristal\n\nEl tic-tac constante de los cientos de relojes de la tienda se detuvo al mismo tiempo. El silencio fue tan repentino que a Leo le zumbaron los oídos.\n\n—¿Tío? —preguntó Leo, dándose la vuelta.\n\nEl tío Elías estaba congelado. Tenía una mano levantada y la boca a medio abrir. Su taza de café, que había chocado por accidente con el codo, estaba en el aire. Las gotas de la bebida café oscuro flotaban, inertes, a unos centímetros del suelo, como si fueran canicas de cristal.\n\nLeo, sintiendo un escalofrío en la espalda, caminó hacia la puerta de la tienda y salió a la calle. Lo que vio lo dejó perplejo.",
+                "image": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/chapter-2-first-half.jpeg",
+                "wordStart": 254,
+                "wordEnd": 369
+            },
+            {
+                "pageNumber": 4,
+                "text": "Bogotá se había convertido en una fotografía. Un taxi amarillo estaba detenido a centímetros de un charco. Una paloma flotaba en el aire con las alas extendidas. Las gotas de lluvia colgaban del cielo gris como hilos de plata que no terminaban de caer. Todo estaba pausado, excepto él.\n\n—Esto no tiene sentido... —susurró Leo. Su voz sonaba apagada, sin eco.\n\n—Tiene todo el sentido del mundo, si sabes mirar —respondió una voz rasposa que venía desde el tejado de una casa colonial.\n\nCapítulo 3: El Ladrón de Segundos\n\nLeo levantó la vista. Sentada en el borde del tejado de tejas de barro, había una criatura extraña.",
+                "image": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/chapter-2-second-half.jpeg",
+                "wordStart": 370,
+                "wordEnd": 452
+            },
+            {
+                "pageNumber": 5,
+                "text": "Parecía estar hecha de humo gris y sombras, pero vestía un elegante traje a rayas y llevaba un maletín de cuero. Sus ojos brillaban como dos brasas de carbón.\n\n—¿Quién eres tú? —exigió Leo, intentando ocultar el temblor de sus manos.\n\n—Los humanos me llaman por muchos nombres: Estrés, Prisa, Ansiedad —dijo la criatura mientras bajaba flotando hasta quedar frente al niño—. Pero yo prefiero considerarme un \"Coleccionista\". Soy el Ladrón de Segundos.\n\nLa criatura abrió su maletín. En su interior, brillaban miles de esferas de luz que palpitaban débilmente.\n\n—¿Qué son esas luces? —preguntó Leo.",
+                "image": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/chapter-3-first-half.jpeg",
+                "wordStart": 453,
+                "wordEnd": 549
+            },
+            {
+                "pageNumber": 6,
+                "text": "Son los momentos que la gente de esta ciudad desperdicia por estar apurada —explicó la criatura, cerrando el maletín de golpe—. La señora de la esquina no disfrutó su desayuno por mirar el celular. El taxista no miró el hermoso color del cielo porque estaba enojado por el tráfico. Como ustedes ya no usan su tiempo para vivir el presente, yo he decidido robarme todos los minutos. A partir de hoy, el tiempo es mío.\n\nCapítulo 4: La negociación\n\nLeo entendió entonces a qué se refería su tío Elías. El mundo no se había roto por un fallo mecánico, sino por la codicia de la rutina. Sabía que no podía derrotar a una criatura de humo con los puños; tenía que usar la inteligencia.\n\n—Si te llevas el tiempo, esos momentos perderán su magia —dijo Leo con firmeza—. El tiempo solo tiene valor cuando fluye. Una gota de lluvia no es hermosa si se queda suspendida en el aire para siempre.",
+                "image": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/chapter-3-second-half.jpeg",
+                "wordStart": 550,
+                "wordEnd": 696
+            },
+            {
+                "pageNumber": 7,
+                "text": "La criatura frunció el ceño, intrigada. —¿Y qué propones, niño sabihondo?\n\n—Hagamos un trato —ofreció Leo—. Te demostraré que los humanos aún sabemos apreciar un minuto completo, sin pensar en el pasado ni preocuparnos por el futuro. Si te lo demuestro, devolverás el flujo del tiempo. Si fallo, te puedes quedar con todos nosotros en tu maletín.\n\nEl Ladrón sonrió mostrando unos dientes que parecían agujas de reloj. —Acepto. Tienes sesenta segundos.\n\nLeo cerró los ojos. No intentó pensar en grandes hazañas. Simplemente se sentó en el borde de la acera empedrada. Sintió el frío húmedo de la calle en sus manos. Escuchó el latido pausado de su propio corazón. Recordó el olor a madera y café de la tienda de su tío. Dejó que su mente se vaciara de las tareas pendientes, del examen de matemáticas del lunes, del miedo a la criatura. Simplemente... existió en el ahora. ",
+                "image": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/chapter-4-first-half.jpeg",
+                "wordStart": 697,
+                "wordEnd": 813
+            },
+            {
+                "pageNumber": 8,
+                "text": "De su pecho comenzó a emanar un destello dorado, cálido y brillante. Era la luz pura del presente. El Ladrón de Segundos soltó un grito ahogado y dejó caer su maletín. Las esferas de luz salieron volando y regresaron a sus dueños. La criatura de humo se disolvió en la brisa como si nunca hubiera existido.\n\nDe repente, el sonido volvió de golpe. ¡Piiiip! Sonó la bocina del taxi. Las gotas de lluvia cayeron ruidosamente al suelo. El café del tío Elías terminó de estrellarse contra la madera del piso de la tienda. Leo se levantó lentamente. Entró a la tienda y vio a su tío limpiando el desastre con un trapo, maldiciendo por lo bajo.\n\n—Tío —dijo Leo con una sonrisa tranquila—, creo que encontré el minuto que faltaba. No estaba en el engranaje del reloj.",
+                "image": "/spanish-reader-app/assets/images/story-covers/fourth-grade/story-1/chapter-4-second-half.jpeg",
+                "wordStart": 814,
+                "wordEnd": 1066,
+                "overlayText": "El tío Elías se detuvo, miró a su sobrino a los ojos y sonrió.\n\n—Siempre supe que eras un buen relojero, muchacho. Ahora, ven y ayúdame a secar este café. No hay prisa, tenemos toda la tarde por delante."
+            }
+        ]
+    },
+    {
+        "id": "grade-1-story-1-flipbook",
+        "title": "La misión secreta del Capitán Bigotes",
+        "grade": 1,
+        "type": "flipbook",
+        "coverImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/story-cover-1.png",
+        "previewImage3D": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/story-book-3d.png",
+        "audioFile": "/spanish-reader-app/assets/audio/grade-1/story-1-flipbook.mp3",
+        "timestampFile": "/spanish-reader-app/assets/audio/grade-1/story-1-flipbook.vtt",
+        "text": "Simón no era un simple gato doméstico. Cuando salía al jardín, se convertía en el intrépido Capitán Bigotes, el explorador más valiente de la selva. Una tarde soleada, mientras patrullaba su territorio cerca de los rosales, descubrió algo terrible. Entre la hierba alta se escondía un enemigo largo, verde y brillante. ¡Es la Gran Serpiente de Goma! pensó el Capitán con horror. La serpiente estaba muy quieta, esperando el momento justo para atacar a su familia humana. El Capitán Bigotes sabía que debía actuar rápido. Se agachó y avanzó de forma sigilosa, sin hacer ni un solo ruido con sus patas de terciopelo. Sus ojos amarillos se fijaron en el objetivo. Movió la cola de un lado a otro, contó hasta tres y... ¡Zas! El gato se abalanzó sobre el enemigo y le dio un mordisco feroz. Pero la serpiente no gritó. Sabía a plástico viejo y estaba llena de agua. ¡Era solo la manguera del jardín! El Capitán Bigotes escupió con disgusto, pero levantó la cabeza con orgullo. La manguera no se había movido, así que él había ganado. Satisfecho con su victoria, el héroe se acostó bajo el sol para tomar una merecida siesta.",
+        "wordCount": 204,
+        "themeColor": "#1b4332",
+        "collectibleImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-1/Cat_face_mask_cape_collectible.png",
+        "collectibleName": "Capa del Capitán Bigotes"
+    },
+    {
+        "id": "grade-2-story-1-flipbook",
+        "title": "El viaje de la botella mensajera",
+        "grade": 2,
+        "type": "flipbook",
+        "coverImage": "/spanish-reader-app/assets/images/story-covers/second-grade/story-1/story-cover.png",
+        "previewImage3D": "/spanish-reader-app/assets/images/story-covers/second-grade/story-1/story-book-3d.png",
+        "audioFile": "/spanish-reader-app/assets/audio/grade-2/story-1-flipbook.mp3",
+        "timestampFile": "/spanish-reader-app/assets/audio/grade-2/story-1-flipbook.vtt",
+        "text": "Valeria vivía en un pueblo frío, en lo alto de la cordillera de los Andes, donde nacen los ríos. Un día, su abuelo le regaló una botella de vidrio azul muy especial y un corcho antiguo. Escribe un mensaje, le dijo. El río Magdalena se encargará de llevarlo lejos, muy lejos. Valeria tomó un papel y escribió con su mejor letra: Hola, me llamo Valeria y vivo donde el agua es helada. ¿Cómo es el lugar donde vives tú? Enrolló el papel, lo metió en la botella y con mucha fuerza, la lanzó al cauce del río. La botella comenzó su gran travesía. Al principio, el agua la golpeaba contra las piedras y la empujaba por cascadas ruidosas y llenas de espuma. Pero a medida que bajaba de la montaña, el río se volvió más ancho y tranquilo. La botella azul vio cambiar el paisaje. Dejó atrás los pinos y la neblina para navegar entre selvas calurosas. Una tarde, un caimán que tomaba el sol en la orilla la vio pasar y soltó un bufido perezoso. Días después, una garza blanca intentó picotear el vidrio pensando que era un pez, pero la botella se escurrió hábilmente por la corriente. Pasaron semanas. La botella cruzó pueblos de pescadores y esquivó enormes barcos de carga que hacían olas gigantes. Finalmente, el agua del río cambió. Ya no sabía dulce ni era de color café, ahora era salada y de un azul profundo. Había llegado al mar Caribe. Las olas del mar, suaves y juguetonas, empujaron la botella hacia una playa de arena blanca. Allí, Lucas, un niño que buscaba caracoles, vio el brillo azul en la arena. Corrió, destapó el corcho y leyó el mensaje. Lucas sonrió, miró hacia el horizonte infinito del mar y pensó: El agua que allá es hielo, aquí es una ola tibia. Esa tarde, Lucas se sentó a escribir una respuesta, listo para comenzar una nueva aventura.",
+        "wordCount": 327,
+        "themeColor": "#0f4c5c",
+        "collectibleImage": "/spanish-reader-app/assets/images/story-covers/second-grade/story-1/bottle_message_collectible.png",
+        "collectibleName": "Botella Mensajera de Valeria"
+    },
+    {
+        "id": "grade-3-story-1-flipbook",
+        "title": "El mapa olvidado de los fundadores",
+        "grade": 3,
+        "type": "flipbook",
+        "coverImage": "/spanish-reader-app/assets/images/story-covers/third-grade/story-1/story-cover.png",
+        "previewImage3D": "/spanish-reader-app/assets/images/story-covers/third-grade/story-1/story-book-3d.png",
+        "endImage": "/spanish-reader-app/assets/images/story-covers/third-grade/story-1/last-page.jpeg",
+        "audioFile": "/spanish-reader-app/assets/audio/grade-3/story-1-flipbook.mp3",
+        "timestampFile": "/spanish-reader-app/assets/audio/grade-3/story-1-flipbook.vtt",
+        "themeColor": "#5a181a",
+        "wordCount": 350,
+        "pages": [
+            {
+                "pageNumber": 1,
+                "text": "Todo comenzó una tarde lluviosa de viernes. Lucas y Mariana se habían quedado tarde en el colegio ayudando a la bibliotecaria a organizar el archivo histórico, una sala llena de cajas viejas que olía a papel y a polvo.\n\n—¡Mira esto! —susurró Mariana. Estaba moviendo un retrato antiguo del primer rector del colegio cuando notó que el marco de madera tenía un compartimento secreto.\n\nLucas se acercó y, con mucho cuidado, sacó un papel amarillento y quebradizo. No era una carta, sino un plano del colegio.",
+                "image": "/spanish-reader-app/assets/images/story-covers/third-grade/story-1/chapter-1-first-half.jpeg",
+                "wordStart": 0,
+                "wordEnd": 128
+            },
+            {
+                "pageNumber": 2,
+                "text": "Pero este plano era diferente al que conocían: mostraba pasillos que ya no existían y una \"X\" roja marcada justo debajo del laboratorio de ciencias. Al pie del mapa, había una frase escrita en latín: \"Scientia est clavis\" (La ciencia es la llave).\n\n—Es un mapa del tesoro —dijo Lucas con los ojos muy abiertos—. Mi abuelo me contó que los fundadores del colegio escondieron algo valioso hace cien años, pero nadie supo nunca qué era.\n\n—Tenemos que investigar —respondió Mariana, guardando el mapa en su mochila—. Mañana, durante el recreo largo, iremos al laboratorio.",
+                "image": "/spanish-reader-app/assets/images/story-covers/third-grade/story-1/chapter-1-second-half.jpeg",
+                "wordStart": 129,
+                "wordEnd": 180
+            },
+            {
+                "pageNumber": 3,
+                "text": "Al día siguiente, los dos amigos se escabulleron hacia el edificio de ciencias. El mapa indicaba que la entrada al túnel secreto estaba detrás de la estantería de los microscopios.\n\nMariana empujó la estantería, pero era demasiado pesada.\n\n—Espera —dijo Lucas, mirando el mapa de nuevo—. Aquí hay unos símbolos extraños. Parecen números romanos: V, I, III.\n\n—Cinco, uno, tres... —murmuró Mariana. Entonces, miró los frascos de muestras biológicas en la repisa. Cada frasco tenía un número. Sin pensarlo dos veces, movió el frasco número 5, luego el 1 y finalmente el 3.",
+                "image": "/spanish-reader-app/assets/images/story-covers/third-grade/story-1/chapter-2-first-half.jpeg",
+                "wordStart": 181,
+                "wordEnd": 273
+            },
+            {
+                "pageNumber": 4,
+                "text": "Se escuchó un clic mecánico. Un panel de madera en la pared se deslizó suavemente, revelando un hueco oscuro y estrecho. El corazón de Lucas latía con fuerza por la adrenalina.\n\n—¿Estás lista? —preguntó encendiendo la linterna de su reloj.\n\n—Siempre —respondió ella.\n\nEntraron en el pequeño cuarto secreto. No había oro ni joyas. En el centro, sobre una mesa de piedra, había una caja de metal oxidada con la fecha \"1925\" grabada en la tapa.",
+                "image": "/spanish-reader-app/assets/images/story-covers/third-grade/story-1/chapter-2-second-half.jpeg.jpg",
+                "wordStart": 274,
+                "wordEnd": 349
+            },
+            {
+                "pageNumber": 5,
+                "text": "Justo cuando iban a abrir la caja, escucharon pasos afuera. Era Don Ricardo, el conserje.\n\n—¡Rápido! —susurró Mariana.\n\nAbrieron la caja. Dentro encontraron una colección de objetos extraños: una pluma fuente, unas gafas redondas, una foto en blanco y negro de los primeros alumnos y una carta escrita a mano.\n\nLucas leyó la carta en voz alta:\n\n\"A los estudiantes del futuro: No les dejamos oro, porque el dinero se gasta. Les dejamos nuestra historia. Este colegio fue construido ladrillo a ladrillo por soñadores. El verdadero tesoro es el conocimiento que adquirirán aquí. Úsenlo para hacer el bien\".",
+                "image": "/spanish-reader-app/assets/images/story-covers/third-grade/story-1/chapter-3-first-half.jpeg",
+                "wordStart": 350,
+                "wordEnd": 447
+            },
+            {
+                "pageNumber": 6,
+                "text": "Lucas y Mariana se miraron, un poco decepcionados por no encontrar monedas de oro, pero también emocionados. Entendieron que tenían en sus manos el legado original de su colegio.\n\nGuardaron todo tal como estaba y salieron sigilosamente, cerrando el panel secreto.\n\n—¿Se lo contamos a alguien? —preguntó Lucas mientras volvían al patio.\n\nMariana sonrió.\n\n—No. Dejemos que otros estudiantes lo descubran dentro de cien años. Será nuestro secreto de fundadores.",
+                "image": "/spanish-reader-app/assets/images/story-covers/third-grade/story-1/chapter-3-second-half.jpeg",
+                "wordStart": 448,
+                "wordEnd": 517
+            }
+        ]
+    },
+    {
+        "id": "grade-1-story-2-flipbook",
+        "title": "El robot que tenía cosquillas",
+        "grade": 1,
+        "type": "flipbook",
+        "coverImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/story-cover.png",
+        "previewImage3D": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/story-book-3d.png",
+        "text": "Mateo no era un niño común; era un pequeño inventor. Su habitación estaba llena de cables, baterías y herramientas. Después de trabajar durante toda la semana, por fin ajustó la última tuerca de su gran creación: \"Robo-Tito\". El objetivo de Mateo era sencillo: quería que Robo-Tito tendiera su cama todas las mañanas.",
+        "wordCount": 237,
+        "themeColor": "#3b82f6",
+        "collectibleImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/Robot_head_collectible.png",
+        "collectibleName": "Cabeza de Robo-Tito"
+    },
+    {
+        "id": "grade-1-story-3-flipbook",
+        "title": "El misterio de las gafas del Abuelo Oso",
+        "grade": 1,
+        "type": "flipbook",
+        "coverImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/story-cover.jpg",
+        "previewImage3D": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/story-book-3d-2.png",
+        "collectibleImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/bear_cub's_glasses_collectible.png",
+        "collectibleName": "Gafas del Abuelo Oso"
+    }
+]

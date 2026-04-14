@@ -1,0 +1,50 @@
+{
+    "id": "grade-1-story-3-flipbook",
+    "title": "El misterio de las gafas del Abuelo Oso",
+    "grade": 1,
+    "type": "flipbook",
+    "coverImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/story-cover.jpg",
+    "previewImage3D": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/story-book-3d-2.png",
+    "endImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/page-end.jpeg",
+    "pages": [
+        {
+            "pageNumber": 1,
+            "text": "En lo más alto de las montañas de Colombia, donde la fría neblina abraza a los frailejones, vivía Tico. Él era un pequeño oso de anteojos muy curioso y juguetón.\n\nUna mañana, Tico vio a su abuelo durmiendo una siesta profunda bajo un árbol.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/page-2.jpeg",
+            "wordStart": 0,
+            "wordEnd": 28
+        },
+        {
+            "pageNumber": 2,
+            "text": "Al acercarse despacito y sin hacer ruido, notó algo que le pareció terrible.\n\n—¡Oh, no! —susurró Tico—. ¡El abuelo ha perdido sus gafas! No podrá ver nada cuando despierte.\n\nMuy preocupado, Tico comenzó una rápida búsqueda.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/page-4.jpeg",
+            "wordStart": 29,
+            "wordEnd": 72
+        },
+        {
+            "pageNumber": 3,
+            "text": "Miró detrás de las piedras y escarbó entre las hojas secas, pero no encontró nada. De pronto, vio a un colibrí brillando en el aire.\n\n—Señor Colibrí, ¿ha visto las gafas de mi abuelo? Son redondas y blancas —preguntó Tico.\n\nEl colibrí batió sus alas a toda velocidad. —No he visto ningunas gafas por aquí, pequeño amigo —zumbó el ave, y se fue volando hacia el cielo.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/page-6.jpeg",
+            "wordStart": 73,
+            "wordEnd": 120
+        },
+        {
+            "pageNumber": 4,
+            "text": "Tico se sentó en el suelo, muy confundido y triste. Justo en ese momento, apareció su mamá. Al verlo casi llorando, le preguntó qué pasaba. Tico le explicó el gran problema de las gafas perdidas. Su mamá soltó una risa dulce. Tomó a Tico de la pata y lo llevó hasta la orilla de una laguna de agua cristalina.\n\n—Mírate en el agua, Tico —le dijo suavemente.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/page-8.jpeg",
+            "wordStart": 121,
+            "wordEnd": 183
+        },
+        {
+            "pageNumber": 5,
+            "text": "Tico miró su propio reflejo. Vio que alrededor de sus ojos oscuros tenía manchas de pelaje blanco, que formaban círculos perfectos.\n\n—¿Ves? —explicó mamá—. Nosotros nos llamamos \"osos de anteojos\", pero no usamos gafas de vidrio. Esas manchas en nuestro pelaje son un regalo de la naturaleza. Tico sonrió aliviado. Su abuelo no estaba ciego ni había perdido nada,",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-3/page-10.jpeg",
+            "wordStart": 184,
+            "wordEnd": 282,
+            "overlayText": "¡simplemente era un oso natural y muy elegante!"
+        }
+    ],
+    "totalPages": 5,
+    "wordCount": 283,
+    "themeColor": "#15803d"
+}

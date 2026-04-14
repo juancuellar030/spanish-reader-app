@@ -1,0 +1,898 @@
+- generic [ref=e176]:
+  - banner [ref=e177]:
+    - generic [ref=e178]:
+      - heading "Panel de Maestros" [level=1] [ref=e179]
+      - paragraph [ref=e180]: Vista general de la clase
+    - button "Salir" [ref=e181] [cursor=pointer]:
+      - img [ref=e182]
+      - generic [ref=e185]: Salir
+  - generic [ref=e186]:
+    - generic [ref=e187]:
+      - img [ref=e189]
+      - generic [ref=e194]:
+        - paragraph [ref=e195]: Total Estudiantes
+        - paragraph [ref=e196]: "95"
+    - generic [ref=e197]:
+      - img [ref=e199]
+      - generic [ref=e201]:
+        - paragraph [ref=e202]: Historias Asignadas
+        - paragraph [ref=e203]: "65"
+    - generic [ref=e204]:
+      - img [ref=e206]
+      - generic [ref=e209]:
+        - paragraph [ref=e210]: Promedio Clase
+        - paragraph [ref=e211]: 85%
+  - img [ref=e214]
+  - generic [ref=e216]:
+    - heading "Estudiantes" [level=2] [ref=e217]
+    - generic [ref=e218]:
+      - generic [ref=e220]:
+        - img [ref=e221]
+        - textbox "Buscar estudiante..." [ref=e224]
+      - table [ref=e226]:
+        - rowgroup [ref=e227]:
+          - row "Nombre Grado Historias Asignadas Acciones" [ref=e228]:
+            - columnheader "Nombre" [ref=e229] [cursor=pointer]:
+              - generic [ref=e230]:
+                - text: Nombre
+                - img [ref=e231]
+            - columnheader "Grado" [ref=e233] [cursor=pointer]:
+              - generic [ref=e234]: Grado
+            - columnheader "Historias Asignadas" [ref=e235]
+            - columnheader "Acciones" [ref=e236]
+        - rowgroup [ref=e237]:
+          - row "A Adam Mathías Bernal Morales Grado 3 0 historias Ver detalles" [ref=e238]:
+            - cell "A Adam Mathías Bernal Morales" [ref=e239]:
+              - generic [ref=e240]:
+                - generic [ref=e241]: A
+                - text: Adam Mathías Bernal Morales
+            - cell "Grado 3" [ref=e242]
+            - cell "0 historias" [ref=e243]
+            - cell "Ver detalles" [ref=e244]:
+              - button "Ver detalles" [ref=e245] [cursor=pointer]
+          - row "A Adrián Matías Barreiro Salas Grado 1 2 historias Ver detalles" [ref=e246]:
+            - cell "A Adrián Matías Barreiro Salas" [ref=e247]:
+              - generic [ref=e248]:
+                - generic [ref=e249]: A
+                - text: Adrián Matías Barreiro Salas
+            - cell "Grado 1" [ref=e250]
+            - cell "2 historias" [ref=e251]
+            - cell "Ver detalles" [ref=e252]:
+              - button "Ver detalles" [ref=e253] [cursor=pointer]
+          - row "A Alejandro Pérez Aristizábal Grado 5 0 historias Ver detalles" [ref=e254]:
+            - cell "A Alejandro Pérez Aristizábal" [ref=e255]:
+              - generic [ref=e256]:
+                - generic [ref=e257]: A
+                - text: Alejandro Pérez Aristizábal
+            - cell "Grado 5" [ref=e258]
+            - cell "0 historias" [ref=e259]
+            - cell "Ver detalles" [ref=e260]:
+              - button "Ver detalles" [ref=e261] [cursor=pointer]
+          - row "A Ana Victoria Hurtatis Jiménez Grado 3 0 historias Ver detalles" [ref=e262]:
+            - cell "A Ana Victoria Hurtatis Jiménez" [ref=e263]:
+              - generic [ref=e264]:
+                - generic [ref=e265]: A
+                - text: Ana Victoria Hurtatis Jiménez
+            - cell "Grado 3" [ref=e266]
+            - cell "0 historias" [ref=e267]
+            - cell "Ver detalles" [ref=e268]:
+              - button "Ver detalles" [ref=e269] [cursor=pointer]
+          - row "A Anthony Ríos Caviedes Grado 3 0 historias Ver detalles" [ref=e270]:
+            - cell "A Anthony Ríos Caviedes" [ref=e271]:
+              - generic [ref=e272]:
+                - generic [ref=e273]: A
+                - text: Anthony Ríos Caviedes
+            - cell "Grado 3" [ref=e274]
+            - cell "0 historias" [ref=e275]
+            - cell "Ver detalles" [ref=e276]:
+              - button "Ver detalles" [ref=e277] [cursor=pointer]
+          - row "A Antonella Buitrago Giraldo Grado 1 2 historias Ver detalles" [ref=e278]:
+            - cell "A Antonella Buitrago Giraldo" [ref=e279]:
+              - generic [ref=e280]:
+                - generic [ref=e281]: A
+                - text: Antonella Buitrago Giraldo
+            - cell "Grado 1" [ref=e282]
+            - cell "2 historias" [ref=e283]
+            - cell "Ver detalles" [ref=e284]:
+              - button "Ver detalles" [ref=e285] [cursor=pointer]
+          - row "A Antonella Cepeda Pulido Grado 2 1 historias Ver detalles" [ref=e286]:
+            - cell "A Antonella Cepeda Pulido" [ref=e287]:
+              - generic [ref=e288]:
+                - generic [ref=e289]: A
+                - text: Antonella Cepeda Pulido
+            - cell "Grado 2" [ref=e290]
+            - cell "1 historias" [ref=e291]
+            - cell "Ver detalles" [ref=e292]:
+              - button "Ver detalles" [ref=e293] [cursor=pointer]
+          - row "A Ariana Barrera Sanabria Grado 4 0 historias Ver detalles" [ref=e294]:
+            - cell "A Ariana Barrera Sanabria" [ref=e295]:
+              - generic [ref=e296]:
+                - generic [ref=e297]: A
+                - text: Ariana Barrera Sanabria
+            - cell "Grado 4" [ref=e298]
+            - cell "0 historias" [ref=e299]
+            - cell "Ver detalles" [ref=e300]:
+              - button "Ver detalles" [ref=e301] [cursor=pointer]
+          - row "B Bianka Amahia Ulchur González Grado 1 2 historias Ver detalles" [ref=e302]:
+            - cell "B Bianka Amahia Ulchur González" [ref=e303]:
+              - generic [ref=e304]:
+                - generic [ref=e305]: B
+                - text: Bianka Amahia Ulchur González
+            - cell "Grado 1" [ref=e306]
+            - cell "2 historias" [ref=e307]
+            - cell "Ver detalles" [ref=e308]:
+              - button "Ver detalles" [ref=e309] [cursor=pointer]
+          - row "C Carmen Helena Camacho Villarreal Grado 4 0 historias Ver detalles" [ref=e310]:
+            - cell "C Carmen Helena Camacho Villarreal" [ref=e311]:
+              - generic [ref=e312]:
+                - generic [ref=e313]: C
+                - text: Carmen Helena Camacho Villarreal
+            - cell "Grado 4" [ref=e314]
+            - cell "0 historias" [ref=e315]
+            - cell "Ver detalles" [ref=e316]:
+              - button "Ver detalles" [ref=e317] [cursor=pointer]
+          - row "C Celeste Ospina Rodríguez Grado 1 2 historias Ver detalles" [ref=e318]:
+            - cell "C Celeste Ospina Rodríguez" [ref=e319]:
+              - generic [ref=e320]:
+                - generic [ref=e321]: C
+                - text: Celeste Ospina Rodríguez
+            - cell "Grado 1" [ref=e322]
+            - cell "2 historias" [ref=e323]
+            - cell "Ver detalles" [ref=e324]:
+              - button "Ver detalles" [ref=e325] [cursor=pointer]
+          - row "D Daniel Alejandro Patiño Urrego Grado 4 0 historias Ver detalles" [ref=e326]:
+            - cell "D Daniel Alejandro Patiño Urrego" [ref=e327]:
+              - generic [ref=e328]:
+                - generic [ref=e329]: D
+                - text: Daniel Alejandro Patiño Urrego
+            - cell "Grado 4" [ref=e330]
+            - cell "0 historias" [ref=e331]
+            - cell "Ver detalles" [ref=e332]:
+              - button "Ver detalles" [ref=e333] [cursor=pointer]
+          - row "D David Santiago Amaya Osorio Grado 1 2 historias Ver detalles" [ref=e334]:
+            - cell "D David Santiago Amaya Osorio" [ref=e335]:
+              - generic [ref=e336]:
+                - generic [ref=e337]: D
+                - text: David Santiago Amaya Osorio
+            - cell "Grado 1" [ref=e338]
+            - cell "2 historias" [ref=e339]
+            - cell "Ver detalles" [ref=e340]:
+              - button "Ver detalles" [ref=e341] [cursor=pointer]
+          - row "D Dulce Mariana Fuentes Ramírez Grado 5 0 historias Ver detalles" [ref=e342]:
+            - cell "D Dulce Mariana Fuentes Ramírez" [ref=e343]:
+              - generic [ref=e344]:
+                - generic [ref=e345]: D
+                - text: Dulce Mariana Fuentes Ramírez
+            - cell "Grado 5" [ref=e346]
+            - cell "0 historias" [ref=e347]
+            - cell "Ver detalles" [ref=e348]:
+              - button "Ver detalles" [ref=e349] [cursor=pointer]
+          - row "E Elías García Ramírez Grado 2 1 historias Ver detalles" [ref=e350]:
+            - cell "E Elías García Ramírez" [ref=e351]:
+              - generic [ref=e352]:
+                - generic [ref=e353]: E
+                - text: Elías García Ramírez
+            - cell "Grado 2" [ref=e354]
+            - cell "1 historias" [ref=e355]
+            - cell "Ver detalles" [ref=e356]:
+              - button "Ver detalles" [ref=e357] [cursor=pointer]
+          - row "E Emanuel Uribe Quiroga Grado 1 2 historias Ver detalles" [ref=e358]:
+            - cell "E Emanuel Uribe Quiroga" [ref=e359]:
+              - generic [ref=e360]:
+                - generic [ref=e361]: E
+                - text: Emanuel Uribe Quiroga
+            - cell "Grado 1" [ref=e362]
+            - cell "2 historias" [ref=e363]
+            - cell "Ver detalles" [ref=e364]:
+              - button "Ver detalles" [ref=e365] [cursor=pointer]
+          - row "E Emiliano León Pérez Grado 1 2 historias Ver detalles" [ref=e366]:
+            - cell "E Emiliano León Pérez" [ref=e367]:
+              - generic [ref=e368]:
+                - generic [ref=e369]: E
+                - text: Emiliano León Pérez
+            - cell "Grado 1" [ref=e370]
+            - cell "2 historias" [ref=e371]
+            - cell "Ver detalles" [ref=e372]:
+              - button "Ver detalles" [ref=e373] [cursor=pointer]
+          - row "E Emiliano Torres Puentes Grado 3 0 historias Ver detalles" [ref=e374]:
+            - cell "E Emiliano Torres Puentes" [ref=e375]:
+              - generic [ref=e376]:
+                - generic [ref=e377]: E
+                - text: Emiliano Torres Puentes
+            - cell "Grado 3" [ref=e378]
+            - cell "0 historias" [ref=e379]
+            - cell "Ver detalles" [ref=e380]:
+              - button "Ver detalles" [ref=e381] [cursor=pointer]
+          - row "E Emmanuel León Pérez Grado 5 0 historias Ver detalles" [ref=e382]:
+            - cell "E Emmanuel León Pérez" [ref=e383]:
+              - generic [ref=e384]:
+                - generic [ref=e385]: E
+                - text: Emmanuel León Pérez
+            - cell "Grado 5" [ref=e386]
+            - cell "0 historias" [ref=e387]
+            - cell "Ver detalles" [ref=e388]:
+              - button "Ver detalles" [ref=e389] [cursor=pointer]
+          - row "E Emmanuel Polanía Morales Grado 2 1 historias Ver detalles" [ref=e390]:
+            - cell "E Emmanuel Polanía Morales" [ref=e391]:
+              - generic [ref=e392]:
+                - generic [ref=e393]: E
+                - text: Emmanuel Polanía Morales
+            - cell "Grado 2" [ref=e394]
+            - cell "1 historias" [ref=e395]
+            - cell "Ver detalles" [ref=e396]:
+              - button "Ver detalles" [ref=e397] [cursor=pointer]
+          - row "E Estudiante de Prueba Prueba 0 historias Ver detalles" [ref=e398]:
+            - cell "E Estudiante de Prueba" [ref=e399]:
+              - generic [ref=e400]:
+                - generic [ref=e401]: E
+                - text: Estudiante de Prueba
+            - cell "Prueba" [ref=e402]
+            - cell "0 historias" [ref=e403]
+            - cell "Ver detalles" [ref=e404]:
+              - button "Ver detalles" [ref=e405] [cursor=pointer]
+          - row "G Gabriel Mateo Ninco Méndez Grado 1 2 historias Ver detalles" [ref=e406]:
+            - cell "G Gabriel Mateo Ninco Méndez" [ref=e407]:
+              - generic [ref=e408]:
+                - generic [ref=e409]: G
+                - text: Gabriel Mateo Ninco Méndez
+            - cell "Grado 1" [ref=e410]
+            - cell "2 historias" [ref=e411]
+            - cell "Ver detalles" [ref=e412]:
+              - button "Ver detalles" [ref=e413] [cursor=pointer]
+          - row "G Gabriela Embus Tovar Grado 2 1 historias Ver detalles" [ref=e414]:
+            - cell "G Gabriela Embus Tovar" [ref=e415]:
+              - generic [ref=e416]:
+                - generic [ref=e417]: G
+                - text: Gabriela Embus Tovar
+            - cell "Grado 2" [ref=e418]
+            - cell "1 historias" [ref=e419]
+            - cell "Ver detalles" [ref=e420]:
+              - button "Ver detalles" [ref=e421] [cursor=pointer]
+          - row "G Gabriela González Moyano Grado 3 0 historias Ver detalles" [ref=e422]:
+            - cell "G Gabriela González Moyano" [ref=e423]:
+              - generic [ref=e424]:
+                - generic [ref=e425]: G
+                - text: Gabriela González Moyano
+            - cell "Grado 3" [ref=e426]
+            - cell "0 historias" [ref=e427]
+            - cell "Ver detalles" [ref=e428]:
+              - button "Ver detalles" [ref=e429] [cursor=pointer]
+          - row "G Gabriela Rodríguez Zuleta Grado 3 0 historias Ver detalles" [ref=e430]:
+            - cell "G Gabriela Rodríguez Zuleta" [ref=e431]:
+              - generic [ref=e432]:
+                - generic [ref=e433]: G
+                - text: Gabriela Rodríguez Zuleta
+            - cell "Grado 3" [ref=e434]
+            - cell "0 historias" [ref=e435]
+            - cell "Ver detalles" [ref=e436]:
+              - button "Ver detalles" [ref=e437] [cursor=pointer]
+          - row "G Gael Sánchez Salazar Grado 3 0 historias Ver detalles" [ref=e438]:
+            - cell "G Gael Sánchez Salazar" [ref=e439]:
+              - generic [ref=e440]:
+                - generic [ref=e441]: G
+                - text: Gael Sánchez Salazar
+            - cell "Grado 3" [ref=e442]
+            - cell "0 historias" [ref=e443]
+            - cell "Ver detalles" [ref=e444]:
+              - button "Ver detalles" [ref=e445] [cursor=pointer]
+          - row "G Gleny Guadalupe García Calderón Grado 1 2 historias Ver detalles" [ref=e446]:
+            - cell "G Gleny Guadalupe García Calderón" [ref=e447]:
+              - generic [ref=e448]:
+                - generic [ref=e449]: G
+                - text: Gleny Guadalupe García Calderón
+            - cell "Grado 1" [ref=e450]
+            - cell "2 historias" [ref=e451]
+            - cell "Ver detalles" [ref=e452]:
+              - button "Ver detalles" [ref=e453] [cursor=pointer]
+          - row "H Helena Mayor Escobar Grado 3 0 historias Ver detalles" [ref=e454]:
+            - cell "H Helena Mayor Escobar" [ref=e455]:
+              - generic [ref=e456]:
+                - generic [ref=e457]: H
+                - text: Helena Mayor Escobar
+            - cell "Grado 3" [ref=e458]
+            - cell "0 historias" [ref=e459]
+            - cell "Ver detalles" [ref=e460]:
+              - button "Ver detalles" [ref=e461] [cursor=pointer]
+          - row "H Helena Pérez Andrade Grado 1 2 historias Ver detalles" [ref=e462]:
+            - cell "H Helena Pérez Andrade" [ref=e463]:
+              - generic [ref=e464]:
+                - generic [ref=e465]: H
+                - text: Helena Pérez Andrade
+            - cell "Grado 1" [ref=e466]
+            - cell "2 historias" [ref=e467]
+            - cell "Ver detalles" [ref=e468]:
+              - button "Ver detalles" [ref=e469] [cursor=pointer]
+          - row "I Iker Rafael Ossa Laguado Grado 1 2 historias Ver detalles" [ref=e470]:
+            - cell "I Iker Rafael Ossa Laguado" [ref=e471]:
+              - generic [ref=e472]:
+                - generic [ref=e473]: I
+                - text: Iker Rafael Ossa Laguado
+            - cell "Grado 1" [ref=e474]
+            - cell "2 historias" [ref=e475]
+            - cell "Ver detalles" [ref=e476]:
+              - button "Ver detalles" [ref=e477] [cursor=pointer]
+          - row "I Isabella Gómez Ipuz Grado 4 0 historias Ver detalles" [ref=e478]:
+            - cell "I Isabella Gómez Ipuz" [ref=e479]:
+              - generic [ref=e480]:
+                - generic [ref=e481]: I
+                - text: Isabella Gómez Ipuz
+            - cell "Grado 4" [ref=e482]
+            - cell "0 historias" [ref=e483]
+            - cell "Ver detalles" [ref=e484]:
+              - button "Ver detalles" [ref=e485] [cursor=pointer]
+          - row "J Jacob Cabrera Acuña Grado 3 0 historias Ver detalles" [ref=e486]:
+            - cell "J Jacob Cabrera Acuña" [ref=e487]:
+              - generic [ref=e488]:
+                - generic [ref=e489]: J
+                - text: Jacob Cabrera Acuña
+            - cell "Grado 3" [ref=e490]
+            - cell "0 historias" [ref=e491]
+            - cell "Ver detalles" [ref=e492]:
+              - button "Ver detalles" [ref=e493] [cursor=pointer]
+          - row "J Jerónimo Cangrejo González Grado 3 0 historias Ver detalles" [ref=e494]:
+            - cell "J Jerónimo Cangrejo González" [ref=e495]:
+              - generic [ref=e496]:
+                - generic [ref=e497]: J
+                - text: Jerónimo Cangrejo González
+            - cell "Grado 3" [ref=e498]
+            - cell "0 historias" [ref=e499]
+            - cell "Ver detalles" [ref=e500]:
+              - button "Ver detalles" [ref=e501] [cursor=pointer]
+          - row "J Jerónimo Montealegre Argüello Grado 3 0 historias Ver detalles" [ref=e502]:
+            - cell "J Jerónimo Montealegre Argüello" [ref=e503]:
+              - generic [ref=e504]:
+                - generic [ref=e505]: J
+                - text: Jerónimo Montealegre Argüello
+            - cell "Grado 3" [ref=e506]
+            - cell "0 historias" [ref=e507]
+            - cell "Ver detalles" [ref=e508]:
+              - button "Ver detalles" [ref=e509] [cursor=pointer]
+          - row "J Jerónimo Pacheco Alarcón Grado 5 0 historias Ver detalles" [ref=e510]:
+            - cell "J Jerónimo Pacheco Alarcón" [ref=e511]:
+              - generic [ref=e512]:
+                - generic [ref=e513]: J
+                - text: Jerónimo Pacheco Alarcón
+            - cell "Grado 5" [ref=e514]
+            - cell "0 historias" [ref=e515]
+            - cell "Ver detalles" [ref=e516]:
+              - button "Ver detalles" [ref=e517] [cursor=pointer]
+          - row "J Jhonatan Ramírez Salazar Grado 2 1 historias Ver detalles" [ref=e518]:
+            - cell "J Jhonatan Ramírez Salazar" [ref=e519]:
+              - generic [ref=e520]:
+                - generic [ref=e521]: J
+                - text: Jhonatan Ramírez Salazar
+            - cell "Grado 2" [ref=e522]
+            - cell "1 historias" [ref=e523]
+            - cell "Ver detalles" [ref=e524]:
+              - button "Ver detalles" [ref=e525] [cursor=pointer]
+          - row "J Joaquín Anacona Gutiérrez Grado 4 0 historias Ver detalles" [ref=e526]:
+            - cell "J Joaquín Anacona Gutiérrez" [ref=e527]:
+              - generic [ref=e528]:
+                - generic [ref=e529]: J
+                - text: Joaquín Anacona Gutiérrez
+            - cell "Grado 4" [ref=e530]
+            - cell "0 historias" [ref=e531]
+            - cell "Ver detalles" [ref=e532]:
+              - button "Ver detalles" [ref=e533] [cursor=pointer]
+          - row "J José Emiliano Ríos Ramírez Grado 2 1 historias Ver detalles" [ref=e534]:
+            - cell "J José Emiliano Ríos Ramírez" [ref=e535]:
+              - generic [ref=e536]:
+                - generic [ref=e537]: J
+                - text: José Emiliano Ríos Ramírez
+            - cell "Grado 2" [ref=e538]
+            - cell "1 historias" [ref=e539]
+            - cell "Ver detalles" [ref=e540]:
+              - button "Ver detalles" [ref=e541] [cursor=pointer]
+          - row "J José Manuel Rodríguez Peña Grado 1 2 historias Ver detalles" [ref=e542]:
+            - cell "J José Manuel Rodríguez Peña" [ref=e543]:
+              - generic [ref=e544]:
+                - generic [ref=e545]: J
+                - text: José Manuel Rodríguez Peña
+            - cell "Grado 1" [ref=e546]
+            - cell "2 historias" [ref=e547]
+            - cell "Ver detalles" [ref=e548]:
+              - button "Ver detalles" [ref=e549] [cursor=pointer]
+          - row "J Juan Alejandro Vidarte Galeano Grado 1 2 historias Ver detalles" [ref=e550]:
+            - cell "J Juan Alejandro Vidarte Galeano" [ref=e551]:
+              - generic [ref=e552]:
+                - generic [ref=e553]: J
+                - text: Juan Alejandro Vidarte Galeano
+            - cell "Grado 1" [ref=e554]
+            - cell "2 historias" [ref=e555]
+            - cell "Ver detalles" [ref=e556]:
+              - button "Ver detalles" [ref=e557] [cursor=pointer]
+          - row "J Juan Andrés Chamorro Peña Grado 5 0 historias Ver detalles" [ref=e558]:
+            - cell "J Juan Andrés Chamorro Peña" [ref=e559]:
+              - generic [ref=e560]:
+                - generic [ref=e561]: J
+                - text: Juan Andrés Chamorro Peña
+            - cell "Grado 5" [ref=e562]
+            - cell "0 historias" [ref=e563]
+            - cell "Ver detalles" [ref=e564]:
+              - button "Ver detalles" [ref=e565] [cursor=pointer]
+          - row "J Juan Andrés Urrea Tovar Grado 2 1 historias Ver detalles" [ref=e566]:
+            - cell "J Juan Andrés Urrea Tovar" [ref=e567]:
+              - generic [ref=e568]:
+                - generic [ref=e569]: J
+                - text: Juan Andrés Urrea Tovar
+            - cell "Grado 2" [ref=e570]
+            - cell "1 historias" [ref=e571]
+            - cell "Ver detalles" [ref=e572]:
+              - button "Ver detalles" [ref=e573] [cursor=pointer]
+          - row "J Juan David Yara Aguirre Grado 1 2 historias Ver detalles" [ref=e574]:
+            - cell "J Juan David Yara Aguirre" [ref=e575]:
+              - generic [ref=e576]:
+                - generic [ref=e577]: J
+                - text: Juan David Yara Aguirre
+            - cell "Grado 1" [ref=e578]
+            - cell "2 historias" [ref=e579]
+            - cell "Ver detalles" [ref=e580]:
+              - button "Ver detalles" [ref=e581] [cursor=pointer]
+          - row "J Juan Diego Rodríguez Palencia Grado 2 1 historias Ver detalles" [ref=e582]:
+            - cell "J Juan Diego Rodríguez Palencia" [ref=e583]:
+              - generic [ref=e584]:
+                - generic [ref=e585]: J
+                - text: Juan Diego Rodríguez Palencia
+            - cell "Grado 2" [ref=e586]
+            - cell "1 historias" [ref=e587]
+            - cell "Ver detalles" [ref=e588]:
+              - button "Ver detalles" [ref=e589] [cursor=pointer]
+          - row "J Juan Felipe Rodríguez Díaz Grado 5 0 historias Ver detalles" [ref=e590]:
+            - cell "J Juan Felipe Rodríguez Díaz" [ref=e591]:
+              - generic [ref=e592]:
+                - generic [ref=e593]: J
+                - text: Juan Felipe Rodríguez Díaz
+            - cell "Grado 5" [ref=e594]
+            - cell "0 historias" [ref=e595]
+            - cell "Ver detalles" [ref=e596]:
+              - button "Ver detalles" [ref=e597] [cursor=pointer]
+          - row "J Juan José Peralta Ariza Grado 4 0 historias Ver detalles" [ref=e598]:
+            - cell "J Juan José Peralta Ariza" [ref=e599]:
+              - generic [ref=e600]:
+                - generic [ref=e601]: J
+                - text: Juan José Peralta Ariza
+            - cell "Grado 4" [ref=e602]
+            - cell "0 historias" [ref=e603]
+            - cell "Ver detalles" [ref=e604]:
+              - button "Ver detalles" [ref=e605] [cursor=pointer]
+          - row "J Juan Samuel Perdomo Cardozo Grado 5 0 historias Ver detalles" [ref=e606]:
+            - cell "J Juan Samuel Perdomo Cardozo" [ref=e607]:
+              - generic [ref=e608]:
+                - generic [ref=e609]: J
+                - text: Juan Samuel Perdomo Cardozo
+            - cell "Grado 5" [ref=e610]
+            - cell "0 historias" [ref=e611]
+            - cell "Ver detalles" [ref=e612]:
+              - button "Ver detalles" [ref=e613] [cursor=pointer]
+          - row "J Julieta Cuéllar Salas Grado 3 0 historias Ver detalles" [ref=e614]:
+            - cell "J Julieta Cuéllar Salas" [ref=e615]:
+              - generic [ref=e616]:
+                - generic [ref=e617]: J
+                - text: Julieta Cuéllar Salas
+            - cell "Grado 3" [ref=e618]
+            - cell "0 historias" [ref=e619]
+            - cell "Ver detalles" [ref=e620]:
+              - button "Ver detalles" [ref=e621] [cursor=pointer]
+          - row "J Julieta Silva Cuenca Grado 3 0 historias Ver detalles" [ref=e622]:
+            - cell "J Julieta Silva Cuenca" [ref=e623]:
+              - generic [ref=e624]:
+                - generic [ref=e625]: J
+                - text: Julieta Silva Cuenca
+            - cell "Grado 3" [ref=e626]
+            - cell "0 historias" [ref=e627]
+            - cell "Ver detalles" [ref=e628]:
+              - button "Ver detalles" [ref=e629] [cursor=pointer]
+          - row "L Laura Julieta Aragón Díaz Grado 5 0 historias Ver detalles" [ref=e630]:
+            - cell "L Laura Julieta Aragón Díaz" [ref=e631]:
+              - generic [ref=e632]:
+                - generic [ref=e633]: L
+                - text: Laura Julieta Aragón Díaz
+            - cell "Grado 5" [ref=e634]
+            - cell "0 historias" [ref=e635]
+            - cell "Ver detalles" [ref=e636]:
+              - button "Ver detalles" [ref=e637] [cursor=pointer]
+          - row "L Liam Andrés Garzón Peña Grado 1 2 historias Ver detalles" [ref=e638]:
+            - cell "L Liam Andrés Garzón Peña" [ref=e639]:
+              - generic [ref=e640]:
+                - generic [ref=e641]: L
+                - text: Liam Andrés Garzón Peña
+            - cell "Grado 1" [ref=e642]
+            - cell "2 historias" [ref=e643]
+            - cell "Ver detalles" [ref=e644]:
+              - button "Ver detalles" [ref=e645] [cursor=pointer]
+          - row "L Lucía Mayor Escobar Grado 2 1 historias Ver detalles" [ref=e646]:
+            - cell "L Lucía Mayor Escobar" [ref=e647]:
+              - generic [ref=e648]:
+                - generic [ref=e649]: L
+                - text: Lucía Mayor Escobar
+            - cell "Grado 2" [ref=e650]
+            - cell "1 historias" [ref=e651]
+            - cell "Ver detalles" [ref=e652]:
+              - button "Ver detalles" [ref=e653] [cursor=pointer]
+          - row "L Luciana Isabella Correa Ortiz Grado 3 0 historias Ver detalles" [ref=e654]:
+            - cell "L Luciana Isabella Correa Ortiz" [ref=e655]:
+              - generic [ref=e656]:
+                - generic [ref=e657]: L
+                - text: Luciana Isabella Correa Ortiz
+            - cell "Grado 3" [ref=e658]
+            - cell "0 historias" [ref=e659]
+            - cell "Ver detalles" [ref=e660]:
+              - button "Ver detalles" [ref=e661] [cursor=pointer]
+          - row "L Luciana Morales Grado 5 0 historias Ver detalles" [ref=e662]:
+            - cell "L Luciana Morales" [ref=e663]:
+              - generic [ref=e664]:
+                - generic [ref=e665]: L
+                - text: Luciana Morales
+            - cell "Grado 5" [ref=e666]
+            - cell "0 historias" [ref=e667]
+            - cell "Ver detalles" [ref=e668]:
+              - button "Ver detalles" [ref=e669] [cursor=pointer]
+          - row "L Luciana Osorio Guevara Grado 2 1 historias Ver detalles" [ref=e670]:
+            - cell "L Luciana Osorio Guevara" [ref=e671]:
+              - generic [ref=e672]:
+                - generic [ref=e673]: L
+                - text: Luciana Osorio Guevara
+            - cell "Grado 2" [ref=e674]
+            - cell "1 historias" [ref=e675]
+            - cell "Ver detalles" [ref=e676]:
+              - button "Ver detalles" [ref=e677] [cursor=pointer]
+          - row "L Luciano De la Hoz Durán Grado 2 1 historias Ver detalles" [ref=e678]:
+            - cell "L Luciano De la Hoz Durán" [ref=e679]:
+              - generic [ref=e680]:
+                - generic [ref=e681]: L
+                - text: Luciano De la Hoz Durán
+            - cell "Grado 2" [ref=e682]
+            - cell "1 historias" [ref=e683]
+            - cell "Ver detalles" [ref=e684]:
+              - button "Ver detalles" [ref=e685] [cursor=pointer]
+          - row "L Lucila Sierra Marulanda Grado 2 1 historias Ver detalles" [ref=e686]:
+            - cell "L Lucila Sierra Marulanda" [ref=e687]:
+              - generic [ref=e688]:
+                - generic [ref=e689]: L
+                - text: Lucila Sierra Marulanda
+            - cell "Grado 2" [ref=e690]
+            - cell "1 historias" [ref=e691]
+            - cell "Ver detalles" [ref=e692]:
+              - button "Ver detalles" [ref=e693] [cursor=pointer]
+          - row "M María Camila Motta Gutiérrez Grado 3 0 historias Ver detalles" [ref=e694]:
+            - cell "M María Camila Motta Gutiérrez" [ref=e695]:
+              - generic [ref=e696]:
+                - generic [ref=e697]: M
+                - text: María Camila Motta Gutiérrez
+            - cell "Grado 3" [ref=e698]
+            - cell "0 historias" [ref=e699]
+            - cell "Ver detalles" [ref=e700]:
+              - button "Ver detalles" [ref=e701] [cursor=pointer]
+          - row "M María del Mar Barrera Campo Grado 2 1 historias Ver detalles" [ref=e702]:
+            - cell "M María del Mar Barrera Campo" [ref=e703]:
+              - generic [ref=e704]:
+                - generic [ref=e705]: M
+                - text: María del Mar Barrera Campo
+            - cell "Grado 2" [ref=e706]
+            - cell "1 historias" [ref=e707]
+            - cell "Ver detalles" [ref=e708]:
+              - button "Ver detalles" [ref=e709] [cursor=pointer]
+          - row "M María del Mar Quintero Carvajal Grado 3 0 historias Ver detalles" [ref=e710]:
+            - cell "M María del Mar Quintero Carvajal" [ref=e711]:
+              - generic [ref=e712]:
+                - generic [ref=e713]: M
+                - text: María del Mar Quintero Carvajal
+            - cell "Grado 3" [ref=e714]
+            - cell "0 historias" [ref=e715]
+            - cell "Ver detalles" [ref=e716]:
+              - button "Ver detalles" [ref=e717] [cursor=pointer]
+          - row "M María José Murillo Javela Grado 3 0 historias Ver detalles" [ref=e718]:
+            - cell "M María José Murillo Javela" [ref=e719]:
+              - generic [ref=e720]:
+                - generic [ref=e721]: M
+                - text: María José Murillo Javela
+            - cell "Grado 3" [ref=e722]
+            - cell "0 historias" [ref=e723]
+            - cell "Ver detalles" [ref=e724]:
+              - button "Ver detalles" [ref=e725] [cursor=pointer]
+          - row "M María Juliana Figueroa Durán Grado 3 0 historias Ver detalles" [ref=e726]:
+            - cell "M María Juliana Figueroa Durán" [ref=e727]:
+              - generic [ref=e728]:
+                - generic [ref=e729]: M
+                - text: María Juliana Figueroa Durán
+            - cell "Grado 3" [ref=e730]
+            - cell "0 historias" [ref=e731]
+            - cell "Ver detalles" [ref=e732]:
+              - button "Ver detalles" [ref=e733] [cursor=pointer]
+          - row "M María Juliana Rodríguez Peña Grado 3 0 historias Ver detalles" [ref=e734]:
+            - cell "M María Juliana Rodríguez Peña" [ref=e735]:
+              - generic [ref=e736]:
+                - generic [ref=e737]: M
+                - text: María Juliana Rodríguez Peña
+            - cell "Grado 3" [ref=e738]
+            - cell "0 historias" [ref=e739]
+            - cell "Ver detalles" [ref=e740]:
+              - button "Ver detalles" [ref=e741] [cursor=pointer]
+          - row "M Mariángel Rivera Parra Grado 3 0 historias Ver detalles" [ref=e742]:
+            - cell "M Mariángel Rivera Parra" [ref=e743]:
+              - generic [ref=e744]:
+                - generic [ref=e745]: M
+                - text: Mariángel Rivera Parra
+            - cell "Grado 3" [ref=e746]
+            - cell "0 historias" [ref=e747]
+            - cell "Ver detalles" [ref=e748]:
+              - button "Ver detalles" [ref=e749] [cursor=pointer]
+          - row "M Martín Ortega Rodríguez Grado 5 0 historias Ver detalles" [ref=e750]:
+            - cell "M Martín Ortega Rodríguez" [ref=e751]:
+              - generic [ref=e752]:
+                - generic [ref=e753]: M
+                - text: Martín Ortega Rodríguez
+            - cell "Grado 5" [ref=e754]
+            - cell "0 historias" [ref=e755]
+            - cell "Ver detalles" [ref=e756]:
+              - button "Ver detalles" [ref=e757] [cursor=pointer]
+          - row "M Martín Rodríguez Palencia Grado 4 0 historias Ver detalles" [ref=e758]:
+            - cell "M Martín Rodríguez Palencia" [ref=e759]:
+              - generic [ref=e760]:
+                - generic [ref=e761]: M
+                - text: Martín Rodríguez Palencia
+            - cell "Grado 4" [ref=e762]
+            - cell "0 historias" [ref=e763]
+            - cell "Ver detalles" [ref=e764]:
+              - button "Ver detalles" [ref=e765] [cursor=pointer]
+          - row "M Martina Acosta Buitrago Grado 2 1 historias Ver detalles" [ref=e766]:
+            - cell "M Martina Acosta Buitrago" [ref=e767]:
+              - generic [ref=e768]:
+                - generic [ref=e769]: M
+                - text: Martina Acosta Buitrago
+            - cell "Grado 2" [ref=e770]
+            - cell "1 historias" [ref=e771]
+            - cell "Ver detalles" [ref=e772]:
+              - button "Ver detalles" [ref=e773] [cursor=pointer]
+          - row "M Martina Aparicio Puentes Grado 2 1 historias Ver detalles" [ref=e774]:
+            - cell "M Martina Aparicio Puentes" [ref=e775]:
+              - generic [ref=e776]:
+                - generic [ref=e777]: M
+                - text: Martina Aparicio Puentes
+            - cell "Grado 2" [ref=e778]
+            - cell "1 historias" [ref=e779]
+            - cell "Ver detalles" [ref=e780]:
+              - button "Ver detalles" [ref=e781] [cursor=pointer]
+          - row "M Mateo Andrés Maldonado Trujillo Grado 3 0 historias Ver detalles" [ref=e782]:
+            - cell "M Mateo Andrés Maldonado Trujillo" [ref=e783]:
+              - generic [ref=e784]:
+                - generic [ref=e785]: M
+                - text: Mateo Andrés Maldonado Trujillo
+            - cell "Grado 3" [ref=e786]
+            - cell "0 historias" [ref=e787]
+            - cell "Ver detalles" [ref=e788]:
+              - button "Ver detalles" [ref=e789] [cursor=pointer]
+          - row "M Matías Caminiti Reina Grado 1 2 historias Ver detalles" [ref=e790]:
+            - cell "M Matías Caminiti Reina" [ref=e791]:
+              - generic [ref=e792]:
+                - generic [ref=e793]: M
+                - text: Matías Caminiti Reina
+            - cell "Grado 1" [ref=e794]
+            - cell "2 historias" [ref=e795]
+            - cell "Ver detalles" [ref=e796]:
+              - button "Ver detalles" [ref=e797] [cursor=pointer]
+          - row "M Maximiliano Navarrete Aristizábal Grado 1 2 historias Ver detalles" [ref=e798]:
+            - cell "M Maximiliano Navarrete Aristizábal" [ref=e799]:
+              - generic [ref=e800]:
+                - generic [ref=e801]: M
+                - text: Maximiliano Navarrete Aristizábal
+            - cell "Grado 1" [ref=e802]
+            - cell "2 historias" [ref=e803]
+            - cell "Ver detalles" [ref=e804]:
+              - button "Ver detalles" [ref=e805] [cursor=pointer]
+          - row "M Máximo Jesús Valderrama Flórez Grado 5 0 historias Ver detalles" [ref=e806]:
+            - cell "M Máximo Jesús Valderrama Flórez" [ref=e807]:
+              - generic [ref=e808]:
+                - generic [ref=e809]: M
+                - text: Máximo Jesús Valderrama Flórez
+            - cell "Grado 5" [ref=e810]
+            - cell "0 historias" [ref=e811]
+            - cell "Ver detalles" [ref=e812]:
+              - button "Ver detalles" [ref=e813] [cursor=pointer]
+          - row "M Mía García Ramírez Grado 2 1 historias Ver detalles" [ref=e814]:
+            - cell "M Mía García Ramírez" [ref=e815]:
+              - generic [ref=e816]:
+                - generic [ref=e817]: M
+                - text: Mía García Ramírez
+            - cell "Grado 2" [ref=e818]
+            - cell "1 historias" [ref=e819]
+            - cell "Ver detalles" [ref=e820]:
+              - button "Ver detalles" [ref=e821] [cursor=pointer]
+          - row "P Pablo Andrés Gutiérrez Lozano Grado 2 1 historias Ver detalles" [ref=e822]:
+            - cell "P Pablo Andrés Gutiérrez Lozano" [ref=e823]:
+              - generic [ref=e824]:
+                - generic [ref=e825]: P
+                - text: Pablo Andrés Gutiérrez Lozano
+            - cell "Grado 2" [ref=e826]
+            - cell "1 historias" [ref=e827]
+            - cell "Ver detalles" [ref=e828]:
+              - button "Ver detalles" [ref=e829] [cursor=pointer]
+          - row "R Rafael José Gómez González Grado 4 0 historias Ver detalles" [ref=e830]:
+            - cell "R Rafael José Gómez González" [ref=e831]:
+              - generic [ref=e832]:
+                - generic [ref=e833]: R
+                - text: Rafael José Gómez González
+            - cell "Grado 4" [ref=e834]
+            - cell "0 historias" [ref=e835]
+            - cell "Ver detalles" [ref=e836]:
+              - button "Ver detalles" [ref=e837] [cursor=pointer]
+          - row "S Salomé Cepeda Pérez Grado 4 0 historias Ver detalles" [ref=e838]:
+            - cell "S Salomé Cepeda Pérez" [ref=e839]:
+              - generic [ref=e840]:
+                - generic [ref=e841]: S
+                - text: Salomé Cepeda Pérez
+            - cell "Grado 4" [ref=e842]
+            - cell "0 historias" [ref=e843]
+            - cell "Ver detalles" [ref=e844]:
+              - button "Ver detalles" [ref=e845] [cursor=pointer]
+          - row "S Salomé Domínguez Matiz Grado 1 2 historias Ver detalles" [ref=e846]:
+            - cell "S Salomé Domínguez Matiz" [ref=e847]:
+              - generic [ref=e848]:
+                - generic [ref=e849]: S
+                - text: Salomé Domínguez Matiz
+            - cell "Grado 1" [ref=e850]
+            - cell "2 historias" [ref=e851]
+            - cell "Ver detalles" [ref=e852]:
+              - button "Ver detalles" [ref=e853] [cursor=pointer]
+          - row "S Salomé Gutiérrez Cruz Grado 5 0 historias Ver detalles" [ref=e854]:
+            - cell "S Salomé Gutiérrez Cruz" [ref=e855]:
+              - generic [ref=e856]:
+                - generic [ref=e857]: S
+                - text: Salomé Gutiérrez Cruz
+            - cell "Grado 5" [ref=e858]
+            - cell "0 historias" [ref=e859]
+            - cell "Ver detalles" [ref=e860]:
+              - button "Ver detalles" [ref=e861] [cursor=pointer]
+          - row "S Salomé Rojas Trujillo Grado 4 0 historias Ver detalles" [ref=e862]:
+            - cell "S Salomé Rojas Trujillo" [ref=e863]:
+              - generic [ref=e864]:
+                - generic [ref=e865]: S
+                - text: Salomé Rojas Trujillo
+            - cell "Grado 4" [ref=e866]
+            - cell "0 historias" [ref=e867]
+            - cell "Ver detalles" [ref=e868]:
+              - button "Ver detalles" [ref=e869] [cursor=pointer]
+          - row "S Santiago Javier Arias Buelvas Grado 3 0 historias Ver detalles" [ref=e870]:
+            - cell "S Santiago Javier Arias Buelvas" [ref=e871]:
+              - generic [ref=e872]:
+                - generic [ref=e873]: S
+                - text: Santiago Javier Arias Buelvas
+            - cell "Grado 3" [ref=e874]
+            - cell "0 historias" [ref=e875]
+            - cell "Ver detalles" [ref=e876]:
+              - button "Ver detalles" [ref=e877] [cursor=pointer]
+          - row "S Santiago Rojas Betancur Grado 4 0 historias Ver detalles" [ref=e878]:
+            - cell "S Santiago Rojas Betancur" [ref=e879]:
+              - generic [ref=e880]:
+                - generic [ref=e881]: S
+                - text: Santiago Rojas Betancur
+            - cell "Grado 4" [ref=e882]
+            - cell "0 historias" [ref=e883]
+            - cell "Ver detalles" [ref=e884]:
+              - button "Ver detalles" [ref=e885] [cursor=pointer]
+          - row "S Sara Lucía Cadena Bustos Grado 1 2 historias Ver detalles" [ref=e886]:
+            - cell "S Sara Lucía Cadena Bustos" [ref=e887]:
+              - generic [ref=e888]:
+                - generic [ref=e889]: S
+                - text: Sara Lucía Cadena Bustos
+            - cell "Grado 1" [ref=e890]
+            - cell "2 historias" [ref=e891]
+            - cell "Ver detalles" [ref=e892]:
+              - button "Ver detalles" [ref=e893] [cursor=pointer]
+          - row "S Silvanna Meléndez Mesa Grado 2 1 historias Ver detalles" [ref=e894]:
+            - cell "S Silvanna Meléndez Mesa" [ref=e895]:
+              - generic [ref=e896]:
+                - generic [ref=e897]: S
+                - text: Silvanna Meléndez Mesa
+            - cell "Grado 2" [ref=e898]
+            - cell "1 historias" [ref=e899]
+            - cell "Ver detalles" [ref=e900]:
+              - button "Ver detalles" [ref=e901] [cursor=pointer]
+          - row "S Simón Bonilla Morales Grado 1 2 historias Ver detalles" [ref=e902]:
+            - cell "S Simón Bonilla Morales" [ref=e903]:
+              - generic [ref=e904]:
+                - generic [ref=e905]: S
+                - text: Simón Bonilla Morales
+            - cell "Grado 1" [ref=e906]
+            - cell "2 historias" [ref=e907]
+            - cell "Ver detalles" [ref=e908]:
+              - button "Ver detalles" [ref=e909] [cursor=pointer]
+          - row "S Simón Sepúlveda Torres Grado 2 1 historias Ver detalles" [ref=e910]:
+            - cell "S Simón Sepúlveda Torres" [ref=e911]:
+              - generic [ref=e912]:
+                - generic [ref=e913]: S
+                - text: Simón Sepúlveda Torres
+            - cell "Grado 2" [ref=e914]
+            - cell "1 historias" [ref=e915]
+            - cell "Ver detalles" [ref=e916]:
+              - button "Ver detalles" [ref=e917] [cursor=pointer]
+          - row "S Sofía Guevara Plazas Grado 4 0 historias Ver detalles" [ref=e918]:
+            - cell "S Sofía Guevara Plazas" [ref=e919]:
+              - generic [ref=e920]:
+                - generic [ref=e921]: S
+                - text: Sofía Guevara Plazas
+            - cell "Grado 4" [ref=e922]
+            - cell "0 historias" [ref=e923]
+            - cell "Ver detalles" [ref=e924]:
+              - button "Ver detalles" [ref=e925] [cursor=pointer]
+          - row "V Valentina Ortiz Grado 4 0 historias Ver detalles" [ref=e926]:
+            - cell "V Valentina Ortiz" [ref=e927]:
+              - generic [ref=e928]:
+                - generic [ref=e929]: V
+                - text: Valentina Ortiz
+            - cell "Grado 4" [ref=e930]
+            - cell "0 historias" [ref=e931]
+            - cell "Ver detalles" [ref=e932]:
+              - button "Ver detalles" [ref=e933] [cursor=pointer]
+          - row "V Valentina Rojas Cataño Grado 3 0 historias Ver detalles" [ref=e934]:
+            - cell "V Valentina Rojas Cataño" [ref=e935]:
+              - generic [ref=e936]:
+                - generic [ref=e937]: V
+                - text: Valentina Rojas Cataño
+            - cell "Grado 3" [ref=e938]
+            - cell "0 historias" [ref=e939]
+            - cell "Ver detalles" [ref=e940]:
+              - button "Ver detalles" [ref=e941] [cursor=pointer]
+          - row "V Valeria Vela Patiño Grado 3 0 historias Ver detalles" [ref=e942]:
+            - cell "V Valeria Vela Patiño" [ref=e943]:
+              - generic [ref=e944]:
+                - generic [ref=e945]: V
+                - text: Valeria Vela Patiño
+            - cell "Grado 3" [ref=e946]
+            - cell "0 historias" [ref=e947]
+            - cell "Ver detalles" [ref=e948]:
+              - button "Ver detalles" [ref=e949] [cursor=pointer]
+          - row "V Valerie Polanía Penagos Grado 2 1 historias Ver detalles" [ref=e950]:
+            - cell "V Valerie Polanía Penagos" [ref=e951]:
+              - generic [ref=e952]:
+                - generic [ref=e953]: V
+                - text: Valerie Polanía Penagos
+            - cell "Grado 2" [ref=e954]
+            - cell "1 historias" [ref=e955]
+            - cell "Ver detalles" [ref=e956]:
+              - button "Ver detalles" [ref=e957] [cursor=pointer]
+          - row "V Valery Mora Cuéllar Grado 1 2 historias Ver detalles" [ref=e958]:
+            - cell "V Valery Mora Cuéllar" [ref=e959]:
+              - generic [ref=e960]:
+                - generic [ref=e961]: V
+                - text: Valery Mora Cuéllar
+            - cell "Grado 1" [ref=e962]
+            - cell "2 historias" [ref=e963]
+            - cell "Ver detalles" [ref=e964]:
+              - button "Ver detalles" [ref=e965] [cursor=pointer]
+          - row "V Víctor Félix Osorio Rivera Grado 1 2 historias Ver detalles" [ref=e966]:
+            - cell "V Víctor Félix Osorio Rivera" [ref=e967]:
+              - generic [ref=e968]:
+                - generic [ref=e969]: V
+                - text: Víctor Félix Osorio Rivera
+            - cell "Grado 1" [ref=e970]
+            - cell "2 historias" [ref=e971]
+            - cell "Ver detalles" [ref=e972]:
+              - button "Ver detalles" [ref=e973] [cursor=pointer]
+          - row "V Victoria Tinoco Rovis Grado 3 0 historias Ver detalles" [ref=e974]:
+            - cell "V Victoria Tinoco Rovis" [ref=e975]:
+              - generic [ref=e976]:
+                - generic [ref=e977]: V
+                - text: Victoria Tinoco Rovis
+            - cell "Grado 3" [ref=e978]
+            - cell "0 historias" [ref=e979]
+            - cell "Ver detalles" [ref=e980]:
+              - button "Ver detalles" [ref=e981] [cursor=pointer]
+          - row "W William David Pacheco Salazar Grado 2 1 historias Ver detalles" [ref=e982]:
+            - cell "W William David Pacheco Salazar" [ref=e983]:
+              - generic [ref=e984]:
+                - generic [ref=e985]: W
+                - text: William David Pacheco Salazar
+            - cell "Grado 2" [ref=e986]
+            - cell "1 historias" [ref=e987]
+            - cell "Ver detalles" [ref=e988]:
+              - button "Ver detalles" [ref=e989] [cursor=pointer]
+          - row "Z Zhoe Chávez Ramón Grado 4 0 historias Ver detalles" [ref=e990]:
+            - cell "Z Zhoe Chávez Ramón" [ref=e991]:
+              - generic [ref=e992]:
+                - generic [ref=e993]: Z
+                - text: Zhoe Chávez Ramón
+            - cell "Grado 4" [ref=e994]
+            - cell "0 historias" [ref=e995]
+            - cell "Ver detalles" [ref=e996]:
+              - button "Ver detalles" [ref=e997] [cursor=pointer]

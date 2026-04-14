@@ -1,0 +1,306 @@
+(function () {
+  var dynamicLoading = {
+    load: function (path, callback, onFailed, addTimestamp) {
+      var head = document.getElementsByTagName("head")[0];
+      var paths = Array.isArray(path) ? path : [path];
+      var loadedCount = 0;
+      var totalCount = paths.length;
+      var hasCallback = typeof callback === "function";
+      var hasOnFailed = typeof onFailed === "function";
+      // 默认携带时间戳参数，除非明确设置为 false
+      var shouldAddTimestamp = addTimestamp !== false;
+
+      if (paths.length === 0) {
+        hasCallback && callback();
+        return;
+      }
+
+      function onLoad() {
+        loadedCount++;
+        if (loadedCount === 1 && hasCallback) {
+          callback();
+        }
+      }
+
+      function onError() {
+        if (loadedCount === 0 && hasOnFailed) {
+          onFailed();
+        }
+      }
+
+      function isCssFile(filePath) {
+        return filePath.indexOf("css") !== -1;
+      }
+
+      function isJsFile(filePath) {
+        return filePath.indexOf("js") !== -1;
+      }
+
+      function addTimeParam(filePath) {
+        if (!shouldAddTimestamp) {
+          return filePath;
+        }
+
+        // 检查是否已经包含时间参数
+        if (
+          filePath.indexOf("?1763967779") !== -1 ||
+          filePath.indexOf("?") !== -1
+        ) {
+          return filePath;
+        }
+
+        // 添加时间参数
+        return filePath + "?1763967779";
+      }
+
+      for (var i = 0; i < paths.length; i++) {
+        var originalPath = paths[i];
+        if (!originalPath) continue;
+        var currentPath = addTimeParam(originalPath);
+        var element;
+
+        if (isCssFile(currentPath)) {
+          // 创建 CSS link 元素
+          element = document.createElement("link");
+          element.href = currentPath;
+          element.rel = "stylesheet";
+          element.type = "text/css";
+
+          if (hasCallback || hasOnFailed) {
+            element.onload = onLoad;
+            element.onerror = onError;
+          }
+        } else if (isJsFile(currentPath)) {
+          // 创建 JS script 元素
+          element = document.createElement("script");
+          element.src = currentPath;
+          element.type = "text/javascript";
+          element.async = false;
+
+          if (hasCallback || hasOnFailed) {
+            element.onload = element.onreadystatechange = function () {
+              onLoad();
+            };
+            element.onerror = onError;
+          }
+        } else {
+          // 默认当作 JS 文件处理
+          element = document.createElement("script");
+          element.src = currentPath;
+          element.type = "text/javascript";
+          element.async = false;
+
+          if (hasCallback || hasOnFailed) {
+            element.onload = element.onreadystatechange = function () {
+              onLoad();
+            };
+            element.onerror = onError;
+          }
+        }
+
+        head.appendChild(element);
+      }
+    },
+    type: "template",
+    time: "1763967779",
+  };
+
+  var publicResourceTemplateJsPath =
+    "https://static.fliphtml5.com/resourceFiles/html5_templates/js/";
+  var publicResourceJsPath =
+    "https://static.fliphtml5.com/resourceFiles/js/";
+  var publicResourceTemplateCssPath =
+    "https://static.fliphtml5.com/resourceFiles/html5_templates/css/";
+  var templateSourcePath =
+    "https://static.fliphtml5.com/resourceFiles/html5_templates/template/Popular/";
+  var yzReaderTemplatePath =
+    "https://static.fliphtml5.com/resourceFiles/yzReader/templates/Slide/";
+
+  function loadTemplate() {
+    // 加载deString.js和jquery-3.7.1.min.js和book.min.js和app-theme.js
+    // 默认携带时间戳参数，不需要手动添加
+    dynamicLoading.load([
+      `${publicResourceTemplateJsPath}deString.js`,
+      `${publicResourceTemplateJsPath}jquery-3.7.1.min.js`, // 这个文件不需要时间戳
+      `${templateSourcePath}javascript/book.min.js`,
+      `${yzReaderTemplatePath}js/app-theme.js`,
+    ]);
+
+    // 加载Browser.js，根据设备类型加载不同的main.phone.min.js和style.phone.css或main.pc.min.js和style.pc.css
+    dynamicLoading.load(
+      `${publicResourceTemplateJsPath}Browser.js`,
+      function () {
+        if (isPhone() || isPad()) {
+          dynamicLoading.load([
+            `${templateSourcePath}javascript/main.phone.min.js`,
+            `${templateSourcePath}style/style.phone.css`,
+          ]);
+        } else {
+          dynamicLoading.load([
+            `${templateSourcePath}javascript/main.pc.min.js`,
+            `${templateSourcePath}style/style.pc.css`,
+          ]);
+        }
+      }
+    );
+  }
+
+  function loadYzReader() {
+    //加载pageEditor.js和textSvgConfig.js和app.js和chunk-vendors.js
+    var time = new Date().getTime();
+    if (
+      typeof htmlConfig != "undefined" &&
+      typeof htmlConfig["fileExist"] != "undefined" &&
+      typeof htmlConfig["fileExist"]["updateEditorTime"] != "undefined"
+    ) {
+      time = htmlConfig["fileExist"]["updateEditorTime"];
+    }
+    var pageEditorJs = "./files/pageEditor.js?" + time;
+    var editorTextSvgConfigJs = "./files/textSvgConfig.js?" + time;
+    var indexEditorAppCss = `${yzReaderTemplatePath}css/app.css`;
+    var indexEditorChunkVendorsCss = `${yzReaderTemplatePath}css/chunk-vendors.css`;
+    var indexEditorAppJs = `${yzReaderTemplatePath}js/app.js`;
+    var indexEditorChunkVendorsJs = `${yzReaderTemplatePath}js/chunk-vendors.js`;
+
+    var pageEditorResourceArray = [
+      editorTextSvgConfigJs,
+      indexEditorAppCss,
+      indexEditorChunkVendorsCss,
+      indexEditorAppJs,
+      indexEditorChunkVendorsJs,
+    ];
+
+    window.website_domian_wc = "https://fliphtml5.com";
+    var loadPageEditorJs = 1;
+    if (
+      typeof htmlConfig != "undefined" &&
+      typeof htmlConfig["fileExist"] != "undefined" &&
+      typeof htmlConfig["fileExist"]["pageEditor"] != "undefined"
+    ) {
+      loadPageEditorJs = htmlConfig["fileExist"]["pageEditor"];
+    }
+    if (loadPageEditorJs == 2) {
+      dynamicLoading.load(pageEditorResourceArray, null, null, false);
+      window.readerConfigLoaded = true;
+    } else if (loadPageEditorJs == 1) {
+      dynamicLoading.load(
+        pageEditorJs,
+        function () {
+          window.readerConfigLoaded = true;
+          if (window.readerConfig && window.readerConfig.pages.length > 0) {
+            dynamicLoading.load(pageEditorResourceArray, null, null, false);
+          }
+        },
+        function () {
+          window.readerConfigLoaded = true;
+        },
+        false
+      );
+    } else {
+      window.readerConfigLoaded = true;
+    }
+  }
+
+  function loadPageEditor() {
+    try {
+      if (!needLoadPageEditor()) return;
+      //加载pageItems.min.js和pageItems.min.css
+      dynamicLoading.load([
+        `${publicResourceTemplateJsPath}pageItems.min.js`,
+        `${templateSourcePath}style/pageItems.min.css`
+      ]);
+    } catch (error) {}
+  }
+
+  function needLoadPageEditor() {
+    //加载pageItems.min.js
+    if (window.htmlConfig && window.htmlConfig.pageEditor)
+      window.pageEditor = window.htmlConfig.pageEditor;
+
+    if (
+      !window.pageEditor ||
+      (!window.pageEditor.pageAnnos && window.pageEditor.length <= 0) ||
+      (window.pageEditor.pageAnnos && window.pageEditor.pageAnnos.length <= 0)
+    )
+      return false;
+
+    var pageAnnos = window.pageEditor.pageAnnos ? window.pageEditor.pageAnnos : window.pageEditor;
+    for (var j = 0; j < pageAnnos.length; j++) {
+      var editorItems = pageAnnos[j];
+      for (var i = 0; i < editorItems.length; i++) {
+        var itemConfig = editorItems[i];
+        if (!itemConfig) continue;
+
+        var annoType = itemConfig.annotype;
+        if (annoType != 'com.mobiano.flipbook.pageeditor.TAnnoLink') {
+          return true;
+        }
+
+        if (
+          itemConfig.action && itemConfig.action.actionType &&
+          itemConfig.action.actionType != 'com.mobiano.flipbook.pageeditor.TAnnoActionGotoPage' &&
+          itemConfig.action.actionType != 'com.mobiano.flipbook.pageeditor.TAnnoActionOpenURL' &&
+          itemConfig.action.actionType != 'com.mobiano.flipbook.pageeditor.TAnnoActionPhotoSlide' &&
+          itemConfig.action.actionType != 'com.mobiano.flipbook.pageeditor.TAnnoActionShowArticle'
+        ) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  function loadPageSlider() {
+    //加载flipHtml5.hiSlider2.min.js和hiSlider2.min.css
+    if (window.sliderJS && window.sliderJS.length > 0) {
+      dynamicLoading.load([
+        `${publicResourceTemplateJsPath}flipHtml5.hiSlider2.min.js`,
+        `${publicResourceTemplateCssPath}hiSlider2.min.css`,
+      ]);
+    }
+  }
+
+  var loadPlugin = true;
+  if (
+    typeof htmlConfig != "undefined" &&
+    typeof htmlConfig["fileExist"] != "undefined" &&
+    typeof htmlConfig["fileExist"]["plugin"] != "undefined"
+  ) {
+    loadPlugin = htmlConfig["fileExist"]["plugin"] == 1 ? true : false;
+  }
+
+  function loadPlugins() {
+    //加载encryption.min.js和plugin.js和statistic.js和writeLog.js和visitinfo.js和FlipBookPlugins.min.js
+    var interval = window.setInterval(function () {
+      if (!window.bookConfig) return;
+
+      window.clearInterval(interval);
+      dynamicLoading.load([
+        `${publicResourceJsPath}encryption/encryption.min.js`,
+        loadPlugin ? `${publicResourceJsPath}plugin.js` : null,
+        `${publicResourceJsPath}statistic.js`,
+        `${publicResourceJsPath}writeLog.js`,
+        `${publicResourceJsPath}visitinfo.js`,
+        `${publicResourceTemplateJsPath}FlipBookPlugins.min.js`,
+      ]);
+    }, 100);
+    dynamicLoading.load([`${publicResourceJsPath}custom-domain-share.js`]);
+  }
+
+  function main() {
+    //加载模版代码
+    loadTemplate();
+    window.website_domian_wc = "https://fliphtml5.com";
+    //加载多媒体编辑器的代码
+    loadYzReader();
+    //加载旧多媒体编辑器代码
+    loadPageEditor();
+    //加载旧多媒体编辑器代码
+    loadPageSlider();
+    //加载第三方组件，微信分享，统计分析等
+    loadPlugins();
+  }
+
+  main();
+})();

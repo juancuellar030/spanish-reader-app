@@ -1,0 +1,55 @@
+{
+    "id": "grade-1-story-2-flipbook",
+    "title": "El robot que tenía cosquillas",
+    "grade": 1,
+    "type": "flipbook",
+    "coverImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/story-cover.png",
+    "endImage": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/page-end.jpeg",
+    "pages": [
+        {
+            "pageNumber": 1,
+            "text": "Mateo no era un niño común; era un pequeño inventor. Su habitación estaba llena de cables, baterías y herramientas. Después de trabajar durante toda la semana, por fin ajustó la última tuerca de su gran creación: \"Robo-Tito\". El objetivo de Mateo era sencillo: quería que Robo-Tito tendiera su cama todas las mañanas.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/page-2.jpeg",
+            "wordStart": 0,
+            "wordEnd": 52
+        },
+        {
+            "pageNumber": 2,
+            "text": "—¡Es hora de la prueba final! —anunció Mateo, encendiendo el interruptor en la espalda del robot. Las luces de los ojos de Robo-Tito parpadearon y sus brazos metálicos se movieron con un zumbido suave. El robot avanzó hacia la cama y estiró sus pinzas para agarrar la almohada de plumas.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/page-4.jpeg",
+            "wordStart": 53,
+            "wordEnd": 103
+        },
+        {
+            "pageNumber": 3,
+            "text": "Pero, apenas sus dedos de metal tocaron la suave tela de la almohada, ocurrió algo extraño. Robo-Tito empezó a sacudirse. Sus circuitos hacían ruidos graciosos: ¡Bip-bip-jajaja!",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/page-6.jpeg",
+            "wordStart": 104,
+            "wordEnd": 131
+        },
+        {
+            "pageNumber": 4,
+            "text": "El robot soltó la almohada y retrocedió, emitiendo sonidos que parecían carcajadas electrónicas. Mateo revisó sus planos confundido. —¿Qué sucede? —se preguntó.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/page-8.jpeg",
+            "wordStart": 132,
+            "wordEnd": 153
+        },
+        {
+            "pageNumber": 5,
+            "text": "Lo intentó de nuevo, pero cada vez que el robot tocaba las plumas suaves, se retorcía y soltaba la almohada entre risas. Mateo se dio cuenta de su error: había conectado los cables de los sensores demasiado cerca de la \"caja de risa\". ¡Había creado un robot con cosquillas!",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/page-10.jpeg",
+            "wordStart": 154,
+            "wordEnd": 204
+        },
+        {
+            "pageNumber": 6,
+            "text": "Aunque Robo-Tito nunca pudo tender la cama perfectamente, a Mateo no le importó. Tenía el único robot del mundo que sabía reírse, y eso era mucho más divertido que una cama ordenada.",
+            "image": "/spanish-reader-app/assets/images/story-covers/first-grade/story-2/page-12.jpeg",
+            "wordStart": 205,
+            "wordEnd": 236
+        }
+    ],
+    "totalPages": 6,
+    "wordCount": 237,
+    "themeColor": "#3b82f6"
+}
