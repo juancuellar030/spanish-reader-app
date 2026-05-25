@@ -40,7 +40,7 @@ export const ThemeSelector = ({
             : 'flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-charcoal transition-all font-medium font-poppins border border-gray-200';
 
     return (
-        <div className="relative">
+        <div className="relative z-50">
             <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
@@ -61,7 +61,7 @@ export const ThemeSelector = ({
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -8, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className={`absolute top-full mt-2 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden py-2 z-50 border border-gray-100 ${menuAlign === 'right' ? 'right-0' : 'left-0'
+                        className={`absolute top-full mt-2 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden py-2 z-[100] border border-gray-100 ${menuAlign === 'right' ? 'right-0' : 'left-0'
                             }`}
                     >
                         {THEME_OPTIONS.map((option) => (

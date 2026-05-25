@@ -48,17 +48,17 @@ export const TeacherDashboard = ({ onLogout }: TeacherDashboardProps) => {
         <div className="min-h-screen relative overflow-hidden">
             <div className="fixed inset-0 z-0">
                 <BackgroundLayer theme={currentTheme} showIntro={false} />
-                <div className="absolute inset-0 bg-white/70 backdrop-blur-[10px]" aria-hidden />
+                <div className="absolute inset-0 bg-black/50 backdrop-blur-[0px]" aria-hidden />
             </div>
 
             <div className="relative z-10 p-8 min-h-screen">
                 <div className="max-w-7xl mx-auto space-y-8">
-                    <header className="flex flex-wrap justify-between items-center gap-4 bg-white/90 backdrop-blur-sm p-6 rounded-3xl shadow-sm border border-white/60">
+                    <header className="relative z-30 flex flex-wrap justify-between items-center gap-4 overflow-visible bg-white/90 backdrop-blur-sm p-6 rounded-3xl shadow-sm border border-white/60">
                         <div>
                             <h1 className="text-3xl font-bold text-charcoal">Panel de Maestros</h1>
                             <p className="text-gray-500">Vista general de la clase</p>
                         </div>
-                        <div className="flex items-center gap-3">
+                        <div className="relative z-40 flex items-center gap-3">
                             <ThemeSelector
                                 theme={currentTheme}
                                 onThemeChange={handleThemeChange}
@@ -82,7 +82,7 @@ export const TeacherDashboard = ({ onLogout }: TeacherDashboardProps) => {
                         </div>
                     ) : (
                         <>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div className="relative z-0 grid grid-cols-1 md:grid-cols-3 gap-6">
                                 {stats.map((stat, index) => (
                                     <motion.div
                                         key={stat.label}
@@ -107,7 +107,7 @@ export const TeacherDashboard = ({ onLogout }: TeacherDashboardProps) => {
                             </div>
 
                             <div className="space-y-4 mt-8">
-                                <h2 className="text-xl font-bold text-charcoal px-2 drop-shadow-sm">Estudiantes</h2>
+                                <h2 className="text-xl font-bold text-white px-2 drop-shadow-sm">Estudiantes</h2>
                                 <StudentTable students={students} />
                             </div>
                         </>
