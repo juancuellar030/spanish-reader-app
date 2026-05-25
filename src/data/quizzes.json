@@ -306,6 +306,76 @@
             "points": 1
         }
     ],
+    "grade-2-story-2-flipbook": [
+        {
+            "id": "q1",
+            "type": "multiple-choice",
+            "question": "Al principio de la historia, ¿por qué Martín no quería estar en la finca de sus abuelos?",
+            "options": [
+                "Porque no le gustaba el sabor del café que le preparaban en el desayuno.",
+                "Porque prefería jugar videojuegos y en la finca la señal de internet era mala.",
+                "Porque le daba mucho miedo caminar por las montañas llenas de árboles."
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q2",
+            "type": "multiple-choice",
+            "question": "Cuando el abuelo despertó a Martín, le dijo que iban a buscar \"rubíes\". ¿A qué se refería el abuelo en realidad?",
+            "options": [
+                "A piedras preciosas escondidas en un tesoro pirata bajo tierra.",
+                "A los granos de café de color rojo intenso y brillante listos para recoger.",
+                "A unas herramientas brillantes que usaban los trabajadores de la finca."
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q3",
+            "type": "multiple-choice",
+            "question": "La historia dice que caminaron \"rodeados de plantas de café de un verde frondoso\". ¿Qué significa la palabra frondoso?",
+            "options": [
+                "Que tiene muchas hojas, ramas y está lleno de vida.",
+                "Que está seco, amarillo y a punto de caerse.",
+                "Que es transparente y no se puede ver."
+            ],
+            "correctAnswer": 0,
+            "points": 1
+        },
+        {
+            "id": "q4",
+            "type": "multiple-choice",
+            "question": "Al ver el grano por primera vez, Martín se decepcionó. ¿Qué le enseñó el abuelo para que Martín entendiera el valor del grano?",
+            "options": [
+                "Le explicó que esos granos se podían cambiar por monedas de oro en la ciudad.",
+                "Le explicó que el verdadero tesoro es el tiempo, la lluvia y el gran esfuerzo de las personas para cultivarlo.",
+                "Le explicó que ese grano rojo le daría internet rápido si lo plantaba."
+            ],
+            "correctAnswer": 1,
+            "points": 1
+        },
+        {
+            "id": "q5",
+            "type": "multiple-choice",
+            "question": "Al final del día, ¿cómo se sintió Martín después de ayudar en la recolección de café?",
+            "options": [
+                "Enojado, porque se ensució la ropa y quería volver a usar su tableta.",
+                "Triste, porque nunca encontró el tesoro pirata que él imaginaba.",
+                "Feliz, porque aprendió que desconectarse de la tecnología le sirvió para conectarse con su familia y sus raíces."
+            ],
+            "correctAnswer": 2,
+            "points": 1
+        },
+        {
+            "id": "q6",
+            "type": "open-ended",
+            "question": "🌟 Pregunta especial: Imagina que un amigo tuyo está muy aburrido en el campo porque no hay internet ni televisión. Usando lo que aprendiste en la historia de Martín, ¿qué le dirías o a qué lo invitarías a jugar para que descubra los \"tesoros\" de la naturaleza?",
+            "options": [],
+            "correctAnswer": -1,
+            "points": 0
+        }
+    ],
     "grade-1-story-1-flipbook": [
         {
             "id": "q1",

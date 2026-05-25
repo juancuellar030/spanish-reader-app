@@ -1,23 +1,74 @@
 import { collection, doc, setDoc, getDoc, getDocs, updateDoc, arrayUnion, Timestamp, writeBatch } from 'firebase/firestore';
-import { db } from './firebase';
+import { getAuth } from 'firebase/auth';
+import { db, app } from './firebase';
 import type { Student, Progress } from '../types';
+
+// #region agent log
+const debugLog = (location: string, message: string, data: Record<string, unknown>, hypothesisId: string, runId = 'pre-fix') => {
+    const payload = { sessionId: 'cbfc31', location, message, data, hypothesisId, timestamp: Date.now(), runId };
+    console.info('[debug cbfc31]', payload);
+    fetch('http://127.0.0.1:7623/ingest/d6025ec4-1902-461d-ae6d-4b4976ec2ce2', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'cbfc31' },
+        body: JSON.stringify(payload),
+    }).catch(() => {});
+};
+
+const firestoreContext = () => {
+    const auth = getAuth(app);
+    return {
+        projectId: app.options.projectId,
+        authUid: auth.currentUser?.uid ?? null,
+        isAuthenticated: !!auth.currentUser,
+        online: typeof navigator !== 'undefined' ? navigator.onLine : null,
+    };
+};
+// #endregion
 
 // ==========================================
 // Students
 // ==========================================
 
 export const getStudent = async (studentId: string): Promise<Student | null> => {
-    const docRef = doc(db, 'students', studentId);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-        return { id: docSnap.id, ...docSnap.data() } as Student;
+    // #region agent log
+    debugLog('firestore.ts:getStudent:entry', 'getStudent called', { studentId, ...firestoreContext() }, 'H2');
+    // #endregion
+    try {
+        const docRef = doc(db, 'students', studentId);
+        const docSnap = await getDoc(docRef);
+        // #region agent log
+        debugLog('firestore.ts:getStudent:success', 'getStudent completed', { studentId, exists: docSnap.exists(), ...firestoreContext() }, 'H2');
+        // #endregion
+        if (docSnap.exists()) {
+            return { id: docSnap.id, ...docSnap.data() } as Student;
+        }
+        return null;
+    } catch (err: unknown) {
+        const e = err as { code?: string; message?: string };
+        // #region agent log
+        debugLog('firestore.ts:getStudent:error', 'getStudent failed', { studentId, code: e?.code, message: e?.message, ...firestoreContext() }, 'H1,H2,H4,H5');
+        // #endregion
+        throw err;
     }
-    return null;
 };
 
 export const getAllStudents = async (): Promise<Student[]> => {
-    const snapshot = await getDocs(collection(db, 'students'));
-    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Student));
+    // #region agent log
+    debugLog('firestore.ts:getAllStudents:entry', 'getAllStudents called', { collection: 'students', ...firestoreContext() }, 'H1,H2,H5');
+    // #endregion
+    try {
+        const snapshot = await getDocs(collection(db, 'students'));
+        // #region agent log
+        debugLog('firestore.ts:getAllStudents:success', 'getAllStudents completed', { count: snapshot.size, ...firestoreContext() }, 'H1,H2,H5');
+        // #endregion
+        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Student));
+    } catch (err: unknown) {
+        const e = err as { code?: string; message?: string };
+        // #region agent log
+        debugLog('firestore.ts:getAllStudents:error', 'getAllStudents failed', { code: e?.code, message: e?.message, ...firestoreContext() }, 'H1,H2,H4,H5');
+        // #endregion
+        throw err;
+    }
 };
 
 export const updateStudentPoints = async (studentId: string, newPoints: number): Promise<void> => {
@@ -58,12 +109,26 @@ export const updateStoryProgress = async (studentId: string, storyId: string, da
 // ==========================================
 
 export const getWeeklyAssignments = async (weekId: string) => {
-    const docRef = doc(db, 'assignments', weekId);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-        return docSnap.data();
+    // #region agent log
+    debugLog('firestore.ts:getWeeklyAssignments:entry', 'getWeeklyAssignments called', { weekId, collection: 'assignments', ...firestoreContext() }, 'H1,H3,H5');
+    // #endregion
+    try {
+        const docRef = doc(db, 'assignments', weekId);
+        const docSnap = await getDoc(docRef);
+        // #region agent log
+        debugLog('firestore.ts:getWeeklyAssignments:success', 'getWeeklyAssignments completed', { weekId, exists: docSnap.exists(), ...firestoreContext() }, 'H1,H3,H5');
+        // #endregion
+        if (docSnap.exists()) {
+            return docSnap.data();
+        }
+        return null;
+    } catch (err: unknown) {
+        const e = err as { code?: string; message?: string };
+        // #region agent log
+        debugLog('firestore.ts:getWeeklyAssignments:error', 'getWeeklyAssignments failed', { weekId, code: e?.code, message: e?.message, ...firestoreContext() }, 'H1,H3,H4,H5');
+        // #endregion
+        throw err;
     }
-    return null;
 };
 
 export const saveWeeklyAssignments = async (weekId: string, assignments: Record<number, string[]>) => {

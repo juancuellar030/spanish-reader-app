@@ -1,0 +1,48 @@
+{
+    "id": "grade-2-story-2-flipbook",
+    "title": "Martín y el secreto del grano rojo",
+    "grade": 2,
+    "type": "flipbook",
+    "coverImage": "/spanish-reader-app/assets/images/story-covers/second-grade/story-2/story-cover.jpg",
+    "endImage": "/spanish-reader-app/assets/images/story-covers/second-grade/story-2/page-end.jpeg",
+    "pages": [
+        {
+            "pageNumber": 1,
+            "text": "A Martín no le gustaba mucho ir a la finca de sus abuelos en el Eje Cafetero. Él prefería quedarse en la ciudad jugando videojuegos en su tableta. En la finca, la señal de internet era mala y, según él, \"no había nada divertido que hacer\".",
+            "image": "/spanish-reader-app/assets/images/story-covers/second-grade/story-2/page-2.jpeg",
+            "wordStart": 0,
+            "wordEnd": 48
+        },
+        {
+            "pageNumber": 2,
+            "text": "Una mañana, su abuelo lo despertó temprano. —Ponte las botas, Martín. Hoy vamos a buscar rubíes —le dijo con una sonrisa misteriosa. Martín, intrigado por la palabra \"rubíes\", se levantó rápido. ¿Acaso su abuelo tenía un tesoro pirata escondido entre las montañas? Caminaron juntos por los senderos empinados, rodeados de plantas de café de un verde frondoso. El aire olía a tierra mojada y a flores dulces.",
+            "image": "/spanish-reader-app/assets/images/story-covers/second-grade/story-2/page-4.jpeg",
+            "wordStart": 49,
+            "wordEnd": 115
+        },
+        {
+            "pageNumber": 3,
+            "text": "Aunque el paisaje era hermoso, Martín se estaba cansando. —Abuelo, ¿dónde están las joyas? Solo veo plantas —se quejó. El abuelo se detuvo frente a un arbusto cargado de frutos. Con sus manos arrugadas y expertas, seleccionó un pequeño grano de color rojo intenso y brillante. —Aquí tienes —dijo, poniéndolo en la mano de Martín—. Este es el verdadero tesoro de nuestra tierra.",
+            "image": "/spanish-reader-app/assets/images/story-covers/second-grade/story-2/page-6.jpeg",
+            "wordStart": 116,
+            "wordEnd": 167
+        },
+        {
+            "pageNumber": 4,
+            "text": "Martín lo miró decepcionado. —Pero abuelo, esto es solo café. —No es solo café —corrigió el abuelo con paciencia—. Para que este grano llegue a ser rojo y brillante, pasaron muchos meses de sol y lluvia. Cientos de personas trabajaron para cuidarlo. De este pequeño grano sale la bebida que despierta al mundo cada mañana. Es una joya porque lleva nuestro esfuerzo y tradición por dentro.",
+            "image": "/spanish-reader-app/assets/images/story-covers/second-grade/story-2/page-8.jpeg",
+            "wordStart": 168,
+            "wordEnd": 230
+        },
+        {
+            "pageNumber": 5,
+            "text": "Martín apretó el grano en su mano. De repente, ya no le pareció una simple fruta. Entendió que, a veces, las cosas valiosas no son de oro ni salen en una pantalla, sino que nacen de la tierra con paciencia y trabajo. Esa tarde, Martín ayudó a la recolección. Aunque terminó sucio y cansado, se sentía feliz. Había aprendido que desconectarse de la tecnología le había servido para conectarse con sus raíces.",
+            "image": "/spanish-reader-app/assets/images/story-covers/second-grade/story-2/page-10.jpeg",
+            "wordStart": 231,
+            "wordEnd": 282
+        }
+    ],
+    "totalPages": 5,
+    "wordCount": 283,
+    "themeColor": "#5c4033"
+}

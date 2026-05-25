@@ -17,6 +17,7 @@ import story1Data from './data/stories/story-1.json';
 import story2Data from './data/stories/story-2.json';
 import grade1Story2Data from './data/stories/grade-1-story-2.json';
 import grade1Story3Data from './data/stories/grade-1-story-3.json';
+import grade2Story2Data from './data/stories/grade-2-story-2.json';
 import './index.css';
 
 function App() {
@@ -162,6 +163,8 @@ function App() {
         flipbookData = story1Data;
       } else if (selectedStory.id === 'grade-2-story-1-flipbook') {
         flipbookData = story2Data;
+      } else if (selectedStory.id === 'grade-2-story-2-flipbook') {
+        flipbookData = grade2Story2Data;
       } else if (selectedStory.id === 'grade-1-story-2-flipbook') {
         flipbookData = grade1Story2Data;
       } else if (selectedStory.id === 'grade-1-story-3-flipbook') {
@@ -197,15 +200,6 @@ function App() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Collectible Reveal Overlay */}
-      {pendingCollectible && (
-        <CollectibleReveal
-          image={pendingCollectible.image}
-          name={pendingCollectible.name}
-          onClose={() => setPendingCollectible(null)}
-        />
-      )}
-
       {/* Fixed Background with Overlay */}
       <div className="fixed inset-0 z-0">
         <BackgroundLayer theme={currentTheme} />
@@ -260,6 +254,15 @@ function App() {
           />
         </div>
       </div>
+
+      {/* Collectible reveal — blurred overlay on top of library dashboard */}
+      {pendingCollectible && (
+        <CollectibleReveal
+          image={pendingCollectible.image}
+          name={pendingCollectible.name}
+          onClose={() => setPendingCollectible(null)}
+        />
+      )}
     </div>
   );
 }

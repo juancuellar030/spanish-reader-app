@@ -102,6 +102,19 @@
         "collectibleName": "Botella Mensajera de Valeria"
     },
     {
+        "id": "grade-2-story-2-flipbook",
+        "title": "Martín y el secreto del grano rojo",
+        "grade": 2,
+        "type": "flipbook",
+        "coverImage": "/spanish-reader-app/assets/images/story-covers/second-grade/story-2/story-cover.jpg",
+        "previewImage3D": "/spanish-reader-app/assets/images/story-covers/second-grade/story-2/story-book-3d.png",
+        "text": "A Martín no le gustaba mucho ir a la finca de sus abuelos en el Eje Cafetero. Él prefería quedarse en la ciudad jugando videojuegos en su tableta. En la finca, la señal de internet era mala y, según él, no había nada divertido que hacer. Una mañana, su abuelo lo despertó temprano para buscar rubíes. Caminaron por plantas de café de un verde frondoso hasta que el abuelo le mostró el verdadero tesoro: un grano rojo brillante. Martín aprendió el valor del café y ayudó en la recolección, feliz de conectarse con sus raíces.",
+        "wordCount": 283,
+        "themeColor": "#5c4033",
+        "collectibleImage": "/spanish-reader-app/assets/images/story-covers/second-grade/story-2/red-bean-collectible.png",
+        "collectibleName": "Grano Rojo del Eje Cafetero"
+    },
+    {
         "id": "grade-3-story-1-flipbook",
         "title": "El mapa olvidado de los fundadores",
         "grade": 3,

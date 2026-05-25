@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // App uses client-side passwords (no Firebase Auth). Rules must allow
+    // unauthenticated access for reads/writes the app performs today.
+    match /students/{studentId} {
+      allow read, write: if true;
+
+      match /progress/{storyId} {
+        allow read, write: if true;
+      }
+    }
+
+    match /assignments/{weekId} {
+      allow read, write: if true;
+    }
+  }
+}
