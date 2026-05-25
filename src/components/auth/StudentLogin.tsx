@@ -20,6 +20,7 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
     const [error, setError] = useState(false);
     const [students, setStudents] = useState<Student[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [hasEngagedWithThemes, setHasEngagedWithThemes] = useState(false);
 
     useEffect(() => {
         const loadStudents = async () => {
@@ -58,6 +59,8 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
         setSearchTerm(student.name);
         setPassword('');
         setError(false);
+        setHasEngagedWithThemes(false);
+        setIsThemeMenuOpen(false);
         // Restore this student's previously chosen theme
         const savedTheme = localStorage.getItem(`theme_${student.id}`) as BackgroundTheme | null;
         if (savedTheme) {
@@ -83,15 +86,68 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
             {/* Theme Selector - Top Right dropdown (Only shown when student is selected) */}
             {selectedStudent && (
                 <div className="absolute top-4 right-4 z-50">
-                    <div className="relative">
-                        <button
-                            onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
-                            className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full shadow-lg text-white hover:bg-white/30 transition-all font-medium font-poppins"
+                    <div className="relative flex flex-col items-end">
+                        <AnimatePresence>
+                            {!hasEngagedWithThemes && !isThemeMenuOpen && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                                    transition={{ duration: 0.25 }}
+                                    className="mb-2 mr-1 max-w-[220px] rounded-2xl bg-white/95 backdrop-blur-md px-4 py-3 shadow-xl border border-purple-200 text-charcoal"
+                                >
+                                    <p className="text-sm font-semibold text-purple-800 leading-snug">
+                                        ¡Elige tu tema de fondo! 🎨
+                                    </p>
+                                    <p className="text-xs text-gray-600 mt-1">
+                                        Toca <span className="font-bold">Temas</span> antes de entrar
+                                    </p>
+                                    <div
+                                        className="absolute -bottom-2 right-8 w-4 h-4 bg-white/95 border-r border-b border-purple-200 rotate-45"
+                                        aria-hidden
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        <motion.button
+                            type="button"
+                            onClick={() => {
+                                setHasEngagedWithThemes(true);
+                                setIsThemeMenuOpen(!isThemeMenuOpen);
+                            }}
+                            className={`relative flex items-center gap-2 backdrop-blur-md px-4 py-2 rounded-full shadow-lg text-white font-medium font-poppins transition-colors ${!hasEngagedWithThemes
+                                ? 'bg-white/35 hover:bg-white/45 ring-2 ring-yellow-300/90 shadow-[0_0_20px_rgba(250,204,21,0.45)]'
+                                : 'bg-white/20 hover:bg-white/30'
+                                }`}
+                            animate={
+                                !hasEngagedWithThemes
+                                    ? { y: [0, -5, 0], scale: [1, 1.04, 1] }
+                                    : { y: 0, scale: 1 }
+                            }
+                            transition={
+                                !hasEngagedWithThemes
+                                    ? { duration: 1.6, repeat: Infinity, ease: 'easeInOut' }
+                                    : { duration: 0.2 }
+                            }
                         >
-                            <Palette size={20} />
+                            {!hasEngagedWithThemes && (
+                                <motion.span
+                                    className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-400 text-[11px] font-bold text-amber-950 shadow-md"
+                                    animate={{ scale: [1, 1.15, 1] }}
+                                    transition={{ duration: 0.9, repeat: Infinity, ease: 'easeInOut' }}
+                                    aria-hidden
+                                >
+                                    !
+                                </motion.span>
+                            )}
+                            <Palette size={20} className={!hasEngagedWithThemes ? 'animate-pulse' : ''} />
                             <span>Temas</span>
-                            <ChevronDown size={16} className={`transition-transform duration-300 ${isThemeMenuOpen ? 'rotate-180' : ''}`} />
-                        </button>
+                            <ChevronDown
+                                size={16}
+                                className={`transition-transform duration-300 ${isThemeMenuOpen ? 'rotate-180' : ''} ${!hasEngagedWithThemes ? 'animate-bounce' : ''}`}
+                            />
+                        </motion.button>
 
                         <AnimatePresence>
                             {isThemeMenuOpen && (
@@ -114,6 +170,7 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
                                             key={theme.id}
                                             onClick={() => {
                                                 setCurrentTheme(theme.id as BackgroundTheme);
+                                                setHasEngagedWithThemes(true);
                                                 setIsThemeMenuOpen(false);
                                             }}
                                             className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${theme.bg} ${currentTheme === theme.id ? 'bg-gray-100/50 font-bold' : 'font-medium'
@@ -240,6 +297,8 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
                                 setSelectedStudent(null);
                                 setPassword('');
                                 setError(false);
+                                setHasEngagedWithThemes(false);
+                                setIsThemeMenuOpen(false);
                             }}
                             className="absolute top-4 left-4 text-gray-400 hover:text-charcoal"
                         >
