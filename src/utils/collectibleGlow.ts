@@ -6,6 +6,9 @@ export interface CollectibleGlowTheme {
     accentTextClass: string;
     buttonClass: string;
     confettiColors: string[];
+    collectionFrameClass: string;
+    collectionBadgeClass: string;
+    labelCardClass: string;
 }
 
 const DEFAULT_GLOW: CollectibleGlowTheme = {
@@ -16,6 +19,9 @@ const DEFAULT_GLOW: CollectibleGlowTheme = {
     accentTextClass: 'text-yellow-300',
     buttonClass: 'bg-yellow-400 hover:bg-yellow-300 text-gray-900 shadow-yellow-500/40',
     confettiColors: ['#FFD700', '#FF6B6B', '#4ECDC4', '#A855F7', '#F97316'],
+    collectionFrameClass: 'bg-gradient-to-br from-yellow-50 to-amber-100 border-yellow-300 shadow-yellow-200',
+    collectionBadgeClass: 'bg-yellow-400',
+    labelCardClass: 'bg-amber-50 border-amber-200/80 text-amber-900 shadow-sm',
 };
 
 /** Glow palettes keyed by collectible image filename */
@@ -28,6 +34,9 @@ const GLOW_BY_FILENAME: Record<string, CollectibleGlowTheme> = {
         accentTextClass: 'text-rose-300',
         buttonClass: 'bg-rose-400 hover:bg-rose-300 text-white shadow-rose-500/40',
         confettiColors: ['#fb7185', '#f43f5e', '#fda4af', '#fecdd3', '#e11d48'],
+        collectionFrameClass: 'bg-gradient-to-br from-rose-50 to-pink-100 border-rose-300 shadow-rose-200',
+        collectionBadgeClass: 'bg-rose-400',
+        labelCardClass: 'bg-rose-50 border-rose-200/80 text-rose-900 shadow-sm',
     },
     'bottle_message_collectible.png': {
         ringGradient: 'radial-gradient(circle, rgba(34, 211, 238, 0.4) 0%, rgba(6, 182, 212, 0.15) 45%, transparent 70%)',
@@ -37,6 +46,9 @@ const GLOW_BY_FILENAME: Record<string, CollectibleGlowTheme> = {
         accentTextClass: 'text-cyan-300',
         buttonClass: 'bg-cyan-400 hover:bg-cyan-300 text-gray-900 shadow-cyan-500/40',
         confettiColors: ['#22d3ee', '#06b6d4', '#67e8f9', '#a5f3fc', '#0891b2'],
+        collectionFrameClass: 'bg-gradient-to-br from-cyan-50 to-sky-100 border-cyan-300 shadow-cyan-200',
+        collectionBadgeClass: 'bg-cyan-400',
+        labelCardClass: 'bg-cyan-50 border-cyan-200/80 text-cyan-900 shadow-sm',
     },
     "bear_cub's_glasses_collectible.png": {
         ringGradient: 'radial-gradient(circle, rgba(214, 180, 137, 0.45) 0%, rgba(232, 213, 183, 0.2) 45%, transparent 70%)',
@@ -46,6 +58,9 @@ const GLOW_BY_FILENAME: Record<string, CollectibleGlowTheme> = {
         accentTextClass: 'text-amber-100',
         buttonClass: 'bg-amber-200 hover:bg-amber-100 text-amber-950 shadow-amber-600/30',
         confettiColors: ['#e8d5b7', '#d6b489', '#f5e6d3', '#c4a574', '#a67c52'],
+        collectionFrameClass: 'bg-gradient-to-br from-amber-50 to-orange-50 border-amber-300 shadow-amber-200',
+        collectionBadgeClass: 'bg-amber-300',
+        labelCardClass: 'bg-amber-50 border-amber-200/80 text-amber-950 shadow-sm',
     },
     'Robot_head_collectible.png': DEFAULT_GLOW,
     'Cat_face_mask_cape_collectible.png': {
@@ -56,8 +71,13 @@ const GLOW_BY_FILENAME: Record<string, CollectibleGlowTheme> = {
         accentTextClass: 'text-white/90',
         buttonClass: 'bg-white hover:bg-slate-100 text-slate-900 shadow-white/30',
         confettiColors: ['#ffffff', '#f1f5f9', '#e2e8f0', '#cbd5e1', '#94a3b8'],
+        collectionFrameClass: 'bg-gradient-to-br from-slate-50 to-gray-100 border-slate-200 shadow-slate-200',
+        collectionBadgeClass: 'bg-slate-200',
+        labelCardClass: 'bg-white/90 border-slate-200/80 text-slate-800 shadow-sm',
     },
 };
+
+export const EARNED_COLLECTIBLE_SOUND = '/spanish-reader-app/assets/sounds/earned-collectible.mp3';
 
 export function getCollectibleGlowTheme(imagePath: string): CollectibleGlowTheme {
     const filename = imagePath.split('/').pop() ?? '';

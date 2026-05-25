@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import storiesData from '../../data/stories.json';
 import { Package } from 'lucide-react';
+import { getCollectibleGlowTheme } from '../../utils/collectibleGlow';
 
 interface CollectionCaseProps {
     earnedCollectibles: string[];   // array of storyIds where collectible was earned
@@ -8,10 +9,8 @@ interface CollectionCaseProps {
 }
 
 export const CollectionCase = ({ earnedCollectibles, assignedStories }: CollectionCaseProps) => {
-    // Find all stories that have a collectible image
     const allCollectibleStories = (storiesData as any[]).filter(s => s.collectibleImage);
 
-    // Only show stories that the student has been assigned at some point (earned) or is currently assigned
     const visibleStories = allCollectibleStories.filter(s =>
         earnedCollectibles.includes(s.id) || assignedStories.includes(s.id)
     );
@@ -43,51 +42,46 @@ export const CollectionCase = ({ earnedCollectibles, assignedStories }: Collecti
             >
                 {visibleStories.map((story) => {
                     const isEarned = earnedCollectibles.includes(story.id);
+                    const glow = getCollectibleGlowTheme(story.collectibleImage);
+
                     return (
                         <motion.div
                             key={story.id}
                             variants={item}
-                            className="group relative flex flex-col items-center"
+                            className="group relative flex flex-col items-center w-full"
                         >
-                            {/* Glow aura — only for earned items */}
                             {isEarned && (
                                 <motion.div
-                                    className="absolute inset-0 rounded-2xl pointer-events-none"
-                                    style={{
-                                        background: 'radial-gradient(circle, rgba(250,204,21,0.40) 0%, transparent 75%)',
-                                    }}
+                                    className="absolute inset-0 rounded-2xl pointer-events-none -top-1"
+                                    style={{ background: glow.ringGradient }}
                                     animate={{ opacity: [0.6, 1, 0.6] }}
                                     transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                                 />
                             )}
 
-                            {/* Item frame */}
                             <div
-                                className={`relative w-full aspect-square rounded-xl flex items-center justify-center p-3 transition-transform group-hover:scale-105 ${isEarned
-                                    ? 'bg-gradient-to-br from-yellow-50 to-amber-100 border-2 border-yellow-300 shadow-md shadow-yellow-200'
-                                    : 'bg-gray-100 border-2 border-dashed border-gray-300'
+                                className={`relative w-full aspect-square rounded-xl flex items-center justify-center p-3 transition-transform group-hover:scale-105 border-2 shadow-md ${isEarned
+                                    ? glow.collectionFrameClass
+                                    : 'bg-gray-100 border-dashed border-gray-300'
                                     }`}
                             >
                                 <img
                                     src={story.collectibleImage}
                                     alt={story.collectibleName || story.title}
-                                    className={`w-full h-full object-contain transition-all duration-300 ${isEarned
-                                        ? 'drop-shadow-[0_0_8px_rgba(250,204,21,0.7)]'
-                                        : 'grayscale opacity-30'
+                                    className={`w-full h-full object-contain transition-all duration-300 ${isEarned ? '' : 'grayscale opacity-30'
                                         }`}
+                                    style={isEarned ? { filter: glow.imageFilter } : undefined}
                                 />
 
-                                {/* Lock overlay for unearned */}
                                 {!isEarned && (
                                     <div className="absolute inset-0 flex items-center justify-center rounded-xl">
                                         <span className="text-2xl opacity-50">🔒</span>
                                     </div>
                                 )}
 
-                                {/* Sparkle badge for earned */}
                                 {isEarned && (
                                     <motion.div
-                                        className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-xs shadow"
+                                        className={`absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs shadow ${glow.collectionBadgeClass}`}
                                         animate={{ rotate: [0, 15, -15, 0] }}
                                         transition={{ duration: 2.5, repeat: Infinity }}
                                     >
@@ -96,13 +90,14 @@ export const CollectionCase = ({ earnedCollectibles, assignedStories }: Collecti
                                 )}
                             </div>
 
-                            {/* Label */}
-                            <p
-                                className={`mt-2 text-center text-xs font-medium leading-tight ${isEarned ? 'text-amber-800' : 'text-gray-400'
+                            <div
+                                className={`mt-2 w-full text-center text-xs font-semibold leading-tight rounded-xl px-2.5 py-2 border ${isEarned
+                                    ? glow.labelCardClass
+                                    : 'bg-gray-50 border-gray-200 text-gray-400'
                                     }`}
                             >
                                 {isEarned ? (story.collectibleName || story.title) : '???'}
-                            </p>
+                            </div>
                         </motion.div>
                     );
                 })}

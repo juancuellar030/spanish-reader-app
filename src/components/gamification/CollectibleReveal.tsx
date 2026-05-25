@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { getCollectibleGlowTheme } from '../../utils/collectibleGlow';
+import { getCollectibleGlowTheme, EARNED_COLLECTIBLE_SOUND } from '../../utils/collectibleGlow';
 
 interface CollectibleRevealProps {
     image: string;
@@ -36,6 +36,10 @@ export const CollectibleReveal = ({ image, name, onClose }: CollectibleRevealPro
     }, []);
 
     useEffect(() => {
+        const sfx = new Audio(EARNED_COLLECTIBLE_SOUND);
+        sfx.volume = 0.85;
+        sfx.play().catch(() => {});
+
         confetti({
             particleCount: 150,
             spread: 100,
@@ -124,7 +128,9 @@ export const CollectibleReveal = ({ image, name, onClose }: CollectibleRevealPro
                         <p className={`text-lg font-semibold tracking-wide mb-2 uppercase ${glow.accentTextClass}`}>
                             ¡Nueva pieza de colección!
                         </p>
-                        <h2 className="text-white text-3xl font-bold mb-6 drop-shadow-md">{name}</h2>
+                        <h2 className="inline-block text-white text-2xl sm:text-3xl font-bold mb-6 drop-shadow-md rounded-2xl px-5 py-3 bg-white/15 backdrop-blur-md border border-white/25 shadow-lg max-w-md">
+                            {name}
+                        </h2>
                         <motion.button
                             type="button"
                             className={`px-8 py-3 font-bold rounded-full text-lg shadow-lg transition-colors ${glow.buttonClass}`}
