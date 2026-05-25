@@ -926,6 +926,27 @@
         ]
     },
     {
+        "id": "student-94",
+        "name": "Johan Sebastian Semanate Quiacha",
+        "grade": 2,
+        "password": "K7MWP3",
+        "assignedStories": [
+            "grade-2-story-1-flipbook",
+            "grade-2-story-2-flipbook"
+        ]
+    },
+    {
+        "id": "student-95",
+        "name": "Juan Andrés Quiacha Semanate",
+        "grade": 5,
+        "password": "R4HNJ8",
+        "assignedStories": [
+            "grade-5-story-1",
+            "grade-5-story-2",
+            "grade-5-story-3"
+        ]
+    },
+    {
         "id": "student-999",
         "name": "Valentina Ortiz",
         "grade": 4,
