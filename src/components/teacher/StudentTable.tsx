@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUp, ArrowDown, Search, X, BookOpen, Star, CheckCircle, Clock, Trash2, AlertTriangle } from 'lucide-react';
+import { ArrowUp, ArrowDown, Search, X, BookOpen, Star, CheckCircle, Clock, Trash2, AlertTriangle, Eye, EyeOff, KeyRound } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faHourglassHalf, faStar } from '@fortawesome/free-solid-svg-icons';
 import type { Student } from '../../types';
@@ -12,8 +12,20 @@ interface StudentTableProps {
     students: Student[];
 }
 
+const GRADE_FILTER_OPTIONS: { value: number | 'all'; label: string }[] = [
+    { value: 'all', label: 'Todos' },
+    { value: 1, label: 'Grado Primero' },
+    { value: 2, label: 'Grado Segundo' },
+    { value: 3, label: 'Grado Tercero' },
+    { value: 4, label: 'Grado Cuarto' },
+    { value: 5, label: 'Grado Quinto' },
+    { value: 0, label: 'Cuenta de Prueba' },
+];
+
 export const StudentTable = ({ students }: StudentTableProps) => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [gradeFilter, setGradeFilter] = useState<number | 'all'>('all');
+    const [showPassword, setShowPassword] = useState(false);
     const [sortConfig, setSortConfig] = useState<{
         key: 'name' | 'grade';
         direction: 'asc' | 'desc';
@@ -30,9 +42,11 @@ export const StudentTable = ({ students }: StudentTableProps) => {
 
     // Filter and Sort Logic
     const filteredAndSortedStudents = [...students]
-        .filter((student) =>
-            student.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
+        .filter((student) => {
+            const matchesName = student.name.toLowerCase().includes(searchTerm.toLowerCase());
+            const matchesGrade = gradeFilter === 'all' || student.grade === gradeFilter;
+            return matchesName && matchesGrade;
+        })
         .sort((a, b) => {
             if (sortConfig.key === 'name') {
                 return sortConfig.direction === 'asc'
@@ -55,6 +69,7 @@ export const StudentTable = ({ students }: StudentTableProps) => {
 
     const handleViewDetails = async (student: Student) => {
         setSelectedStudent(student);
+        setShowPassword(false);
         setLoadingProgress(true);
         setShowResetConfirm(false);
         try {
@@ -73,6 +88,7 @@ export const StudentTable = ({ students }: StudentTableProps) => {
         setStudentProgress([]);
         setShowResetConfirm(false);
         setShowDeleteConfirm(false);
+        setShowPassword(false);
     };
 
     const handleResetData = async () => {
@@ -142,18 +158,48 @@ export const StudentTable = ({ students }: StudentTableProps) => {
     return (
         <>
             <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-                {/* Search */}
-                <div className="p-6 border-b border-gray-100">
-                    <div className="relative max-w-sm">
+                {/* Search & grade filters */}
+                <div className="p-6 border-b border-gray-100 space-y-4">
+                    <div className="relative max-w-md">
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                         <input
                             type="text"
-                            placeholder="Buscar estudiante..."
+                            placeholder="Buscar por nombre..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-ocean-blue/20 focus:border-ocean-blue transition-all"
                         />
                     </div>
+                    <div className="flex flex-wrap gap-2">
+                        {GRADE_FILTER_OPTIONS.map((option) => {
+                            const isActive = gradeFilter === option.value;
+                            const count =
+                                option.value === 'all'
+                                    ? students.length
+                                    : students.filter((s) => s.grade === option.value).length;
+                            return (
+                                <button
+                                    key={String(option.value)}
+                                    type="button"
+                                    onClick={() => setGradeFilter(option.value)}
+                                    className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all border ${isActive
+                                        ? 'bg-ocean-blue text-white border-ocean-blue shadow-sm'
+                                        : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100 hover:border-gray-300'
+                                        }`}
+                                >
+                                    {option.label}
+                                    <span className={`ml-1.5 text-xs ${isActive ? 'text-white/80' : 'text-gray-400'}`}>
+                                        ({count})
+                                    </span>
+                                </button>
+                            );
+                        })}
+                    </div>
+                    {(searchTerm || gradeFilter !== 'all') && (
+                        <p className="text-sm text-gray-500">
+                            Mostrando {filteredAndSortedStudents.length} de {students.length} estudiantes
+                        </p>
+                    )}
                 </div>
 
                 {/* Table */}
@@ -341,6 +387,47 @@ export const StudentTable = ({ students }: StudentTableProps) => {
                                     </motion.div>
                                 )}
                             </AnimatePresence>
+
+                            {/* Account password */}
+                            <div className="mb-6 shrink-0 rounded-2xl border border-gray-200 bg-gray-50/80 p-4">
+                                <div className="flex items-center justify-between gap-3 mb-2">
+                                    <div className="flex items-center gap-2 text-charcoal font-semibold text-sm">
+                                        <KeyRound size={18} className="text-ocean-blue" />
+                                        Contraseña de acceso
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword((v) => !v)}
+                                        className="flex items-center gap-1.5 text-sm font-medium text-ocean-blue hover:text-ocean-blue/80 transition-colors"
+                                    >
+                                        {showPassword ? (
+                                            <>
+                                                <EyeOff size={16} />
+                                                Ocultar
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Eye size={16} />
+                                                Mostrar
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                                <p
+                                    className={`font-mono text-lg tracking-widest rounded-xl px-4 py-3 border transition-all ${showPassword
+                                        ? 'bg-white border-ocean-blue/30 text-charcoal'
+                                        : 'bg-gray-100 border-gray-200 text-transparent select-none'
+                                        }`}
+                                    aria-label={showPassword ? `Contraseña: ${selectedStudent.password}` : 'Contraseña oculta'}
+                                >
+                                    {showPassword
+                                        ? selectedStudent.password
+                                        : '••••••'}
+                                </p>
+                                <p className="text-xs text-gray-500 mt-2">
+                                    El estudiante usa esta contraseña al iniciar sesión en la app.
+                                </p>
+                            </div>
 
                             {/* Stats row */}
                             <div className="grid grid-cols-3 gap-4 mb-6 shrink-0">
