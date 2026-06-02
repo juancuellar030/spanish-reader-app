@@ -59,7 +59,7 @@ export const CollectibleReveal = ({ image, name, onClose }: CollectibleRevealPro
             {isVisible && (
                 <motion.div
                     key="collectible-reveal"
-                    className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/30 backdrop-blur-xl"
+                    className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/65 backdrop-blur-xl"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -67,80 +67,100 @@ export const CollectibleReveal = ({ image, name, onClose }: CollectibleRevealPro
                     onClick={requestClose}
                 >
                     <motion.div
-                        className="relative flex items-center justify-center"
-                        initial={{ scale: 0.3, opacity: 0 }}
+                        className="flex flex-col items-center text-center w-full max-w-md px-6 sm:px-8"
+                        initial={{ scale: 0.92, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.85, opacity: 0 }}
+                        exit={{ scale: 0.9, opacity: 0 }}
                         transition={{
                             type: 'spring',
                             stiffness: 200,
-                            damping: 15,
+                            damping: 18,
                             opacity: { duration: EXIT_DURATION_MS / 1000, ease: 'easeInOut' },
                         }}
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {sparklePositions.map((pos, i) => (
-                            <Sparkle key={i} x={pos.x} y={pos.y} delay={i * 0.15} color={glow.sparkleColor} />
-                        ))}
-
-                        <motion.div
-                            className="absolute rounded-full pointer-events-none"
-                            style={{ width: 260, height: 260, background: glow.ringGradient }}
-                            animate={{ scale: [1, 1.15, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                        />
-                        <motion.div
-                            className="absolute rounded-full border-2 pointer-events-none"
-                            style={{ width: 220, height: 220, borderColor: glow.ringBorder }}
-                            animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.8, 0.4] }}
-                            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
-                        />
-
-                        <motion.div
-                            className="relative z-10 w-48 h-48 flex items-center justify-center"
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                        {/* Announcement — above the image */}
+                        <motion.p
+                            className={`text-lg sm:text-xl font-bold tracking-wide uppercase mb-6 ${glow.accentTextClass}`}
+                            initial={{ opacity: 0, y: -12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.15, duration: 0.45 }}
                         >
-                            <motion.div
-                                className="absolute inset-0 rounded-full overflow-hidden pointer-events-none"
-                                initial={{ x: '-100%', opacity: 0 }}
-                                animate={{ x: ['-100%', '200%'], opacity: [0, 0.6, 0] }}
-                                transition={{ duration: 1.5, delay: 0.8, ease: 'easeInOut' }}
-                                style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.5) 50%, transparent 60%)' }}
-                            />
-                            <img
-                                src={image}
-                                alt={name}
-                                className="w-full h-full object-contain"
-                                style={{ filter: glow.imageFilter }}
-                            />
-                        </motion.div>
-                    </motion.div>
-
-                    <motion.div
-                        className="mt-8 text-center px-8"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 16 }}
-                        transition={{ delay: 0.6, duration: 0.5 }}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <p className={`text-lg font-semibold tracking-wide mb-2 uppercase ${glow.accentTextClass}`}>
                             ¡Nueva pieza de colección!
-                        </p>
-                        <h2 className="inline-block text-white text-2xl sm:text-3xl font-bold mb-6 drop-shadow-md rounded-2xl px-5 py-3 bg-white/15 backdrop-blur-md border border-white/25 shadow-lg max-w-md">
+                        </motion.p>
+
+                        {/* Collectible image */}
+                        <div className="relative flex items-center justify-center w-48 h-48 sm:w-52 sm:h-52 mb-8">
+                            {sparklePositions.map((pos, i) => (
+                                <Sparkle key={i} x={pos.x} y={pos.y} delay={i * 0.15} color={glow.sparkleColor} />
+                            ))}
+
+                            <motion.div
+                                className="absolute rounded-full pointer-events-none"
+                                style={{ width: 260, height: 260, background: glow.ringGradient }}
+                                animate={{ scale: [1, 1.15, 1] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                            />
+                            <motion.div
+                                className="absolute rounded-full border-2 pointer-events-none"
+                                style={{ width: 220, height: 220, borderColor: glow.ringBorder }}
+                                animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.8, 0.4] }}
+                                transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
+                            />
+
+                            <motion.div
+                                className="relative z-10 w-full h-full flex items-center justify-center"
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                            >
+                                <motion.div
+                                    className="absolute inset-0 rounded-full overflow-hidden pointer-events-none"
+                                    initial={{ x: '-100%', opacity: 0 }}
+                                    animate={{ x: ['-100%', '200%'], opacity: [0, 0.6, 0] }}
+                                    transition={{ duration: 1.5, delay: 0.8, ease: 'easeInOut' }}
+                                    style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.5) 50%, transparent 60%)' }}
+                                />
+                                <img
+                                    src={image}
+                                    alt={name}
+                                    className="w-full h-full object-contain"
+                                    style={{ filter: glow.imageFilter }}
+                                />
+                            </motion.div>
+                        </div>
+
+                        {/* Label */}
+                        <motion.h2
+                            className="w-full text-white text-xl sm:text-2xl font-bold mb-5 drop-shadow-md rounded-2xl px-5 py-3 bg-white/15 backdrop-blur-md border border-white/25 shadow-lg leading-snug"
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.45, duration: 0.45 }}
+                        >
                             {name}
-                        </h2>
+                        </motion.h2>
+
+                        {/* Action — below the label */}
                         <motion.button
                             type="button"
                             className={`px-8 py-3 font-bold rounded-full text-lg shadow-lg transition-colors ${glow.buttonClass}`}
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6, duration: 0.4 }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.97 }}
                             onClick={requestClose}
                         >
                             ¡Genial! 🌟
                         </motion.button>
-                        <p className="text-white/60 text-sm mt-4">Toca en cualquier lugar para cerrar</p>
+
+                        <motion.p
+                            className="text-white/50 text-sm mt-5"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.75 }}
+                        >
+                            Toca en cualquier lugar para cerrar
+                        </motion.p>
                     </motion.div>
                 </motion.div>
             )}
