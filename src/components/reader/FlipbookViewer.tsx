@@ -281,7 +281,7 @@ export const FlipbookViewer = ({ story, studentId, studentGrade, onBack, student
             return (
                 <span
                     key={index}
-                    className={`inline-block transition-colors duration-200 px-1 rounded ${isHighlighted ? 'text-blue-600 bg-yellow-200' : 'text-charcoal'
+                    className={`inline-block transition-colors duration-200 px-1 rounded ${isHighlighted ? 'text-brand bg-purple-100' : 'text-charcoal'
                         }`}
                     style={{
                         textShadow: isHighlighted ? '0 0 0.5px currentColor' : 'none',
@@ -559,7 +559,7 @@ export const FlipbookViewer = ({ story, studentId, studentGrade, onBack, student
                                         <h1 className="text-4xl font-serif font-bold text-charcoal mb-4">
                                             {renderTitleWords()}
                                         </h1>
-                                        <div className="w-16 h-1 bg-blue-500 mx-auto rounded-full opacity-50"></div>
+                                        <div className="w-16 h-1 bg-ocean-blue mx-auto rounded-full opacity-50"></div>
                                     </div>
                                 </div>
                                 <div className="flip-page-face flip-page-back">

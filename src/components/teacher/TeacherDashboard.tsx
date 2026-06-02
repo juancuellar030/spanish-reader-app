@@ -4,10 +4,12 @@ import { Users, BookOpen, Award, LogOut, Loader2 } from 'lucide-react';
 import { StudentTable } from './StudentTable';
 import { AssignmentPanel } from './AssignmentPanel';
 import { getAllStudents } from '../../services/firestore';
+import { computeClassAverageCompletion } from '../../utils/classStats';
 import { BackgroundLayer } from '../ui/BackgroundLayer';
 import type { BackgroundTheme } from '../ui/BackgroundLayer';
 import { ThemeSelector } from '../ui/ThemeSelector';
 import { loadStoredTeacherTheme, saveTeacherTheme } from '../../data/backgroundThemes';
+import { STAT_ICON_TILE, ICON_BRAND, brandIconStyle } from '../../constants/brandColors';
 import type { Student } from '../../types';
 
 interface TeacherDashboardProps {
@@ -17,17 +19,48 @@ interface TeacherDashboardProps {
 export const TeacherDashboard = ({ onLogout }: TeacherDashboardProps) => {
     const [students, setStudents] = useState<Student[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [classAveragePercent, setClassAveragePercent] = useState<number | null>(null);
+    const [isLoadingAverage, setIsLoadingAverage] = useState(false);
     const [currentTheme, setCurrentTheme] = useState<BackgroundTheme>(() => loadStoredTeacherTheme());
+
+    // #region agent log
+    useEffect(() => {
+        if (isLoading) return;
+        const iconEl = document.querySelector('[data-debug-dash-icon]') as SVGElement | null;
+        const payload = {
+            sessionId: 'cbfc31',
+            location: 'TeacherDashboard.tsx:iconProbe',
+            message: 'dashboard stat icon computed color',
+            data: {
+                iconColor: iconEl ? window.getComputedStyle(iconEl).color : 'no-el',
+                iconStroke: iconEl ? window.getComputedStyle(iconEl).stroke : 'no-el',
+            },
+            timestamp: Date.now(),
+            hypothesisId: 'C',
+            runId: 'post-fix-v2',
+        };
+        fetch('http://127.0.0.1:7623/ingest/d6025ec4-1902-461d-ae6d-4b4976ec2ce2', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'cbfc31' },
+            body: JSON.stringify(payload),
+        }).catch(() => {});
+    }, [isLoading]);
+    // #endregion
 
     useEffect(() => {
         const loadStudents = async () => {
             try {
                 const data = await getAllStudents();
                 setStudents(data);
+
+                setIsLoadingAverage(true);
+                const avg = await computeClassAverageCompletion(data);
+                setClassAveragePercent(avg);
             } catch (error) {
                 console.error('Failed to fetch students', error);
             } finally {
                 setIsLoading(false);
+                setIsLoadingAverage(false);
             }
         };
         loadStudents();
@@ -38,10 +71,21 @@ export const TeacherDashboard = ({ onLogout }: TeacherDashboardProps) => {
         saveTeacherTheme(theme);
     };
 
+    const classAverageDisplay = isLoadingAverage
+        ? '…'
+        : classAveragePercent !== null
+            ? `${classAveragePercent}%`
+            : '—';
+
     const stats = [
-        { label: 'Total Estudiantes', value: students.length, icon: Users, color: 'bg-blue-100 text-blue-600' },
-        { label: 'Historias Asignadas', value: students.reduce((acc, s) => acc + s.assignedStories.length, 0), icon: BookOpen, color: 'bg-green-100 text-green-600' },
-        { label: 'Promedio Clase', value: '85%', icon: Award, color: 'bg-purple-100 text-purple-600' },
+        { label: 'Total Estudiantes', value: students.length, icon: Users },
+        { label: 'Historias Asignadas', value: students.reduce((acc, s) => acc + (s.assignedStories?.length ?? 0), 0), icon: BookOpen },
+        {
+            label: 'Promedio Clase',
+            value: classAverageDisplay,
+            subtitle: 'Lecturas completadas',
+            icon: Award,
+        },
     ];
 
     return (
@@ -77,7 +121,7 @@ export const TeacherDashboard = ({ onLogout }: TeacherDashboardProps) => {
 
                     {isLoading ? (
                         <div className="flex flex-col items-center justify-center p-20 bg-white/90 backdrop-blur-sm rounded-3xl shadow-sm border border-white/60">
-                            <Loader2 className="animate-spin text-ocean-blue mb-4" size={40} />
+                            <Loader2 className="animate-spin text-brand mb-4" size={40} />
                             <p className="text-gray-500 font-medium">Cargando datos de estudiantes...</p>
                         </div>
                     ) : (
@@ -91,12 +135,15 @@ export const TeacherDashboard = ({ onLogout }: TeacherDashboardProps) => {
                                         transition={{ delay: index * 0.1 }}
                                         className="bg-white/90 backdrop-blur-sm p-6 rounded-3xl shadow-sm border border-white/60 flex items-center gap-4"
                                     >
-                                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${stat.color}`}>
-                                            <stat.icon size={24} />
+                                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${STAT_ICON_TILE}`}>
+                                            <stat.icon data-debug-dash-icon size={24} className={ICON_BRAND} style={brandIconStyle} strokeWidth={2} />
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
                                             <p className="text-2xl font-bold text-charcoal">{stat.value}</p>
+                                            {'subtitle' in stat && stat.subtitle && (
+                                                <p className="text-xs text-gray-400 mt-0.5">{stat.subtitle}</p>
+                                            )}
                                         </div>
                                     </motion.div>
                                 ))}

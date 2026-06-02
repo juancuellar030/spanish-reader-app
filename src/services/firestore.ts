@@ -29,6 +29,33 @@ const firestoreContext = () => {
 // Students
 // ==========================================
 
+/** Normalize Firestore docs (handles missing arrays, string grades, Name vs name) */
+export function normalizeStudentDoc(id: string, data: Record<string, unknown>): Student {
+    const rawGrade = data.grade ?? data.Grad;
+    let grade = 0;
+    if (typeof rawGrade === 'string') {
+        grade = parseInt(rawGrade, 10);
+    } else if (typeof rawGrade === 'number') {
+        grade = rawGrade;
+    }
+
+    const name = String(data.name ?? data.Name ?? '').trim();
+    const assignedStories = Array.isArray(data.assignedStories)
+        ? (data.assignedStories as string[])
+        : [];
+
+    return {
+        id,
+        name,
+        grade: Number.isFinite(grade) ? grade : 0,
+        password: String(data.password ?? ''),
+        assignedStories,
+        points: typeof data.points === 'number' ? data.points : 0,
+        collectibles: Array.isArray(data.collectibles) ? (data.collectibles as string[]) : [],
+        lastAssignedWeek: typeof data.lastAssignedWeek === 'string' ? data.lastAssignedWeek : undefined,
+    };
+}
+
 export const getStudent = async (studentId: string): Promise<Student | null> => {
     // #region agent log
     debugLog('firestore.ts:getStudent:entry', 'getStudent called', { studentId, ...firestoreContext() }, 'H2');
@@ -40,7 +67,7 @@ export const getStudent = async (studentId: string): Promise<Student | null> => 
         debugLog('firestore.ts:getStudent:success', 'getStudent completed', { studentId, exists: docSnap.exists(), ...firestoreContext() }, 'H2');
         // #endregion
         if (docSnap.exists()) {
-            return { id: docSnap.id, ...docSnap.data() } as Student;
+            return normalizeStudentDoc(docSnap.id, docSnap.data() as Record<string, unknown>);
         }
         return null;
     } catch (err: unknown) {
@@ -61,7 +88,29 @@ export const getAllStudents = async (): Promise<Student[]> => {
         // #region agent log
         debugLog('firestore.ts:getAllStudents:success', 'getAllStudents completed', { count: snapshot.size, ...firestoreContext() }, 'H1,H2,H5');
         // #endregion
-        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Student));
+        const students = snapshot.docs.map((docSnap) =>
+            normalizeStudentDoc(docSnap.id, docSnap.data() as Record<string, unknown>)
+        );
+        const newStudents = students.filter((s) => s.id === 'student-94' || s.id === 'student-95');
+        // #region agent log
+        debugLog(
+            'firestore.ts:getAllStudents:normalized',
+            'Normalized student list probe',
+            {
+                total: students.length,
+                newStudents: newStudents.map((s) => ({
+                    id: s.id,
+                    name: s.name,
+                    grade: s.grade,
+                    assignedStoriesLen: s.assignedStories.length,
+                    hasPassword: !!s.password,
+                })),
+            },
+            'H1,H3,H4',
+            'student-search'
+        );
+        // #endregion
+        return students;
     } catch (err: unknown) {
         const e = err as { code?: string; message?: string };
         // #region agent log

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Lock, ArrowLeft } from 'lucide-react';
 import { Button } from '../shared/Button';
 import { BackgroundLayer } from '../ui/BackgroundLayer';
+import { brandInlineBg } from '../../constants/brandColors';
 
 interface TeacherLoginProps {
     onLogin: () => void;
@@ -48,8 +49,11 @@ export const TeacherLogin = ({ onLogin, onBack }: TeacherLoginProps) => {
                 </button>
 
                 <div className="flex flex-col items-center mb-8 mt-4">
-                    <div className="w-16 h-16 bg-ocean-blue rounded-full flex items-center justify-center mb-4 text-white">
-                        <Lock size={32} />
+                    <div
+                        className="w-16 h-16 rounded-full flex items-center justify-center mb-4 shadow-md brand-fill"
+                        style={brandInlineBg}
+                    >
+                        <Lock size={32} className="text-white" strokeWidth={2.25} aria-hidden />
                     </div>
                     <h2 className="text-2xl font-bold text-charcoal">Acceso Maestros</h2>
                     <p className="text-gray-500 text-center mt-2">
@@ -64,7 +68,7 @@ export const TeacherLogin = ({ onLogin, onBack }: TeacherLoginProps) => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Contraseña"
-                            className="w-full h-12 px-4 rounded-xl border-2 border-gray-200 focus:border-ocean-blue focus:outline-none transition-colors font-poppins"
+                            className="w-full h-12 px-4 rounded-xl border-2 border-gray-200 focus:border-brand focus:outline-none transition-colors font-poppins"
                             autoFocus
                         />
                         {error && (

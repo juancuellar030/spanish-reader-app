@@ -110,26 +110,32 @@ export const QuizModal = ({ storyId, studentId, onClose, collectibleImage, stude
     const currentQ = questions[currentQuestionIndex];
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl p-8 relative overflow-hidden"
-            >
-                {/* Decorative top gradient stripe */}
-                <div className="absolute top-0 left-0 right-0 h-2 from-purple-400 rounded-t-3xl" />
-
-                {/* Close Button */}
-                {!showResults && (
-                    <button
-                        onClick={onClose}
-                        className="absolute top-6 right-6 text-gray-400 hover:text-gray-700 transition-colors"
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/60 backdrop-blur-sm">
+            <div className="relative w-full max-w-lg sm:max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto">
+                <motion.button
+                    type="button"
+                    onClick={onClose}
+                    className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 z-[60] w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white shadow-xl border border-gray-200/90 flex items-center justify-center text-gray-500 hover:text-charcoal hover:shadow-2xl transition-colors"
+                    whileHover={{ scale: 1.06 }}
+                    whileTap={{ scale: 0.94 }}
+                    aria-label="Cerrar cuestionario"
+                >
+                    <motion.span
+                        className="flex items-center justify-center"
+                        initial={false}
+                        whileHover={{ rotate: 90 }}
+                        transition={{ type: 'spring', stiffness: 380, damping: 18 }}
                     >
-                        <X size={24} />
-                    </button>
-                )}
+                        <X size={22} strokeWidth={2.5} />
+                    </motion.span>
+                </motion.button>
 
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                    className="bg-white rounded-3xl shadow-2xl w-full p-6 sm:p-8 md:p-10 overflow-y-auto max-h-[min(96dvh,920px)]"
+                >
                 <AnimatePresence mode="wait">
                     {showResults ? (
                         <motion.div
@@ -159,7 +165,8 @@ export const QuizModal = ({ storyId, studentId, onClose, collectibleImage, stude
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </motion.div>
+                </motion.div>
+            </div>
         </div>
     );
 };

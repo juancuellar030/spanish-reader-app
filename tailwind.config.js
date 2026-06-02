@@ -8,9 +8,11 @@ export default {
     extend: {
       colors: {
         // Primary Colors
-        'ocean-blue': '#4A90E2',
-        'medium-slate-blue': '#7B68EE',
-        'deep-purple': '#5B4FDB',
+        'ocean-blue': '#9333EA',
+        'brand': '#9333EA',
+        'medium-slate-blue': '#9333EA',
+        'deep-purple': '#7E22CE',
+        'brand-muted': '#F3E8FF',
 
         // Secondary Colors
         'sunshine-yellow': '#FFD93D',
@@ -43,8 +45,8 @@ export default {
         'gradient-bronze': 'linear-gradient(135deg, #CD7F32, #8B4513)',
       },
       boxShadow: {
-        'button': '0 4px 12px rgba(74, 144, 226, 0.3)',
-        'button-hover': '0 8px 20px rgba(74, 144, 226, 0.4)',
+        'button': '0 4px 12px rgba(147, 51, 234, 0.3)',
+        'button-hover': '0 8px 20px rgba(147, 51, 234, 0.4)',
         'card': '0 8px 24px rgba(0, 0, 0, 0.12)',
         'card-hover': '0 16px 40px rgba(0, 0, 0, 0.2)',
         'modal': '0 20px 60px rgba(0, 0, 0, 0.3)',

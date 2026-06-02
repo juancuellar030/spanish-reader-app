@@ -31,7 +31,7 @@ export const ReaderText = ({
 
                 if (mode === 'karaoke') {
                     if (isActive) {
-                        colorClass = 'text-ocean-blue font-bold shadow-highlight rounded px-1 bg-yellow-100';
+                        colorClass = 'text-brand font-bold shadow-highlight rounded px-1 bg-purple-100';
                         scale = 1.1;
                     } else if (isPast) {
                         colorClass = 'text-gray-400';

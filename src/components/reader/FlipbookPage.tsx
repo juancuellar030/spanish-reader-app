@@ -55,7 +55,7 @@ export const FlipbookPage = React.memo(forwardRef<HTMLDivElement, FlipbookPagePr
                         if (isAudioHighlighted) {
                             spanClass += 'text-black bg-yellow-200';
                         } else if (isHovered) {
-                            spanClass += 'text-black bg-blue-100';
+                            spanClass += 'text-black bg-purple-100';
                         } else {
                             spanClass += 'text-charcoal';
                         }

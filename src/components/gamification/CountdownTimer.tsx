@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Clock } from 'lucide-react';
+import { BRAND_PRIMARY, ICON_BRAND, brandIconStyle } from '../../constants/brandColors';
 
 export const CountdownTimer = () => {
     const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number }>({ days: 0, hours: 0 });
@@ -31,9 +32,12 @@ export const CountdownTimer = () => {
 
     return (
         <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-100">
-            <Clock size={18} className="text-ocean-blue" />
+            <Clock size={18} className={ICON_BRAND} style={brandIconStyle} />
             <span className="text-sm font-semibold text-charcoal">
-                Termina en: <span className="text-ocean-blue font-bold">{timeLeft.days}d {timeLeft.hours}h</span>
+                Termina en:{' '}
+                <span className="font-bold brand-text" style={{ color: BRAND_PRIMARY }}>
+                    {timeLeft.days}d {timeLeft.hours}h
+                </span>
             </span>
         </div>
     );

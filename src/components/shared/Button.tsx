@@ -1,5 +1,6 @@
 import { motion, type HTMLMotionProps } from 'framer-motion';
 import type { ReactNode } from 'react';
+import { BRAND_FILL_CLASS, brandInlineBg } from '../../constants/brandColors';
 
 interface ButtonProps extends HTMLMotionProps<'button'> {
     children: ReactNode;
@@ -20,7 +21,7 @@ export const Button = ({
     const baseStyles = 'font-poppins font-semibold rounded-xl transition-all duration-300 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50';
 
     const variantStyles = {
-        primary: 'bg-medium-slate-blue hover:bg-gradient-to-r hover:from-medium-slate-blue hover:to-deep-purple text-white shadow-button hover:shadow-button-hover',
+        primary: `${BRAND_FILL_CLASS} text-white shadow-button hover:shadow-button-hover hover:opacity-90`,
         secondary: 'border-2 border-medium-slate-blue text-medium-slate-blue bg-transparent hover:bg-gradient-to-r hover:from-medium-slate-blue hover:to-deep-purple hover:text-white hover:border-transparent',
         icon: 'bg-white shadow-md hover:shadow-lg rounded-full flex items-center justify-center',
     };
@@ -36,6 +37,7 @@ export const Button = ({
     return (
         <motion.button
             className={combinedClassName}
+            style={variant === 'primary' ? brandInlineBg : undefined}
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}

@@ -10,9 +10,11 @@
 /* CSS Variables */
 :root {
   /* Primary Colors */
-  --ocean-blue: #4A90E2;
-  --medium-slate-blue: #7B68EE;
-  --deep-purple: #5B4FDB;
+  --ocean-blue: #9333EA;
+  --brand: #9333EA;
+  --medium-slate-blue: #9333EA;
+  --deep-purple: #7E22CE;
+  --brand-muted: #F3E8FF;
 
   /* Secondary Colors */
   --sunshine-yellow: #FFD93D;
@@ -89,9 +91,23 @@
     }
   }
 
+  /* Brand purple — hardcoded so color survives stale Tailwind bundles */
+  .brand-fill {
+    background-color: rgb(147, 51, 234) !important;
+  }
+
+  .brand-text {
+    color: rgb(147, 51, 234) !important;
+  }
+
+  .brand-text svg {
+    color: rgb(147, 51, 234) !important;
+    stroke: rgb(147, 51, 234) !important;
+  }
+
   /* Button Focus States */
   .btn:focus-visible {
-    outline: 3px solid var(--ocean-blue);
+    outline: 3px solid var(--brand);
     outline-offset: 2px;
   }
 
@@ -129,7 +145,7 @@
 
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--ocean-blue);
+    background: var(--brand);
   }
 
   /* Custom Animations - Migrated to Framer Motion components */

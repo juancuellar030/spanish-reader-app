@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { createPortal } from 'react-dom';
+import { BRAND_PRIMARY, STAT_ICON_TILE, STAT_CARD, ICON_BRAND, brandIconStyle } from '../../constants/brandColors';
+import { studentMatchesSearch } from '../../utils/studentSearch';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUp, ArrowDown, Search, X, BookOpen, Star, CheckCircle, Clock, Trash2, AlertTriangle, Eye, EyeOff, KeyRound } from 'lucide-react';
+import { ArrowUp, ArrowDown, Search, X, BookOpen, Star, CheckCircle, Clock, AlertTriangle, Eye, EyeOff, KeyRound, Settings, RotateCcw, UserX } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faHourglassHalf, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
 import type { Student } from '../../types';
 import { getStudentProgress, resetStudentData, deleteStudent } from '../../services/firestore';
 import type { Progress } from '../../types';
@@ -26,11 +29,21 @@ export const StudentTable = ({ students }: StudentTableProps) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [gradeFilter, setGradeFilter] = useState<number | 'all'>('all');
     const [showPassword, setShowPassword] = useState(false);
+
     const [sortConfig, setSortConfig] = useState<{
         key: 'name' | 'grade';
         direction: 'asc' | 'desc';
     }>({ key: 'name', direction: 'asc' });
     const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+
+    useEffect(() => {
+        if (!selectedStudent) return;
+        const prev = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = prev;
+        };
+    }, [selectedStudent]);
     const [studentProgress, setStudentProgress] = useState<Progress[]>([]);
     const [loadingProgress, setLoadingProgress] = useState(false);
 
@@ -39,12 +52,14 @@ export const StudentTable = ({ students }: StudentTableProps) => {
     const [isResetting, setIsResetting] = useState(false);
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
+    const [showSettings, setShowSettings] = useState(false);
 
     // Filter and Sort Logic
     const filteredAndSortedStudents = [...students]
         .filter((student) => {
-            const matchesName = student.name.toLowerCase().includes(searchTerm.toLowerCase());
-            const matchesGrade = gradeFilter === 'all' || student.grade === gradeFilter;
+            const matchesName = studentMatchesSearch(student.name ?? '', searchTerm);
+            const studentGrade = Number(student.grade);
+            const matchesGrade = gradeFilter === 'all' || studentGrade === gradeFilter;
             return matchesName && matchesGrade;
         })
         .sort((a, b) => {
@@ -70,6 +85,7 @@ export const StudentTable = ({ students }: StudentTableProps) => {
     const handleViewDetails = async (student: Student) => {
         setSelectedStudent(student);
         setShowPassword(false);
+        setShowSettings(false);
         setLoadingProgress(true);
         setShowResetConfirm(false);
         try {
@@ -89,6 +105,7 @@ export const StudentTable = ({ students }: StudentTableProps) => {
         setShowResetConfirm(false);
         setShowDeleteConfirm(false);
         setShowPassword(false);
+        setShowSettings(false);
     };
 
     const handleResetData = async () => {
@@ -135,25 +152,37 @@ export const StudentTable = ({ students }: StudentTableProps) => {
         if (status === 'completed') return {
             text: 'Completado',
             icon: faCheck,
-            color: 'bg-green-100 text-green-700'
+            useLucideStar: false,
+            color: 'bg-green-100 text-green-700',
+            textColor: undefined as string | undefined,
         };
         if (status === 'in-progress') return {
             text: 'En progreso',
             icon: faHourglassHalf,
-            color: 'bg-yellow-100 text-yellow-700'
+            useLucideStar: false,
+            color: 'bg-yellow-100 text-yellow-700',
+            textColor: undefined as string | undefined,
         };
         if (status === 'new') return {
             text: 'Nuevo',
-            icon: faStar,
-            color: 'bg-blue-100 text-blue-700'
+            icon: null,
+            useLucideStar: true,
+            color: 'bg-purple-100',
+            textColor: BRAND_PRIMARY,
         };
-        return { text: status, icon: null, color: 'bg-gray-100 text-gray-600' };
+        return { text: status, icon: null, useLucideStar: false, color: 'bg-gray-100 text-gray-600', textColor: undefined };
     };
 
-    const getStoryTitle = (storyId: string) => {
-        const story = (storiesData as any[]).find(s => s.id === storyId);
-        return story ? story.title : storyId;
-    };
+    const assignedStoryCards = useMemo(() => {
+        if (!selectedStudent) return [];
+        const stories = storiesData as { id: string; title: string; coverImage: string; type?: string }[];
+        return (selectedStudent.assignedStories ?? []).map((storyId) => {
+            const story = stories.find((s) => s.id === storyId);
+            const progress = studentProgress.find((p) => p.storyId === storyId);
+            const status = progress?.status ?? (progress?.completed ? 'completed' : progress ? 'in-progress' : 'new');
+            return { storyId, story, progress, status };
+        });
+    }, [selectedStudent, studentProgress]);
 
     return (
         <>
@@ -167,7 +196,7 @@ export const StudentTable = ({ students }: StudentTableProps) => {
                             placeholder="Buscar por nombre..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-ocean-blue/20 focus:border-ocean-blue transition-all"
+                            className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all"
                         />
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -183,9 +212,10 @@ export const StudentTable = ({ students }: StudentTableProps) => {
                                     type="button"
                                     onClick={() => setGradeFilter(option.value)}
                                     className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all border ${isActive
-                                        ? 'bg-ocean-blue text-white border-ocean-blue shadow-sm'
+                                        ? 'bg-brand text-white border-brand shadow-sm'
                                         : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100 hover:border-gray-300'
                                         }`}
+                                    style={isActive ? { backgroundColor: BRAND_PRIMARY, borderColor: BRAND_PRIMARY } : undefined}
                                 >
                                     {option.label}
                                     <span className={`ml-1.5 text-xs ${isActive ? 'text-white/80' : 'text-gray-400'}`}>
@@ -227,7 +257,10 @@ export const StudentTable = ({ students }: StudentTableProps) => {
                                 >
                                     <td className="px-6 py-4 font-medium text-charcoal">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-8 h-8 rounded-full bg-ocean-blue text-white flex items-center justify-center text-xs font-bold">
+                                            <div
+                                                className="w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center text-xs font-bold"
+                                                style={{ backgroundColor: BRAND_PRIMARY }}
+                                            >
                                                 {student.name.charAt(0)}
                                             </div>
                                             {student.name}
@@ -239,12 +272,12 @@ export const StudentTable = ({ students }: StudentTableProps) => {
                                         </span>
                                     </td>
                                     <td className="px-6 py-4 text-gray-600">
-                                        {student.assignedStories.length} historias
+                                        {(student.assignedStories?.length ?? 0)} historias
                                     </td>
                                     <td className="px-6 py-4 text-right">
                                         <button
                                             onClick={() => handleViewDetails(student)}
-                                            className="text-sm font-medium text-ocean-blue hover:underline"
+                                            className="text-sm font-medium text-brand hover:underline"
                                         >
                                             Ver detalles
                                         </button>
@@ -260,227 +293,317 @@ export const StudentTable = ({ students }: StudentTableProps) => {
                 )}
             </div>
 
-            {/* Student Detail Modal */}
-            <AnimatePresence>
-                {selectedStudent && (
-                    <motion.div
-                        key="detail-overlay"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-                        onClick={handleCloseDetails}
-                    >
+            {/* Student Detail Modal — portaled so overlay covers full viewport */}
+            {typeof document !== 'undefined' && createPortal(
+                <AnimatePresence>
+                    {selectedStudent && (
                         <motion.div
-                            initial={{ scale: 0.9, y: 20 }}
-                            animate={{ scale: 1, y: 0 }}
-                            exit={{ scale: 0.9, y: 20 }}
-                            className="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative flex flex-col max-h-[90vh]"
-                            onClick={(e) => e.stopPropagation()}
+                            key="detail-overlay"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed top-0 left-0 z-[200] flex min-h-[100dvh] h-[100dvh] w-screen items-center justify-center overflow-y-auto bg-black/50 p-4 backdrop-blur-sm sm:p-6"
+                            onClick={handleCloseDetails}
                         >
-                            {/* Close */}
-                            <button onClick={handleCloseDetails} className="absolute top-6 right-6 text-gray-400 hover:text-gray-700 transition-colors">
-                                <X size={24} />
-                            </button>
-
-                            {/* Header */}
-                            <div className="flex items-center justify-between mb-6 pr-8">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-14 h-14 rounded-full bg-ocean-blue text-white flex items-center justify-center text-xl font-bold shrink-0">
-                                        {selectedStudent.name.charAt(0)}
-                                    </div>
-                                    <div>
-                                        <h2 className="text-2xl font-bold text-charcoal leading-tight">{selectedStudent.name}</h2>
-                                        <p className="text-gray-500">{selectedStudent.grade === 0 ? 'Prueba' : `Grado ${selectedStudent.grade}`} · {selectedStudent.points || 0} puntos</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2 shrink-0">
-                                    <button
-                                        onClick={() => { setShowResetConfirm(true); setShowDeleteConfirm(false); }}
-                                        className="flex items-center gap-2 px-3 py-1.5 text-sm text-orange-500 hover:bg-orange-50 rounded-lg transition-colors font-medium border border-transparent hover:border-orange-100"
-                                        title="Borrar progreso y puntos pero mantener el estudiante"
-                                    >
-                                        <Trash2 size={16} />
-                                        <span className="hidden sm:inline">Resetear</span>
-                                    </button>
-                                    <button
-                                        onClick={() => { setShowDeleteConfirm(true); setShowResetConfirm(false); }}
-                                        className="flex items-center gap-2 px-3 py-1.5 text-sm text-red-500 hover:bg-red-50 rounded-lg transition-colors font-medium border border-transparent hover:border-red-100"
-                                        title="Eliminar estudiante y todos sus datos"
-                                    >
-                                        <X size={16} className="bg-red-500 text-white rounded-full p-0.5" />
-                                        <span className="hidden sm:inline">Eliminar</span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Reset & Delete Confirmation Inline Banners */}
-                            <AnimatePresence>
-                                {showResetConfirm && (
-                                    <motion.div
-                                        key="reset-confirm"
-                                        initial={{ opacity: 0, height: 0, marginBottom: 0 }}
-                                        animate={{ opacity: 1, height: 'auto', marginBottom: 24 }}
-                                        exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-                                        className="overflow-hidden"
-                                    >
-                                        <div className="bg-orange-50 border border-orange-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                                            <div className="flex items-start gap-3 text-orange-800">
-                                                <AlertTriangle size={20} className="shrink-0 mt-0.5" />
-                                                <div className="text-sm">
-                                                    <p className="font-bold">¿Resetear datos del estudiante?</p>
-                                                    <p className="opacity-90">Esto reiniciará los puntos a 0 y borrará el historial de lectura.</p>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-center gap-2 shrink-0">
-                                                <button
-                                                    onClick={() => setShowResetConfirm(false)}
-                                                    disabled={isResetting}
-                                                    className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-200 rounded-lg transition-colors"
-                                                >
-                                                    Cancelar
-                                                </button>
-                                                <button
-                                                    onClick={handleResetData}
-                                                    disabled={isResetting}
-                                                    className="px-4 py-1.5 text-sm font-bold bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors shadow-sm disabled:opacity-50 flex items-center gap-2"
-                                                >
-                                                    {isResetting ? 'Borrando...' : 'Sí, resetear'}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                )}
-                                {showDeleteConfirm && (
-                                    <motion.div
-                                        key="delete-confirm"
-                                        initial={{ opacity: 0, height: 0, marginBottom: 0 }}
-                                        animate={{ opacity: 1, height: 'auto', marginBottom: 24 }}
-                                        exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-                                        className="overflow-hidden"
-                                    >
-                                        <div className="bg-red-50 border border-red-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                                            <div className="flex items-start gap-3 text-red-800">
-                                                <AlertTriangle size={20} className="shrink-0 mt-0.5" />
-                                                <div className="text-sm">
-                                                    <p className="font-bold">¿Eliminar estudiante por completo?</p>
-                                                    <p className="opacity-90">Esta acción borrará todos sus datos y removerá al estudiante de la lista. Es irreversible.</p>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-center gap-2 shrink-0">
-                                                <button
-                                                    onClick={() => setShowDeleteConfirm(false)}
-                                                    disabled={isDeleting}
-                                                    className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-200 rounded-lg transition-colors"
-                                                >
-                                                    Cancelar
-                                                </button>
-                                                <button
-                                                    onClick={handleDeleteStudent}
-                                                    disabled={isDeleting}
-                                                    className="px-4 py-1.5 text-sm font-bold bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors shadow-sm disabled:opacity-50 flex items-center gap-2"
-                                                >
-                                                    {isDeleting ? 'Eliminando...' : 'Sí, eliminar'}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-
-                            {/* Account password */}
-                            <div className="mb-6 shrink-0 rounded-2xl border border-gray-200 bg-gray-50/80 p-4">
-                                <div className="flex items-center justify-between gap-3 mb-2">
-                                    <div className="flex items-center gap-2 text-charcoal font-semibold text-sm">
-                                        <KeyRound size={18} className="text-ocean-blue" />
-                                        Contraseña de acceso
-                                    </div>
+                            <motion.div
+                                initial={{ scale: 0.9, y: 20 }}
+                                animate={{ scale: 1, y: 0 }}
+                                exit={{ scale: 0.9, y: 20 }}
+                                className="relative my-auto flex w-full max-w-xl flex-col rounded-3xl bg-white p-6 shadow-2xl sm:max-w-2xl sm:p-8 lg:max-w-3xl max-h-[min(90dvh,900px)]"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                            {/* Header actions */}
+                            <div className="absolute top-5 right-5 z-40 flex items-center gap-2">
+                                <div className="relative">
                                     <button
                                         type="button"
-                                        onClick={() => setShowPassword((v) => !v)}
-                                        className="flex items-center gap-1.5 text-sm font-medium text-ocean-blue hover:text-ocean-blue/80 transition-colors"
+                                        onClick={() => {
+                                            setShowSettings((v) => !v);
+                                            setShowResetConfirm(false);
+                                            setShowDeleteConfirm(false);
+                                        }}
+                                        className={`p-2 rounded-xl transition-colors ${showSettings ? 'bg-purple-100' : 'text-gray-400 hover:bg-gray-100 hover:text-charcoal'}`}
+                                        style={showSettings ? { color: BRAND_PRIMARY } : undefined}
+                                        aria-label="Configuración del estudiante"
+                                        aria-expanded={showSettings}
                                     >
-                                        {showPassword ? (
+                                        <Settings size={22} strokeWidth={2} />
+                                    </button>
+
+                                    {/* Settings dropdown menu */}
+                                    <AnimatePresence>
+                                        {showSettings && (
                                             <>
-                                                <EyeOff size={16} />
-                                                Ocultar
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Eye size={16} />
-                                                Mostrar
+                                                <div
+                                                    className="fixed inset-0 z-0"
+                                                    onClick={() => {
+                                                        setShowSettings(false);
+                                                        setShowResetConfirm(false);
+                                                        setShowDeleteConfirm(false);
+                                                    }}
+                                                    aria-hidden
+                                                />
+                                                <motion.div
+                                                    key="settings-menu"
+                                                    initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                    exit={{ opacity: 0, y: -8, scale: 0.97 }}
+                                                    transition={{ duration: 0.15 }}
+                                                    className="absolute right-0 top-full mt-2 z-10 w-[20rem] sm:w-[24rem] max-h-[70vh] overflow-y-auto custom-scrollbar rounded-2xl border border-gray-100 bg-white shadow-2xl p-4 origin-top-right"
+                                                >
+                                                    <h3 className="font-semibold text-charcoal flex items-center gap-2 text-sm mb-4">
+                                                        <Settings size={18} className={ICON_BRAND} style={brandIconStyle} />
+                                                        Configuración del estudiante
+                                                    </h3>
+
+                                                    {/* Password */}
+                                                    <div className={`p-4 mb-4 ${STAT_CARD}`}>
+                                                        <div className="flex items-center justify-between gap-3 mb-2">
+                                                            <div className="flex items-center gap-2 text-charcoal font-semibold text-sm">
+                                                                <KeyRound size={18} className={ICON_BRAND} style={brandIconStyle} />
+                                                                Contraseña de acceso
+                                                            </div>
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => setShowPassword((v) => !v)}
+                                                                className="flex items-center gap-1.5 text-sm font-medium brand-text transition-colors"
+                                                                style={{ color: BRAND_PRIMARY }}
+                                                            >
+                                                                {showPassword ? (
+                                                                    <>
+                                                                        <EyeOff size={16} />
+                                                                        Ocultar
+                                                                    </>
+                                                                ) : (
+                                                                    <>
+                                                                        <Eye size={16} />
+                                                                        Mostrar
+                                                                    </>
+                                                                )}
+                                                            </button>
+                                                        </div>
+                                                        <p
+                                                            className={`font-mono text-lg tracking-widest rounded-xl px-4 py-3 border transition-all ${showPassword
+                                                                ? 'bg-white border-brand/30 text-charcoal'
+                                                                : 'bg-gray-100 border-gray-200 text-gray-500 select-none'
+                                                                }`}
+                                                            aria-label={showPassword ? `Contraseña: ${selectedStudent.password}` : 'Contraseña oculta'}
+                                                        >
+                                                            {showPassword
+                                                                ? selectedStudent.password
+                                                                : '•'.repeat(Math.max(selectedStudent.password?.length ?? 0, 6))}
+                                                        </p>
+                                                        <p className="text-xs text-gray-500 mt-2">
+                                                            El estudiante usa esta contraseña al iniciar sesión en la app.
+                                                        </p>
+                                                    </div>
+
+                                                    {/* Account actions */}
+                                                    {!showResetConfirm && !showDeleteConfirm && (
+                                                        <div className="flex flex-col gap-3">
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => { setShowResetConfirm(true); setShowDeleteConfirm(false); }}
+                                                                className="flex items-start gap-3 w-full text-left px-4 py-3 rounded-xl border border-orange-200 bg-orange-50/80 hover:bg-orange-50 transition-colors"
+                                                            >
+                                                                <RotateCcw size={20} className="text-orange-500 shrink-0 mt-0.5" />
+                                                                <div>
+                                                                    <p className="font-semibold text-orange-800 text-sm">Reiniciar progreso y puntos</p>
+                                                                    <p className="text-xs text-orange-700/80 mt-0.5">Pone los puntos en 0 y borra el historial de lectura. El estudiante permanece en la lista.</p>
+                                                                </div>
+                                                            </button>
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => { setShowDeleteConfirm(true); setShowResetConfirm(false); }}
+                                                                className="flex items-start gap-3 w-full text-left px-4 py-3 rounded-xl border border-red-200 bg-red-50/80 hover:bg-red-50 transition-colors"
+                                                            >
+                                                                <UserX size={20} className="text-red-500 shrink-0 mt-0.5" />
+                                                                <div>
+                                                                    <p className="font-semibold text-red-800 text-sm">Eliminar estudiante de la lista</p>
+                                                                    <p className="text-xs text-red-700/80 mt-0.5">Borra todos sus datos y lo quita del panel. Esta acción no se puede deshacer.</p>
+                                                                </div>
+                                                            </button>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Reset confirmation */}
+                                                    {showResetConfirm && (
+                                                        <div className="bg-orange-50 border border-orange-200 rounded-2xl p-4">
+                                                            <div className="flex items-start gap-3 text-orange-800 mb-3">
+                                                                <AlertTriangle size={20} className="shrink-0 mt-0.5" />
+                                                                <div className="text-sm">
+                                                                    <p className="font-bold">¿Resetear datos del estudiante?</p>
+                                                                    <p className="opacity-90">Esto reiniciará los puntos a 0 y borrará el historial de lectura.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="flex items-center justify-end gap-2">
+                                                                <button
+                                                                    onClick={() => setShowResetConfirm(false)}
+                                                                    disabled={isResetting}
+                                                                    className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-200 rounded-lg transition-colors"
+                                                                >
+                                                                    Cancelar
+                                                                </button>
+                                                                <button
+                                                                    onClick={handleResetData}
+                                                                    disabled={isResetting}
+                                                                    className="px-4 py-1.5 text-sm font-bold bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors shadow-sm disabled:opacity-50"
+                                                                >
+                                                                    {isResetting ? 'Borrando...' : 'Sí, resetear'}
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Delete confirmation */}
+                                                    {showDeleteConfirm && (
+                                                        <div className="bg-red-50 border border-red-200 rounded-2xl p-4">
+                                                            <div className="flex items-start gap-3 text-red-800 mb-3">
+                                                                <AlertTriangle size={20} className="shrink-0 mt-0.5" />
+                                                                <div className="text-sm">
+                                                                    <p className="font-bold">¿Eliminar estudiante por completo?</p>
+                                                                    <p className="opacity-90">Esta acción borrará todos sus datos y removerá al estudiante de la lista. Es irreversible.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="flex items-center justify-end gap-2">
+                                                                <button
+                                                                    onClick={() => setShowDeleteConfirm(false)}
+                                                                    disabled={isDeleting}
+                                                                    className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-200 rounded-lg transition-colors"
+                                                                >
+                                                                    Cancelar
+                                                                </button>
+                                                                <button
+                                                                    onClick={handleDeleteStudent}
+                                                                    disabled={isDeleting}
+                                                                    className="px-4 py-1.5 text-sm font-bold bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors shadow-sm disabled:opacity-50"
+                                                                >
+                                                                    {isDeleting ? 'Eliminando...' : 'Sí, eliminar'}
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </motion.div>
                                             </>
                                         )}
-                                    </button>
+                                    </AnimatePresence>
                                 </div>
-                                <p
-                                    className={`font-mono text-lg tracking-widest rounded-xl px-4 py-3 border transition-all ${showPassword
-                                        ? 'bg-white border-ocean-blue/30 text-charcoal'
-                                        : 'bg-gray-100 border-gray-200 text-transparent select-none'
-                                        }`}
-                                    aria-label={showPassword ? `Contraseña: ${selectedStudent.password}` : 'Contraseña oculta'}
+                                <button
+                                    type="button"
+                                    onClick={handleCloseDetails}
+                                    className="p-2 rounded-xl text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition-colors"
+                                    aria-label="Cerrar"
                                 >
-                                    {showPassword
-                                        ? selectedStudent.password
-                                        : '••••••'}
-                                </p>
-                                <p className="text-xs text-gray-500 mt-2">
-                                    El estudiante usa esta contraseña al iniciar sesión en la app.
-                                </p>
+                                    <X size={22} />
+                                </button>
+                            </div>
+
+                            {/* Header */}
+                            <div className="mb-6 flex items-center gap-4 pr-24">
+                                <div
+                                    className="w-14 h-14 shrink-0 rounded-full bg-brand text-white flex items-center justify-center text-xl font-bold"
+                                    style={{ backgroundColor: BRAND_PRIMARY }}
+                                >
+                                    {selectedStudent.name.charAt(0)}
+                                </div>
+                                <div className="min-w-0">
+                                    <h2 className="text-xl font-bold text-charcoal leading-snug sm:text-2xl lg:whitespace-nowrap">{selectedStudent.name}</h2>
+                                    <p className="text-gray-500">{selectedStudent.grade === 0 ? 'Prueba' : `Grado ${selectedStudent.grade}`} · {selectedStudent.points || 0} puntos</p>
+                                </div>
                             </div>
 
                             {/* Stats row */}
                             <div className="grid grid-cols-3 gap-4 mb-6 shrink-0">
-                                <div className="bg-green-50 rounded-2xl p-4 text-center">
-                                    <CheckCircle size={20} className="mx-auto text-green-500 mb-1" />
-                                    <p className="text-2xl font-bold text-green-700">{studentProgress.filter(p => p.completed).length}</p>
-                                    <p className="text-xs text-green-600">Completadas</p>
-                                </div>
-                                <div className="bg-yellow-50 rounded-2xl p-4 text-center">
-                                    <Clock size={20} className="mx-auto text-yellow-500 mb-1" />
-                                    <p className="text-2xl font-bold text-yellow-700">{studentProgress.filter(p => p.status === 'in-progress').length}</p>
-                                    <p className="text-xs text-yellow-600">En progreso</p>
-                                </div>
-                                <div className="bg-purple-50 rounded-2xl p-4 text-center">
-                                    <Star size={20} className="mx-auto text-purple-500 mb-1" />
-                                    <p className="text-2xl font-bold text-purple-700">{selectedStudent.points || 0}</p>
-                                    <p className="text-xs text-purple-600">Puntos</p>
-                                </div>
+                                {[
+                                    { icon: CheckCircle, value: studentProgress.filter(p => p.completed).length, label: 'Completadas' },
+                                    { icon: Clock, value: studentProgress.filter(p => p.status === 'in-progress').length, label: 'En progreso' },
+                                    { icon: Star, value: selectedStudent.points || 0, label: 'Puntos' },
+                                ].map((stat) => (
+                                    <div key={stat.label} className={`p-4 text-center ${STAT_CARD}`}>
+                                        <stat.icon size={22} className={`mx-auto mb-2 ${ICON_BRAND}`} style={brandIconStyle} strokeWidth={2} />
+                                        <p className="text-2xl font-bold text-charcoal">{stat.value}</p>
+                                        <p className="text-xs text-gray-500">{stat.label}</p>
+                                    </div>
+                                ))}
                             </div>
 
-                            {/* Progress List */}
+                            {/* Assigned stories */}
                             <h3 className="font-semibold text-charcoal mb-3 flex items-center gap-2 shrink-0">
-                                <BookOpen size={18} /> Actividad de Lectura
+                                <span className={`inline-flex items-center justify-center w-8 h-8 rounded-lg mr-1 ${STAT_ICON_TILE}`}>
+                                    <BookOpen size={16} className={ICON_BRAND} style={brandIconStyle} strokeWidth={2} />
+                                </span>
+                                Actividad de Lectura
+                                <span className="text-xs font-normal text-gray-400 ml-1">
+                                    ({assignedStoryCards.length} {assignedStoryCards.length === 1 ? 'historia' : 'historias'})
+                                </span>
                             </h3>
                             {loadingProgress ? (
-                                <p className="text-gray-400 text-center py-4">Cargando...</p>
-                            ) : studentProgress.length === 0 ? (
-                                <p className="text-gray-400 text-center py-4">Sin actividad registrada aún</p>
+                                <p className="text-gray-400 text-center py-8">Cargando historias...</p>
+                            ) : assignedStoryCards.length === 0 ? (
+                                <p className="text-gray-400 text-center py-8 rounded-2xl bg-gray-50 border border-gray-100">
+                                    No hay historias asignadas a este estudiante.
+                                </p>
                             ) : (
-                                <div className="space-y-2 overflow-y-auto pr-1 custom-scrollbar min-h-0 flex-1">
-                                    {studentProgress.map((p) => {
-                                        const st = statusLabel(p.status || 'new');
+                                <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2.5 overflow-y-auto pr-1 custom-scrollbar min-h-0 flex-1 pb-2">
+                                    {assignedStoryCards.map(({ storyId, story, progress, status }) => {
+                                        const st = statusLabel(status);
                                         return (
-                                            <div key={p.storyId} className="flex items-center justify-between px-4 py-3 rounded-xl bg-gray-50 border border-gray-100">
-                                                <span className="text-sm text-charcoal font-medium truncate max-w-[60%]">
-                                                    {getStoryTitle(p.storyId)}
-                                                </span>
-                                                <div className="flex items-center gap-3">
-                                                    <span className={`text-xs px-2.5 py-1 rounded-full font-semibold flex items-center gap-1.5 ${st.color}`}>
-                                                        {st.icon && <FontAwesomeIcon icon={st.icon} className="text-[10px]" />}
-                                                        {st.text}
-                                                    </span>
-                                                    {p.pointsEarned ? <span className="text-xs text-yellow-600 font-bold bg-yellow-50 px-2 py-1 rounded-full border border-yellow-100">+{p.pointsEarned}pts</span> : null}
+                                            <div
+                                                key={storyId}
+                                                className="rounded-lg border border-gray-100 bg-white shadow-sm overflow-hidden flex flex-col"
+                                            >
+                                                <div className="aspect-[3/4] relative bg-gray-100">
+                                                    {story?.coverImage ? (
+                                                        <img
+                                                            src={story.coverImage}
+                                                            alt={story.title}
+                                                            className="w-full h-full object-cover"
+                                                            loading="lazy"
+                                                        />
+                                                    ) : (
+                                                        <div className="w-full h-full flex items-center justify-center text-gray-300">
+                                                            <BookOpen size={24} />
+                                                        </div>
+                                                    )}
+                                                    <div className="absolute top-1 right-1">
+                                                        <span
+                                                            className={`text-[9px] px-1.5 py-0.5 rounded-full font-semibold flex items-center gap-0.5 shadow-sm ${st.color}`}
+                                                            style={st.textColor ? { color: st.textColor } : undefined}
+                                                        >
+                                                            {st.useLucideStar && (
+                                                                <Star
+                                                                    size={9}
+                                                                    fill={BRAND_PRIMARY}
+                                                                    stroke={BRAND_PRIMARY}
+                                                                    strokeWidth={2}
+                                                                />
+                                                            )}
+                                                            {st.icon && (
+                                                                <FontAwesomeIcon icon={st.icon} className="text-[8px]" />
+                                                            )}
+                                                            {st.text}
+                                                        </span>
+                                                    </div>
+                                                    {progress?.pointsEarned ? (
+                                                        <span className="absolute bottom-1 left-1 text-[9px] text-yellow-700 font-bold bg-yellow-50/95 px-1 py-0.5 rounded-full border border-yellow-100">
+                                                            +{progress.pointsEarned}
+                                                        </span>
+                                                    ) : null}
                                                 </div>
+                                                <p className="px-1.5 py-1.5 text-[11px] font-semibold text-charcoal leading-tight line-clamp-2">
+                                                    {story?.title ?? storyId}
+                                                </p>
                                             </div>
                                         );
                                     })}
                                 </div>
                             )}
+                            </motion.div>
                         </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
         </>
     );
 };

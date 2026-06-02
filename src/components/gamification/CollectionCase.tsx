@@ -2,6 +2,9 @@ import { motion } from 'framer-motion';
 import storiesData from '../../data/stories.json';
 import { Package } from 'lucide-react';
 import { getCollectibleGlowTheme } from '../../utils/collectibleGlow';
+import { ICON_BRAND, brandIconStyle } from '../../constants/brandColors';
+
+const COLLECTIBLE_IMAGE_HEIGHT = 'h-28';
 
 interface CollectionCaseProps {
     earnedCollectibles: string[];   // array of storyIds where collectible was earned
@@ -30,7 +33,7 @@ export const CollectionCase = ({ earnedCollectibles, assignedStories }: Collecti
     return (
         <div className="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm">
             <div className="flex items-center gap-2 mb-5">
-                <Package size={22} className="text-purple-600" />
+                <Package size={22} className={ICON_BRAND} style={brandIconStyle} />
                 <h2 className="text-2xl font-bold text-charcoal">Mi Colección ✨</h2>
             </div>
 
@@ -50,38 +53,33 @@ export const CollectionCase = ({ earnedCollectibles, assignedStories }: Collecti
                             variants={item}
                             className="group relative flex flex-col items-center w-full"
                         >
-                            {isEarned && (
-                                <motion.div
-                                    className="absolute inset-0 rounded-2xl pointer-events-none -top-1"
-                                    style={{ background: glow.ringGradient }}
-                                    animate={{ opacity: [0.6, 1, 0.6] }}
-                                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                                />
-                            )}
+                            <div className={`relative w-full ${COLLECTIBLE_IMAGE_HEIGHT} flex items-center justify-center`}>
+                                {isEarned && (
+                                    <motion.div
+                                        className="absolute inset-0 pointer-events-none"
+                                        style={{ background: glow.ringGradient }}
+                                        animate={{ opacity: [0.6, 1, 0.6] }}
+                                        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                                    />
+                                )}
 
-                            <div
-                                className={`relative w-full aspect-square rounded-xl flex items-center justify-center p-3 transition-transform group-hover:scale-105 border-2 shadow-md ${isEarned
-                                    ? glow.collectionFrameClass
-                                    : 'bg-gray-100 border-dashed border-gray-300'
-                                    }`}
-                            >
                                 <img
                                     src={story.collectibleImage}
                                     alt={story.collectibleName || story.title}
-                                    className={`w-full h-full object-contain transition-all duration-300 ${isEarned ? '' : 'grayscale opacity-30'
+                                    className={`max-h-28 max-w-full w-auto object-contain transition-all duration-300 group-hover:scale-105 ${isEarned ? '' : 'grayscale opacity-35'
                                         }`}
                                     style={isEarned ? { filter: glow.imageFilter } : undefined}
                                 />
 
                                 {!isEarned && (
-                                    <div className="absolute inset-0 flex items-center justify-center rounded-xl">
-                                        <span className="text-2xl opacity-50">🔒</span>
+                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <span className="text-2xl opacity-60">🔒</span>
                                     </div>
                                 )}
 
                                 {isEarned && (
                                     <motion.div
-                                        className={`absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs shadow ${glow.collectionBadgeClass}`}
+                                        className={`absolute top-0 right-0 w-6 h-6 rounded-full flex items-center justify-center text-xs shadow ${glow.collectionBadgeClass}`}
                                         animate={{ rotate: [0, 15, -15, 0] }}
                                         transition={{ duration: 2.5, repeat: Infinity }}
                                     >

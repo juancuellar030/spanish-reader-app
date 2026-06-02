@@ -5,6 +5,8 @@ import { getAllStudents } from '../../services/firestore';
 import { BackgroundLayer } from '../ui/BackgroundLayer';
 import type { BackgroundTheme } from '../ui/BackgroundLayer';
 import type { Student } from '../../types';
+import { studentMatchesSearch } from '../../utils/studentSearch';
+import { BRAND_FILL_CLASS, BRAND_TEXT_CLASS, brandInlineBg, brandIconStyle } from '../../constants/brandColors';
 
 interface StudentLoginProps {
     onLogin: (student: Student, theme: BackgroundTheme) => void;
@@ -41,9 +43,41 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
             return [];
         }
         return students.filter((student) =>
-            student.name.toLowerCase().includes(searchTerm.toLowerCase())
+            studentMatchesSearch(student.name ?? '', searchTerm)
         );
     }, [searchTerm, students]);
+
+    // #region agent log
+    useEffect(() => {
+        const probe = () => {
+            const gradeEl = document.querySelector('[data-debug-ocean]') as HTMLElement | null;
+            const temasEl = document.querySelector('[data-debug-temas]') as HTMLElement | null;
+            const btnEl = document.querySelector('[data-debug-btn]') as HTMLElement | null;
+            const payload = {
+                sessionId: 'cbfc31',
+                runId: 'post-fix-v2',
+                location: 'StudentLogin.tsx:probe',
+                message: 'computed CSS probe',
+                data: {
+                    gradeCircle_bgColor: gradeEl ? window.getComputedStyle(gradeEl).backgroundColor : 'no-el',
+                    gradeCircle_classes: gradeEl?.className ?? 'no-el',
+                    temas_bgColor: temasEl ? window.getComputedStyle(temasEl).backgroundColor : 'no-el',
+                    temas_classes: temasEl?.className ?? 'no-el',
+                    btn_bgColor: btnEl ? window.getComputedStyle(btnEl).backgroundColor : 'no-el',
+                },
+                timestamp: Date.now(),
+                hypothesisId: 'A-B-D-E',
+            };
+            fetch('http://127.0.0.1:7623/ingest/d6025ec4-1902-461d-ae6d-4b4976ec2ce2', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'cbfc31' },
+                body: JSON.stringify(payload),
+            }).catch(() => {});
+        };
+        const t = setTimeout(probe, 600);
+        return () => clearTimeout(t);
+    }, [searchTerm, selectedStudent]);
+    // #endregion
 
     const gradeLabels: Record<number, string> = {
         0: 'Cuenta de Prueba',
@@ -112,13 +146,15 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
 
                         <motion.button
                             type="button"
+                            data-debug-temas
+                            style={brandInlineBg}
                             onClick={() => {
                                 setHasEngagedWithThemes(true);
                                 setIsThemeMenuOpen(!isThemeMenuOpen);
                             }}
-                            className={`relative flex items-center gap-2 backdrop-blur-md px-4 py-2 rounded-full shadow-lg text-white font-medium font-poppins transition-colors ${!hasEngagedWithThemes
-                                ? 'bg-white/35 hover:bg-white/45 ring-2 ring-yellow-300/90 shadow-[0_0_20px_rgba(250,204,21,0.45)]'
-                                : 'bg-white/20 hover:bg-white/30'
+                            className={`relative flex items-center gap-2 px-4 py-2 rounded-full shadow-lg text-white font-semibold font-poppins transition-colors ${BRAND_FILL_CLASS} ${!hasEngagedWithThemes
+                                ? 'ring-2 ring-yellow-300/90 shadow-[0_0_20px_rgba(250,204,21,0.45)]'
+                                : ''
                                 }`}
                             animate={
                                 !hasEngagedWithThemes
@@ -217,14 +253,14 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
                             transition={{ delay: 0.3, duration: 0.5 }}
                         >
                             <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-charcoal">
-                                <Search size={24} />
+                                <Search data-debug-icon size={24} />
                             </div>
                             <input
                                 type="text"
                                 placeholder="Busca tu nombre..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full h-14 pl-14 pr-4 rounded-2xl shadow-lg text-lg font-poppins focus:outline-none focus:ring-4 focus:ring-ocean-blue focus:ring-opacity-50 transition-all"
+                                className="w-full h-14 pl-14 pr-4 rounded-2xl shadow-lg text-lg font-poppins focus:outline-none focus:ring-4 focus:ring-brand focus:ring-opacity-50 transition-all"
                                 autoFocus
                             />
                         </motion.div>
@@ -234,7 +270,7 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
                             <div className="bg-white rounded-2xl shadow-lg max-h-96 overflow-y-auto overflow-x-hidden custom-scrollbar">
                                 {isLoading ? (
                                     <div className="p-8 text-center text-charcoal flex flex-col items-center justify-center">
-                                        <Loader2 className="animate-spin mb-4 text-ocean-blue" size={32} />
+                                        <Loader2 className={`animate-spin mb-4 ${BRAND_TEXT_CLASS}`} style={brandIconStyle} size={32} />
                                         <p className="text-gray-500">Cargando estudiantes...</p>
                                     </div>
                                 ) : filteredStudents.length === 0 ? (
@@ -274,7 +310,11 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
                                                         </p>
                                                         <p className="text-sm text-gray-500">{gradeLabels[student.grade] || `Grado ${student.grade}`}</p>
                                                     </div>
-                                                    <div className="w-8 h-8 rounded-full bg-ocean-blue flex items-center justify-center text-white font-bold">
+                                                    <div
+                                                        data-debug-ocean
+                                                        style={brandInlineBg}
+                                                        className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${BRAND_FILL_CLASS}`}
+                                                    >
                                                         {student.grade}
                                                     </div>
                                                 </div>
@@ -319,7 +359,7 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
                                             setError(false);
                                         }}
                                         placeholder="······"
-                                        className={`w-full text-center tracking-widest text-2xl h-14 rounded-xl border-2 focus:outline-none transition-colors uppercase pr-12 ${error ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-ocean-blue'
+                                        className={`w-full text-center tracking-widest text-2xl h-14 rounded-xl border-2 focus:outline-none transition-colors uppercase pr-12 ${error ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-brand'
                                             }`}
                                         autoFocus
                                         maxLength={6}
@@ -340,8 +380,10 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
                                 )}
 
                                 <button
+                                    data-debug-btn
                                     type="submit"
-                                    className="w-full h-14 bg-medium-slate-blue hover:bg-gradient-to-r hover:from-medium-slate-blue hover:to-deep-purple text-white rounded-xl font-bold text-lg transition-all shadow-md hover:shadow-lg"
+                                    style={brandInlineBg}
+                                    className={`w-full h-14 text-white rounded-xl font-bold text-lg transition-all shadow-md hover:shadow-lg hover:opacity-90 ${BRAND_FILL_CLASS}`}
                                 >
                                     ¡Vamos a leer!
                                 </button>
@@ -357,7 +399,7 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
                 onClick={() => window.dispatchEvent(new CustomEvent('teacher-login-request'))}
-                className="absolute bottom-6 right-6 text-sm text-gray-400 hover:text-ocean-blue transition-colors font-medium flex items-center gap-2"
+                className="absolute bottom-6 right-6 text-sm text-gray-400 hover:text-[rgb(147,51,234)] transition-colors font-medium flex items-center gap-2"
             >
                 Acceso Maestros
             </motion.button>

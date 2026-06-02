@@ -4,6 +4,7 @@ import { Save, Check, Loader2 } from 'lucide-react';
 import { getWeeklyAssignments, saveWeeklyAssignments } from '../../services/firestore';
 import { getCurrentWeekId } from '../../utils/dateUtils';
 import storiesData from '../../data/stories.json';
+import { BRAND_PRIMARY } from '../../constants/brandColors';
 import type { Story } from '../../types';
 
 export const AssignmentPanel = () => {
@@ -85,7 +86,7 @@ export const AssignmentPanel = () => {
     if (isLoading) {
         return (
             <div className="flex items-center justify-center p-12 bg-white rounded-3xl shadow-sm border border-gray-100">
-                <Loader2 className="animate-spin text-ocean-blue" size={32} />
+                <Loader2 className="animate-spin text-brand" size={32} />
             </div>
         );
     }
@@ -101,7 +102,8 @@ export const AssignmentPanel = () => {
                 <button
                     onClick={handleSave}
                     disabled={isSaving}
-                    className="flex items-center gap-2 bg-ocean-blue text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-ocean-blue/90 disabled:opacity-50 transition-all shadow-sm"
+                    className="flex items-center gap-2 bg-brand text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-brand/90 disabled:opacity-50 transition-all shadow-sm"
+                    style={{ backgroundColor: BRAND_PRIMARY }}
                 >
                     {isSaving ? <Loader2 size={20} className="animate-spin" /> : (showSuccess ? <Check size={20} /> : <Save size={20} />)}
                     <span>{isSaving ? 'Guardando...' : (showSuccess ? '¡Guardado!' : 'Guardar Asignaciones')}</span>
@@ -116,7 +118,7 @@ export const AssignmentPanel = () => {
                             key={grade}
                             onClick={() => setSelectedGrade(grade)}
                             className={`px-4 py-3 rounded-xl font-semibold text-left whitespace-nowrap transition-colors ${selectedGrade === grade
-                                    ? 'bg-ocean-blue/10 text-ocean-blue'
+                                    ? 'bg-brand/10 text-brand'
                                     : 'text-gray-500 hover:bg-gray-50'
                                 }`}
                         >
@@ -138,7 +140,7 @@ export const AssignmentPanel = () => {
                                 <motion.div
                                     key={story.id}
                                     whileHover={{ y: -4 }}
-                                    className={`relative bg-white rounded-2xl p-4 cursor-pointer transition-all border-2 ${isAssigned ? 'border-ocean-blue shadow-md' : 'border-transparent shadow-sm hover:border-ocean-blue/30'
+                                    className={`relative bg-white rounded-2xl p-4 cursor-pointer transition-all border-2 ${isAssigned ? 'border-brand shadow-md' : 'border-transparent shadow-sm hover:border-brand/30'
                                         }`}
                                     onClick={() => handleToggleStory(story.id)}
                                 >
@@ -149,8 +151,8 @@ export const AssignmentPanel = () => {
                                             className="w-full h-full object-cover"
                                         />
                                         {isAssigned && (
-                                            <div className="absolute inset-0 bg-ocean-blue/20 flex items-center justify-center backdrop-blur-[1px]">
-                                                <div className="bg-ocean-blue text-white p-2 rounded-full shadow-lg">
+                                            <div className="absolute inset-0 bg-brand/20 flex items-center justify-center backdrop-blur-[1px]">
+                                                <div className="bg-brand text-white p-2 rounded-full shadow-lg" style={{ backgroundColor: BRAND_PRIMARY }}>
                                                     <Check size={24} />
                                                 </div>
                                             </div>
