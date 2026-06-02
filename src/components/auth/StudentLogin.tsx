@@ -121,29 +121,7 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
             {selectedStudent && (
                 <div className="absolute top-4 right-4 z-50">
                     <div className="relative flex flex-col items-end">
-                        <AnimatePresence>
-                            {!hasEngagedWithThemes && !isThemeMenuOpen && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
-                                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                                    exit={{ opacity: 0, y: -8, scale: 0.95 }}
-                                    transition={{ duration: 0.25 }}
-                                    className="mb-2 mr-1 max-w-[220px] rounded-2xl bg-white/95 backdrop-blur-md px-4 py-3 shadow-xl border border-purple-200 text-charcoal"
-                                >
-                                    <p className="text-sm font-semibold text-purple-800 leading-snug">
-                                        ¡Elige tu tema de fondo! 🎨
-                                    </p>
-                                    <p className="text-xs text-gray-600 mt-1">
-                                        Toca <span className="font-bold">Temas</span> antes de entrar
-                                    </p>
-                                    <div
-                                        className="absolute -bottom-2 right-8 w-4 h-4 bg-white/95 border-r border-b border-purple-200 rotate-45"
-                                        aria-hidden
-                                    />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
+                        <div className="relative">
                         <motion.button
                             type="button"
                             data-debug-temas
@@ -192,7 +170,7 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                                     transition={{ duration: 0.2 }}
-                                    className="absolute right-0 mt-3 w-56 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden py-2"
+                                    className="absolute right-0 top-full mt-2 z-10 w-56 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden py-2"
                                 >
                                     {[
                                         { id: 'library', name: 'Biblioteca Mágica', icon: <BookOpen size={18} />, color: 'text-purple-600', bg: 'hover:bg-purple-50' },
@@ -216,6 +194,30 @@ export const StudentLogin = ({ onLogin }: StudentLoginProps) => {
                                             {theme.name}
                                         </button>
                                     ))}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                        </div>
+
+                        <AnimatePresence>
+                            {!hasEngagedWithThemes && !isThemeMenuOpen && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                                    transition={{ duration: 0.25 }}
+                                    className="mt-2 mr-1 max-w-[220px] rounded-2xl bg-white/95 backdrop-blur-md px-4 py-3 shadow-xl border border-purple-200 text-charcoal relative"
+                                >
+                                    <div
+                                        className="absolute -top-2 right-8 w-4 h-4 bg-white/95 border-l border-t border-purple-200 rotate-45"
+                                        aria-hidden
+                                    />
+                                    <p className="text-sm font-semibold text-purple-800 leading-snug">
+                                        ¡Elige tu tema de fondo! 🎨
+                                    </p>
+                                    <p className="text-xs text-gray-600 mt-1">
+                                        Toca <span className="font-bold">Temas</span> antes de entrar
+                                    </p>
                                 </motion.div>
                             )}
                         </AnimatePresence>
