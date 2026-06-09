@@ -7,6 +7,7 @@ export interface Student {
     points?: number;
     collectibles?: string[];      // storyIds for which a collectible was earned
     lastAssignedWeek?: string;    // week ID when assignedStories was last set by teacher
+    assignmentDeadline?: number;  // timestamp (ms) for the deadline of the current assignments
 }
 
 export interface Story {

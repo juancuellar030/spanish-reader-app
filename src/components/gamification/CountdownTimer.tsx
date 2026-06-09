@@ -1,44 +1,67 @@
-import { useState, useEffect } from 'react';
-import { Clock } from 'lucide-react';
-import { BRAND_PRIMARY, ICON_BRAND, brandIconStyle } from '../../constants/brandColors';
+import { useState, useEffect } from "react";
+import { Clock } from "lucide-react";
+import {
+  BRAND_PRIMARY,
+  ICON_BRAND,
+  brandIconStyle,
+} from "../../constants/brandColors";
 
-export const CountdownTimer = () => {
-    const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number }>({ days: 0, hours: 0 });
+interface CountdownTimerProps {
+  deadline?: number;
+}
 
-    useEffect(() => {
-        const calculateTimeLeft = () => {
-            const now = new Date();
-            const nextMonday = new Date(now);
-            nextMonday.setDate(now.getDate() + ((1 + 7 - now.getDay()) % 7 || 7));
-            nextMonday.setHours(8, 0, 0, 0);
+export const CountdownTimer = ({ deadline }: CountdownTimerProps) => {
+  const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number }>({
+    days: 0,
+    hours: 0,
+  });
 
-            // If it's already past 8AM on Monday, target next week
-            if (nextMonday <= now) {
-                nextMonday.setDate(nextMonday.getDate() + 7);
-            }
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      let targetTime = 0;
 
-            const difference = nextMonday.getTime() - now.getTime();
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      if (deadline) {
+        targetTime = deadline;
+      } else {
+        const nextMonday = new Date(now);
+        nextMonday.setDate(now.getDate() + ((1 + 7 - now.getDay()) % 7 || 7));
+        nextMonday.setHours(8, 0, 0, 0);
 
-            setTimeLeft({ days, hours });
-        };
+        // If it's already past 8AM on Monday, target next week
+        if (nextMonday <= now) {
+          nextMonday.setDate(nextMonday.getDate() + 7);
+        }
+        targetTime = nextMonday.getTime();
+      }
 
-        calculateTimeLeft();
-        const timer = setInterval(calculateTimeLeft, 60000); // Update every minute
+      const difference = targetTime - now.getTime();
+      if (difference < 0) {
+        setTimeLeft({ days: 0, hours: 0 });
+        return;
+      }
 
-        return () => clearInterval(timer);
-    }, []);
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
 
-    return (
-        <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-100">
-            <Clock size={18} className={ICON_BRAND} style={brandIconStyle} />
-            <span className="text-sm font-semibold text-charcoal">
-                Termina en:{' '}
-                <span className="font-bold brand-text" style={{ color: BRAND_PRIMARY }}>
-                    {timeLeft.days}d {timeLeft.hours}h
-                </span>
-            </span>
-        </div>
-    );
+      setTimeLeft({ days, hours });
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 60000); // Update every minute
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-100">
+      <Clock size={18} className={ICON_BRAND} style={brandIconStyle} />
+      <span className="text-sm font-semibold text-charcoal">
+        Termina en:{" "}
+        <span className="font-bold brand-text" style={{ color: BRAND_PRIMARY }}>
+          {timeLeft.days}d {timeLeft.hours}h
+        </span>
+      </span>
+    </div>
+  );
 };

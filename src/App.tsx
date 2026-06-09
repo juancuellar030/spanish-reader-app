@@ -1,34 +1,38 @@
-import { useState, useEffect } from 'react';
-import { StudentLogin } from './components/auth/StudentLogin';
-import { StoryLibrary } from './components/library';
-import { StoryReader } from './components/reader';
-import { FlipbookViewer } from './components/reader/FlipbookViewer';
-import { BackgroundLayer } from './components/ui/BackgroundLayer';
-import type { BackgroundTheme } from './components/ui/BackgroundLayer';
-import { TeacherLogin, TeacherDashboard } from './components/teacher';
-import { WeeklyProgress, Scoreboard } from './components/gamification';
-import { CollectibleReveal } from './components/gamification/CollectibleReveal';
-import { CollectionCase } from './components/gamification/CollectionCase';
-import { getStudentProgress, getStudent } from './services/firestore';
-import { getCurrentWeekId } from './utils/dateUtils';
-import type { Student, Story, Progress } from './types';
-import storiesData from './data/stories.json';
-import story1Data from './data/stories/story-1.json';
-import story2Data from './data/stories/story-2.json';
-import grade1Story2Data from './data/stories/grade-1-story-2.json';
-import grade1Story3Data from './data/stories/grade-1-story-3.json';
-import grade2Story2Data from './data/stories/grade-2-story-2.json';
-import './index.css';
+import { useState, useEffect } from "react";
+import { StudentLogin } from "./components/auth/StudentLogin";
+import { StoryLibrary } from "./components/library";
+import { StoryReader } from "./components/reader";
+import { FlipbookViewer } from "./components/reader/FlipbookViewer";
+import { BackgroundLayer } from "./components/ui/BackgroundLayer";
+import type { BackgroundTheme } from "./components/ui/BackgroundLayer";
+import { TeacherLogin, TeacherDashboard } from "./components/teacher";
+import { WeeklyProgress, Scoreboard } from "./components/gamification";
+import { CollectibleReveal } from "./components/gamification/CollectibleReveal";
+import { CollectionCase } from "./components/gamification/CollectionCase";
+import { getStudentProgress, getStudent } from "./services/firestore";
+import { getCurrentWeekId } from "./utils/dateUtils";
+import type { Student, Story, Progress } from "./types";
+import storiesData from "./data/stories.json";
+import story1Data from "./data/stories/story-1.json";
+import story2Data from "./data/stories/story-2.json";
+import grade1Story2Data from "./data/stories/grade-1-story-2.json";
+import grade1Story3Data from "./data/stories/grade-1-story-3.json";
+import grade2Story2Data from "./data/stories/grade-2-story-2.json";
+import "./index.css";
 
 function App() {
   const [currentStudent, setCurrentStudent] = useState<Student | null>(null);
   const [studentProgress, setStudentProgress] = useState<Progress[]>([]);
-  const [currentTheme, setCurrentTheme] = useState<BackgroundTheme>('library');
+  const [currentTheme, setCurrentTheme] = useState<BackgroundTheme>("library");
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
   const [isTeacherLoginOpen, setIsTeacherLoginOpen] = useState(false);
   const [isTeacherAuthenticated, setIsTeacherAuthenticated] = useState(false);
   // Collectible reveal state
-  const [pendingCollectible, setPendingCollectible] = useState<{ storyId: string; image: string; name: string } | null>(null);
+  const [pendingCollectible, setPendingCollectible] = useState<{
+    storyId: string;
+    image: string;
+    name: string;
+  } | null>(null);
 
   // Compute active assigned stories — only show if lastAssignedWeek matches current ISO week
   const getActiveAssignedStories = (student: Student): string[] => {
@@ -59,13 +63,13 @@ function App() {
   const handleLogin = (student: Student, theme: BackgroundTheme) => {
     setCurrentStudent(student);
     setCurrentTheme(theme);
-    localStorage.setItem('currentStudent', JSON.stringify(student));
+    localStorage.setItem("currentStudent", JSON.stringify(student));
     localStorage.setItem(`theme_${student.id}`, theme);
   };
 
   const handleLogout = () => {
     setCurrentStudent(null);
-    localStorage.removeItem('currentStudent');
+    localStorage.removeItem("currentStudent");
   };
 
   const handleTeacherLogin = () => {
@@ -83,12 +87,12 @@ function App() {
 
   const handleCollectibleEarned = (storyId: string) => {
     // Find the collectible info from stories data
-    const storyMeta = (storiesData as any[]).find(s => s.id === storyId);
+    const storyMeta = (storiesData as any[]).find((s) => s.id === storyId);
     if (storyMeta?.collectibleImage) {
       setPendingCollectible({
         storyId,
         image: storyMeta.collectibleImage,
-        name: storyMeta.collectibleName || '¡Coleccionable!',
+        name: storyMeta.collectibleName || "¡Coleccionable!",
       });
     }
   };
@@ -100,7 +104,10 @@ function App() {
         const freshStudentData = await getStudent(currentStudent.id);
         if (freshStudentData) {
           setCurrentStudent(freshStudentData);
-          localStorage.setItem('currentStudent', JSON.stringify(freshStudentData));
+          localStorage.setItem(
+            "currentStudent",
+            JSON.stringify(freshStudentData),
+          );
         }
         const freshProgress = await getStudentProgress(currentStudent.id);
         setStudentProgress(freshProgress);
@@ -113,28 +120,33 @@ function App() {
   // Event listener for teacher login request from StudentLogin component
   useEffect(() => {
     const handleTeacherRequest = () => setIsTeacherLoginOpen(true);
-    window.addEventListener('teacher-login-request', handleTeacherRequest);
-    return () => window.removeEventListener('teacher-login-request', handleTeacherRequest);
+    window.addEventListener("teacher-login-request", handleTeacherRequest);
+    return () =>
+      window.removeEventListener("teacher-login-request", handleTeacherRequest);
   }, []);
 
   // Check for existing session on mount — always fetch fresh student data from Firestore
   useEffect(() => {
-    const savedStudent = localStorage.getItem('currentStudent');
+    const savedStudent = localStorage.getItem("currentStudent");
     if (savedStudent) {
       const parsed = JSON.parse(savedStudent) as Student;
-      const savedTheme = localStorage.getItem(`theme_${parsed.id}`) as BackgroundTheme;
+      const savedTheme = localStorage.getItem(
+        `theme_${parsed.id}`,
+      ) as BackgroundTheme;
       if (savedTheme) setCurrentTheme(savedTheme);
-      getStudent(parsed.id).then(freshData => {
-        if (freshData) {
-          setCurrentStudent(freshData);
-          localStorage.setItem('currentStudent', JSON.stringify(freshData));
-        } else {
-          setCurrentStudent(null);
-          localStorage.removeItem('currentStudent');
-        }
-      }).catch(() => {
-        setCurrentStudent(parsed);
-      });
+      getStudent(parsed.id)
+        .then((freshData) => {
+          if (freshData) {
+            setCurrentStudent(freshData);
+            localStorage.setItem("currentStudent", JSON.stringify(freshData));
+          } else {
+            setCurrentStudent(null);
+            localStorage.removeItem("currentStudent");
+          }
+        })
+        .catch(() => {
+          setCurrentStudent(parsed);
+        });
     }
   }, []);
 
@@ -157,22 +169,24 @@ function App() {
   }
 
   if (selectedStory) {
-    if (selectedStory.type === 'flipbook') {
+    if (selectedStory.type === "flipbook") {
       let flipbookData = selectedStory as any;
-      if (selectedStory.id === 'grade-1-story-1-flipbook') {
+      if (selectedStory.id === "grade-1-story-1-flipbook") {
         flipbookData = story1Data;
-      } else if (selectedStory.id === 'grade-2-story-1-flipbook') {
+      } else if (selectedStory.id === "grade-2-story-1-flipbook") {
         flipbookData = story2Data;
-      } else if (selectedStory.id === 'grade-2-story-2-flipbook') {
+      } else if (selectedStory.id === "grade-2-story-2-flipbook") {
         flipbookData = grade2Story2Data;
-      } else if (selectedStory.id === 'grade-1-story-2-flipbook') {
+      } else if (selectedStory.id === "grade-1-story-2-flipbook") {
         flipbookData = grade1Story2Data;
-      } else if (selectedStory.id === 'grade-1-story-3-flipbook') {
+      } else if (selectedStory.id === "grade-1-story-3-flipbook") {
         flipbookData = grade1Story3Data;
       }
 
       // Pass collectible info from stories.json to FlipbookViewer so QuizModal can award it
-      const collectibleImage = (storiesData as any[]).find(s => s.id === selectedStory.id)?.collectibleImage;
+      const collectibleImage = (storiesData as any[]).find(
+        (s) => s.id === selectedStory.id,
+      )?.collectibleImage;
 
       return (
         <FlipbookViewer
@@ -212,7 +226,7 @@ function App() {
           {/* Header */}
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-4xl font-bold text-white shadow-sm drop-shadow-sm">
-              ¡Hola, {currentStudent.name.split(' ')[0]}!
+              ¡Hola, {currentStudent.name.split(" ")[0]}!
             </h1>
 
             <div className="flex items-center gap-4">
@@ -230,7 +244,12 @@ function App() {
             <div className="md:col-span-2">
               <WeeklyProgress
                 assigned={activeStories.length}
-                completed={studentProgress.filter(p => activeStories.includes(p.storyId) && p.completed).length}
+                completed={
+                  studentProgress.filter(
+                    (p) => activeStories.includes(p.storyId) && p.completed,
+                  ).length
+                }
+                deadline={currentStudent.assignmentDeadline}
               />
             </div>
             <div>
